@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Shoe {
@@ -54,3 +54,5 @@ const typeDefs = gql`
     saveShoe(shoeData: ShoeInput): User
     login(email: String!, password: String!): Auth
   }`;
+
+module.exports = typeDefs;

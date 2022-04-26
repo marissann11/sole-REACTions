@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
@@ -26,7 +26,7 @@ const shoeSchema = new Schema({
   },
   color: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
