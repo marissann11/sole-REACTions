@@ -18,9 +18,9 @@ const typeDefs = gql`
   }
 
   type Order {
-      _id: ID
-      purchaseDate: String:
-      shoes: [Shoe]
+    _id: ID
+    purchaseDate: String
+    shoes: [Shoe]
   }
 
   type User {
@@ -32,27 +32,33 @@ const typeDefs = gql`
   }
 
   type Checkout {
-  session: ID
+    session: ID
   }
 
   type Auth {
-  token: ID
-  user: User
+    token: ID
+    user: User
   }
 
-  type Query{
-  user: User
-  order(_id: ID!): Order
-  checkout(shoes: [ID]!): Checkout
-  shoes: [Shoe]
-  shoe(shoes: [ID]!): Shoe
+  type Query {
+    user: User
+    order(_id: ID!): Order
+    checkout(shoes: [ID]!): Checkout
+    shoes: [Shoe]
+    shoe(shoes: [ID]!): Shoe
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    addUser(
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
+    ): Auth
     addOrder(shoes: [ID]!): Order
     saveShoe(shoeData: ShoeInput): User
     login(email: String!, password: String!): Auth
-  }`;
+  }
+`;
 
 module.exports = typeDefs;

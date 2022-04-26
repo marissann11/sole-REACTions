@@ -1,7 +1,7 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Shoe, Order } = require("../models");
-const { signToken } = require("../utils/auth");
-const stripe = require("stripe");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Shoe, Order } = require('../models');
+const { signToken } = require('../utils/auth');
+const stripe = require('stripe');
 
 const resolvers = {
   Query: {
@@ -19,7 +19,7 @@ const resolvers = {
 
         return user;
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
     order: async (_parent, { _id }, context) => {
       if (context.user) {
@@ -27,14 +27,14 @@ const resolvers = {
 
         return user.orders.id(_id);
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ products: args.products });
       const line_items = [];
 
-      const { products } = await order.populate("products").execPopulate();
+      const { products } = await order.populate('products').execPopulate();
 
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
@@ -46,7 +46,7 @@ const resolvers = {
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: products[i].price * 100,
-          currency: "usd",
+          currency: 'usd',
         });
 
         line_items.push({
@@ -56,9 +56,9 @@ const resolvers = {
       }
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
+        payment_method_types: ['card'],
         line_items,
-        mode: "payment",
+        mode: 'payment',
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
@@ -85,7 +85,7 @@ const resolvers = {
         return order;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
     saveShoe: async (parent, { shoeData }, context) => {
       if (context.user) {
@@ -97,20 +97,20 @@ const resolvers = {
 
         return updatedUser;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
     login: async (_parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      // const correctPw = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+      // if (!correctPw) {
+      //   throw new AuthenticationError("Incorrect credentials");
+      // }
 
       const token = signToken(user);
 
