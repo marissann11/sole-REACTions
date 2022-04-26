@@ -8,10 +8,6 @@ const shoeSchema = new Schema({
     required: true,
     trim: true,
   },
-  our_price: {
-    type: Number,
-    required: true,
-  },
   brand: {
     type: String,
     require: true,
