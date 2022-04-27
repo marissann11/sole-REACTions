@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Shoe, Order } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -31,21 +31,21 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = new Order({ shoes: args.shoes });
       const line_items = [];
 
-      const { products } = await order.populate('products').execPopulate();
+      const { shoes } = await order.populate('shoes').execPopulate();
 
-      for (let i = 0; i < products.length; i++) {
+      for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
-          name: products[i].name,
-          description: products[i].description,
-          images: [`${url}/images/${products[i].image}`],
+          name: shoes[i].name,
+          description: shoes[i].description,
+          images: [`${url}/images/${shoes[i].image}`],
         });
 
         const price = await stripe.prices.create({
           product: product.id,
-          unit_amount: products[i].price * 100,
+          unit_amount: shoes[i].price * 100,
           currency: 'usd',
         });
 
@@ -59,8 +59,11 @@ const resolvers = {
         payment_method_types: ['card'],
         line_items,
         mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
+        success_url:
+          'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
+        // success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        // cancel_url: `${url}/`,
       });
 
       return { session: session.id };
