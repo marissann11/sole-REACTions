@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Shoe, Order } = require('../models');
-const { signToken } = require('../utils/auth');
+const { signToken, authMiddleware } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -11,16 +11,22 @@ const resolvers = {
     shoe: async (_parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    user: async (_parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id);
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-      throw new AuthenticationError('Not logged in');
+    users: async () => {
+      return await User.find().select('-__v -password');
     },
+    user: async (parent, { _id }) => {
+      return await User.findOne({ _id });
+    },
+    // user: async (parent, args, context) => {
+    //   if (context.user) {
+    //   const user = await User.findById(context.user._id).populate('orders');
+
+    //   user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+    //   return user;
+    //   }
+    //   throw new AuthenticationError('Not logged in');
+    // },
     order: async (_parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
@@ -108,12 +114,13 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
+      // this is a console log!! delete me later please
+      console.log(user);
+      const correctPw = await user.isCorrectPassword(password);
 
-      // const correctPw = await user.isCorrectPassword(password);
-
-      // if (!correctPw) {
-      //   throw new AuthenticationError("Incorrect credentials");
-      // }
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
 
       const token = signToken(user);
 
