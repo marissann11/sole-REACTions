@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Shoe, Order } = require('../models');
-const { signToken, authMiddleware } = require('../utils/auth');
+const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -11,12 +11,15 @@ const resolvers = {
     shoe: async (_parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    users: async () => {
-      return await User.find().select('-__v -password');
+    users: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        return await User.find().select('-__v -password');
+      }
     },
-    // user: async (parent, { _id }) => {
-    //   return await User.findOne({ _id });
-    // },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({

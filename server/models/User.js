@@ -30,6 +30,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  isAdmin: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   orders: [Order.schema],
 });
 

@@ -278,6 +278,7 @@ db.once('open', async () => {
     lastName: 'Sneakie',
     email: 'sneak@testmail.com',
     password: 'password',
+    isAdmin: true,
     orders: [
       {
         shoes: [shoes[0]._id, shoes[3]._id, shoes[1]._id],

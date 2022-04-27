@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { LOGIN } from "../utils/mutations";
-import Auth from "../utils/auth";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 import {
   Button,
   Form,
@@ -10,15 +10,16 @@ import {
   Header,
   Message,
   Segment,
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
 const Login = () => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      console.log(formState.email, formState.password);
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
@@ -31,6 +32,7 @@ const Login = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name, value);
     setFormState({
       ...formState,
       [name]: value,
@@ -38,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <Grid textAlign="center" style={{ height: "70vh" }} verticalAlign="middle">
+    <Grid textAlign="center" style={{ height: '70vh' }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="black" textAlign="center">
           Welcome Back!
@@ -51,6 +53,7 @@ const Login = () => {
               iconPosition="left"
               placeholder="E-mail address"
               type="email"
+              name="email"
               id="email"
               onChange={handleChange}
             />
@@ -60,6 +63,7 @@ const Login = () => {
               iconPosition="left"
               placeholder="Password"
               type="password"
+              name="password"
               id="pwd"
               onChange={handleChange}
             />
