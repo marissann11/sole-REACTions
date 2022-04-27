@@ -14,22 +14,30 @@ const resolvers = {
     users: async () => {
       return await User.find().select('-__v -password');
     },
-    user: async (parent, { _id }) => {
-      return await User.findOne({ _id });
-    },
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //   const user = await User.findById(context.user._id).populate('orders');
-
-    //   user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-    //   return user;
-    //   }
-    //   throw new AuthenticationError('Not logged in');
+    // user: async (parent, { _id }) => {
+    //   return await User.findOne({ _id });
     // },
+    user: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.shoes',
+          // what do we populate here?
+          populate: 'shoes',
+        });
+
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+        return user;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
     order: async (_parent, { _id }, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id);
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.shoes',
+          // what do we populate here
+          populate: 'shoes',
+        });
 
         return user.orders.id(_id);
       }
@@ -45,7 +53,6 @@ const resolvers = {
       for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
           name: shoes[i].name,
-          description: shoes[i].description,
           images: [`${url}/images/${shoes[i].image}`],
         });
 
