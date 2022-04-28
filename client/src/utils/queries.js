@@ -29,6 +29,23 @@ export const QUERY_SHOE = gql`
     }
   }
 `;
+export const QUERY_ORDERS = gql`
+  {
+    orders {
+      _id
+      purchaseDate
+      shoes {
+        _id
+        name
+        price
+        brand
+        image
+        color
+        model
+      }
+    }
+  }
+`;
 export const QUERY_USER = gql`
   {
     user {

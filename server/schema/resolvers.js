@@ -67,6 +67,9 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
+    orders: async () => {
+      return await Order.find();
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
