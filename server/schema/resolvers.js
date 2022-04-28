@@ -8,7 +8,7 @@ const resolvers = {
     shoes: async () => {
       return await Shoe.find();
     },
-    shoe: async (_parent, { _id }) => {
+    shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
     users: async (parent, args, context) => {
