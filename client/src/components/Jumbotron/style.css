@@ -1,0 +1,72 @@
+.carousel {
+  position: relative;
+}
+
+/* .carousel-caption {
+  top: 0;
+  bottom: auto;
+} */
+
+.carouselItem {
+  height: 90vh;
+}
+
+.carouselItem1 {
+  background-image: url(../../assets/images/promo.png);
+  background-position: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.carouselItem2 {
+  background-image: url(../../assets/images/sub.png);
+  background-position: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.carouselItem3 {
+  background-image: url(../../assets/images/feature.png);
+  background-position: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.subBtn {
+  position: absolute;
+  bottom: 5vh;
+  right: 11vh;
+}
+
+.heroBtn {
+  font-family: "Comfortaa", cursive;
+  text-shadow: 7px 7px 7px black;
+}
+
+@media screen and (max-width: 1000px) {
+  .carouselItem1 {
+    background-image: url(../../assets/images/promo-mid.png);
+  }
+
+  .carouselItem2 {
+    background-image: url(../../assets/images/sub-mid.png);
+  }
+
+  .carouselItem3 {
+    background-image: url(../../assets/images/feature-mid.png);
+  }
+}
+
+@media screen and (max-width: 516px) {
+  .carouselItem1 {
+    background-image: url(../../assets/images/promo-sm.png);
+  }
+
+  .carouselItem2 {
+    background-image: url(../../assets/images/sub-sm.png);
+  }
+
+  .carouselItem3 {
+    background-image: url(../../assets/images/feature-sm.png);
+  }
+}
