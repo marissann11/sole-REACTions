@@ -5,12 +5,15 @@ const stripe = require('stripe');
 
 const resolvers = {
   Query: {
+    //finds all shoes
     shoes: async () => {
       return await Shoe.find();
     },
+    //finds one shoe by ID
     shoe: async (_parent, { _id }) => {
       return await Shoe.findById(_id);
     },
+    //finds one user by ID
     user: async (_parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
