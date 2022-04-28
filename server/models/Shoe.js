@@ -32,6 +32,10 @@ const shoeSchema = new Schema({
     type: String,
     required: false,
   },
+  model: {
+    type: String,
+    required: false,
+  }
 });
 
 const Shoe = mongoose.model('Shoe', shoeSchema);
