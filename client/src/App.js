@@ -15,6 +15,8 @@ import Dashboard from "./pages/Dashboard";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Subscription from "./pages/Subscription";
+import Featured from "./pages/Featured";
 import Footer from "./components/Footer";
 import "./App.css";
 
@@ -43,12 +45,14 @@ function App() {
       <Router>
         <div>
           <Nav />
-          <Switch>
+          <Switch className="components">
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/shoes/:id" component={Detail} />
+            <Route exact path="/featured" component={Featured} />
+            <Route exact path="/subscription" component={Subscription} />
             <Route exact path="/cart" component={Cart} />
             {/* <Route exact path="/success" component={Success} /> */}
           </Switch>

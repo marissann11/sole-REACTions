@@ -13,7 +13,7 @@ const Nav = () => {
       return <p>I am logged in</p>;
     } else {
       return (
-        <Menu inverted pointing secondary style={{ height: "8vh" }}>
+        <Menu inverted pointing secondary style={{ height: "6vh" }}>
           <Menu.Item
             as={Link}
             to="/"
@@ -59,7 +59,11 @@ const Nav = () => {
     }
   };
 
-  return <Segment inverted>{showNav()}</Segment>;
+  return (
+    <Segment inverted className="m-0">
+      {showNav()}
+    </Segment>
+  );
 };
 
 export default Nav;
