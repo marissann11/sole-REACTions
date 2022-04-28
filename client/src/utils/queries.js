@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 
-// add color field to shoe query
+// add SKU and collab queries
+
 export const QUERY_ALL_SHOES = gql`
   {
     shoes {
@@ -9,10 +10,11 @@ export const QUERY_ALL_SHOES = gql`
       description
       price
       brand
+      color
+      model
     }
   }
 `;
-// add color field
 export const QUERY_SHOE = gql`
   query getShoe($id: ID) {
     shoe(_id: $id) {
@@ -22,10 +24,11 @@ export const QUERY_SHOE = gql`
       price
       brand
       image
+      color
+      model
     }
   }
 `;
-// add color field to shoes maybe
 export const QUERY_USER = gql`
   {
     user {
@@ -41,6 +44,8 @@ export const QUERY_USER = gql`
           price
           brand
           image
+          color
+          model
         }
       }
     }

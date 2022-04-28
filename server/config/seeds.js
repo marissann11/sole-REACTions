@@ -15,7 +15,7 @@ db.once('open', async () => {
       year: '2019',
       image: 'Alien.jpg',
       color: 'Grey',
-      model: '380'
+      model: '380',
     },
     {
       name: 'Nike Air Max 1 Atmos Safari',
@@ -27,7 +27,7 @@ db.once('open', async () => {
       year: 2016,
       image: 'AtmosSafari.jpg',
       color: 'Brown',
-      model: 'Air Max 1'
+      model: 'Air Max 1',
     },
     {
       name: 'Adidas Yeezy Boost 350 V2 Beluga 2.0',
@@ -41,7 +41,7 @@ db.once('open', async () => {
       year: 2017,
       image: 'Beluga2.jpg',
       color: 'Grey',
-      model: '350'
+      model: '350',
     },
     {
       name: 'New Balance 550 Shadow',
@@ -52,7 +52,7 @@ db.once('open', async () => {
       year: '2021',
       image: 'Black550.jpg',
       color: 'Black',
-      model: '550'
+      model: '550',
     },
     {
       name: 'Air Jordan 6 Retro Carmine',
@@ -68,7 +68,7 @@ db.once('open', async () => {
       year: '2021',
       image: 'Carmines.jpg',
       color: 'Red',
-      model: 'Jordan 6'
+      model: 'Jordan 6',
     },
     {
       name: 'Air Jordan 13 Retro Flint',
@@ -81,7 +81,7 @@ db.once('open', async () => {
       year: '2020',
       image: 'Flint.jpg',
       color: 'Blue',
-      model: 'Jordan 13'
+      model: 'Jordan 13',
     },
     {
       name: 'Air Jordan 1 Retro High OG Light Fusion Red',
@@ -92,7 +92,7 @@ db.once('open', async () => {
       year: '2021',
       image: 'Fusion.jpg',
       color: 'Pink',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Air Jordan 6 Retro Gold Hoops',
@@ -104,7 +104,7 @@ db.once('open', async () => {
       year: '2021',
       image: 'Hoops.jpg',
       color: 'White',
-      model: 'Jordan 6'
+      model: 'Jordan 6',
     },
     {
       name: 'New Balance 990v3 x JJJJound',
@@ -117,7 +117,7 @@ db.once('open', async () => {
       year: '2022',
       image: 'JJJJound.jpg',
       color: 'Green',
-      model: '990'
+      model: '990',
     },
     {
       name: 'Air Jordan 1 x SB LA to Chicago',
@@ -129,7 +129,7 @@ db.once('open', async () => {
       year: 2019,
       image: 'LaToChi.jpg',
       color: 'Purple',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Air Jordan 1 x Off White UNC ',
@@ -142,7 +142,7 @@ db.once('open', async () => {
       year: 2018,
       image: 'OffWhiteUNC.jpg',
       color: 'Blue',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Nike Air Max 1 x Parra',
@@ -157,7 +157,7 @@ db.once('open', async () => {
       year: 2018,
       image: 'ParraAM1.jpg',
       color: 'Multi',
-      model: 'Air Max 1'
+      model: 'Air Max 1',
     },
     {
       name: 'Air Jordan 1 Rookie of the Year',
@@ -169,7 +169,7 @@ db.once('open', async () => {
       year: 2018,
       image: 'ROTY.jpg',
       color: 'Brown',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Air Jordan 1 Retro High Royal Toe',
@@ -182,7 +182,7 @@ db.once('open', async () => {
       year: '2020',
       image: 'RoyalToe.jpg',
       color: 'Blue',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Air Jordan 1 Shattered Backboard',
@@ -195,7 +195,7 @@ db.once('open', async () => {
       year: 2015,
       image: 'SBB.jpg',
       color: 'Orange',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Air Jordan 1 Retro High OG Seafoam',
@@ -207,7 +207,7 @@ db.once('open', async () => {
       year: '2021',
       image: 'Seafoam.jpg',
       color: 'Green',
-      model: 'Jordan 1'
+      model: 'Jordan 1',
     },
     {
       name: 'Nike x Stussy Air Zoom Spiridon Fossil',
@@ -221,7 +221,7 @@ db.once('open', async () => {
       year: 2020,
       image: 'Spiridon.jpg',
       color: 'Brown',
-      model: 'Air Zoom Spiridon'
+      model: 'Air Zoom Spiridon',
     },
     {
       name: 'Adidas Yeezy Boost 350 V2 Static',
@@ -233,7 +233,7 @@ db.once('open', async () => {
       year: 2018,
       image: 'Static.jpg',
       color: 'Grey',
-      model: '350'
+      model: '350',
     },
     {
       name: 'Nike Air Force 1 Low x Supreme Wheat',
@@ -246,7 +246,7 @@ db.once('open', async () => {
       year: 2021,
       image: 'SupAF1.jpg',
       color: 'Brown',
-      model: 'Air Force 1'
+      model: 'Air Force 1',
     },
     {
       name: 'Nike Air Max 98 x Supreme Snakeskin',
@@ -258,7 +258,7 @@ db.once('open', async () => {
       year: '2016',
       image: 'SupAM98.jpg',
       color: 'Brown',
-      model: 'Air Max 98'
+      model: 'Air Max 98',
     },
     {
       name: 'Air Jordan 4 Retro x Travis Scott Cactus Jack',
@@ -272,7 +272,7 @@ db.once('open', async () => {
       year: '2018',
       image: 'Travis.jpg',
       color: 'Blue',
-      model: 'Jordan 4'
+      model: 'Jordan 4',
     },
     {
       name: 'New Balance 550 UNC White University Blue',
@@ -286,7 +286,7 @@ db.once('open', async () => {
       year: '2022',
       image: 'UNC550.jpg',
       color: 'Blue',
-      model: '550'
+      model: '550',
     },
     {
       name: 'Adidas Yeezy Boost 700 Wave Runner',
@@ -301,7 +301,7 @@ db.once('open', async () => {
       year: 2017,
       image: 'WaveRunner.jpg',
       color: 'Green',
-      model: '700'
+      model: '700',
     },
     {
       name: 'Adidas Yeezy Boost 350 V2 Zebra',
@@ -316,7 +316,7 @@ db.once('open', async () => {
       year: 2017,
       image: 'Zebras.jpg',
       color: 'White',
-      model: '350'
+      model: '350',
     },
   ]);
   console.log('shoes seeded');
@@ -324,7 +324,7 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Sneakie',
     lastName: 'Sneakie',
-    email: 'sneak@testmail.com',
+    email: 'sneak2@testmail.com',
     password: 'password',
     isAdmin: true,
     orders: [

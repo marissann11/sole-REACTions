@@ -6,17 +6,23 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
   Query: {
     shoes: async (parent, args, context, info) => {
-      const { brand, price } = args;
+      const { brand, price, color, model } = args;
 
       let result;
-      if (brand && price) {
-        result = await Shoe.find({ brand, price });
+      if (brand && price && model && color) {
+        result = await Shoe.find({ brand, price, color, model });
         return result;
       } else if (brand) {
         result = await Shoe.find({ brand });
         return result;
       } else if (price) {
         result = await Shoe.find({ price });
+        return result;
+      } else if (color) {
+        result = await Shoe.find({ color });
+        return result;
+      } else if (model) {
+        result = await Shoe.find({ model });
         return result;
       } else {
         result = await Shoe.find();
