@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Shoe, Order } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -13,10 +13,22 @@ const resolvers = {
     shoe: async (_parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    //finds one user by ID
-    user: async (_parent, args, context) => {
+    users: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        return await User.find().select('-__v -password');
+      }
+    },
+    user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id);
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.shoes',
+          // what do we populate here?
+          populate: 'shoes',
+        });
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
@@ -26,7 +38,11 @@ const resolvers = {
     },
     order: async (_parent, { _id }, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id);
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.shoes',
+          // what do we populate here
+          populate: 'shoes',
+        });
 
         return user.orders.id(_id);
       }
@@ -34,21 +50,20 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = new Order({ shoes: args.shoes });
       const line_items = [];
 
-      const { products } = await order.populate('products').execPopulate();
+      const { shoes } = await order.populate('shoes').execPopulate();
 
-      for (let i = 0; i < products.length; i++) {
+      for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
-          name: products[i].name,
-          description: products[i].description,
-          images: [`${url}/images/${products[i].image}`],
+          name: shoes[i].name,
+          images: [`${url}/images/${shoes[i].image}`],
         });
 
         const price = await stripe.prices.create({
           product: product.id,
-          unit_amount: products[i].price * 100,
+          unit_amount: shoes[i].price * 100,
           currency: 'usd',
         });
 
@@ -62,8 +77,11 @@ const resolvers = {
         payment_method_types: ['card'],
         line_items,
         mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
+        success_url:
+          'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
+        // success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        // cancel_url: `${url}/`,
       });
 
       return { session: session.id };
@@ -108,12 +126,13 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
+      // this is a console log!! delete me later please
+      console.log(user);
+      const correctPw = await user.isCorrectPassword(password);
 
-      // const correctPw = await user.isCorrectPassword(password);
-
-      // if (!correctPw) {
-      //   throw new AuthenticationError("Incorrect credentials");
-      // }
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
 
       const token = signToken(user);
 
