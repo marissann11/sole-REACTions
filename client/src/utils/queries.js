@@ -36,12 +36,8 @@ export const QUERY_ORDERS = gql`
       purchaseDate
       shoes {
         _id
-        name
         price
         brand
-        image
-        color
-        model
       }
     }
   }

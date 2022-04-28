@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  useMutation,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import { useQuery, useMutation } from '@apollo/client';
-// import { QUERY_ORDERS } from './utils/queries';
 
 import Nav from './components/Nav';
 import Home from './pages/Home';
@@ -22,16 +19,6 @@ import Subscription from './pages/Subscription';
 import Featured from './pages/Featured';
 import Footer from './components/Footer';
 import './App.css';
-
-// useEffect(() => {
-//   fetchSales = async () => {
-//     const { res } = await fetch(queryOrders);
-//   };
-//   fetchSales();
-// }, []);
-
-// reducer function const getSales = () => {...reducer}
-// total sales sent to chart.js
 
 const httpLink = createHttpLink({
   uri: '/graphql',
