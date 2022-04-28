@@ -2,11 +2,6 @@
   position: relative;
 }
 
-/* .carousel-caption {
-  top: 0;
-  bottom: auto;
-} */
-
 .carouselItem {
   height: 90vh;
 }
