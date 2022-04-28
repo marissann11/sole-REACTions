@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
-import { ADD_USER } from "../utils/mutations";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 import {
   Button,
   Form,
@@ -10,10 +10,10 @@ import {
   Header,
   Message,
   Segment,
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
 const Signup = (props) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -39,7 +39,7 @@ const Signup = (props) => {
   };
 
   return (
-    <Grid textAlign="center" style={{ height: "70vh" }} verticalAlign="middle">
+    <Grid textAlign="center" style={{ height: '70vh' }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="black" textAlign="center">
           Join the Fam!
@@ -67,6 +67,7 @@ const Signup = (props) => {
               placeholder="E-mail address"
               type="email"
               id="email"
+              name="email"
               onChange={handleChange}
             />
             <Form.Input
@@ -74,6 +75,7 @@ const Signup = (props) => {
               placeholder="Password"
               type="password"
               id="pwd"
+              name="password"
               onChange={handleChange}
             />
             <Button color="black" fluid size="large" type="submit">
