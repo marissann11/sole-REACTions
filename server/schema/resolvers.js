@@ -5,12 +5,25 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    //finds all shoes
-    shoes: async () => {
-      return await Shoe.find();
+    shoes: async (parent, args, context, info) => {
+      const { brand, price } = args;
+
+      let result;
+      if (brand && price) {
+        result = await Shoe.find({ brand, price });
+        return result;
+      } else if (brand) {
+        result = await Shoe.find({ brand });
+        return result;
+      } else if (price) {
+        result = await Shoe.find({ price });
+        return result;
+      } else {
+        result = await Shoe.find();
+        return result;
+      }
     },
-    //finds one shoe by ID
-    shoe: async (_parent, { _id }) => {
+    shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
     users: async (parent, args, context) => {

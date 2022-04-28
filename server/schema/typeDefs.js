@@ -1,12 +1,14 @@
 const { gql } = require('apollo-server-express');
 
+// add colors back into shoe and shoe input
 const typeDefs = gql`
   type Shoe {
     _id: ID
     name: String
     description: String
     image: String
-    price: Float
+    price: Int
+    brand: String
   }
 
   input ShoeInput {
@@ -15,6 +17,7 @@ const typeDefs = gql`
     description: String
     image: String
     price: Float
+    brand: String
   }
 
   type Order {
@@ -46,8 +49,8 @@ const typeDefs = gql`
     user(_id: ID!): User
     order(_id: ID!): Order
     checkout(shoes: [ID]!): Checkout
-    shoes: [Shoe]
-    shoe(shoes: [ID]!): Shoe
+    shoes(brand: String, price: Int): [Shoe]
+    shoe(_id: ID!): Shoe
   }
 
   type Mutation {
