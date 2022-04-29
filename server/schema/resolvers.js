@@ -42,10 +42,6 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    // this could be wrong
-    shoe: async (parent, { sku }) => {
-      return await Shoe.find(sku);
-    },
     users: async (parent, args, context) => {
       if (!context.user) {
         throw new AuthenticationError('User is not logged in');
