@@ -13,8 +13,10 @@ const resolvers = {
       // } else if (!context.user.isAdmin) {
       //   throw new AuthenticationError('User is not admin!');
       // } else {
-      const userData = await User.find().select('-__v -password');
+      const userData = await User.find().select('-__v -password')
       console.log(JSON.stringify(userData));
+      let orderData = userData.map(({ orders }) => orders);
+      console.log(orderData);
       return userData;
       // }
     },

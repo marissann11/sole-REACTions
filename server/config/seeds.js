@@ -1,7 +1,10 @@
 const db = require("./connection");
 const { User, Shoe } = require("../models");
 
+
+
 db.once("open", async () => {
+  await Shoe.deleteMany();
   const shoes = await Shoe.insertMany([
     {
       name: "Adidas Yeezy Boost 380 Alien",
@@ -771,7 +774,7 @@ db.once("open", async () => {
     isAdmin: true,
     orders: [
       {
-        shoes: [shoes[0]._id, shoes[3]._id, shoes[1]._id],
+      shoes: [shoes[0], shoes[3], shoes[1]],
       },
     ],
   });

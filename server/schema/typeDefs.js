@@ -63,8 +63,6 @@ const typeDefs = gql`
     checkout(shoes: [ID]!): Checkout
     shoes(brand: String, price: Int, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
     shoe(_id: ID!): Shoe
-    shoes(brand: String, price: Int, color: String, model: String): [Shoe]
-    checkout(shoes: [ID]!): Checkout
   }
 
   type Mutation {

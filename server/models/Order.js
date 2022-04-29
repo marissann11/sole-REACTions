@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Shoe = require('./Shoe')
 
 const { Schema } = mongoose;
 
@@ -7,14 +8,9 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  shoes: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Shoe',
-    },
-  ],
+  shoes: [Shoe.schema],
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Order = mongoose.model("Order", orderSchema);
 
 module.exports = Order;
