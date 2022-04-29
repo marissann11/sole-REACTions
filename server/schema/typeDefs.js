@@ -11,6 +11,9 @@ const typeDefs = gql`
     brand: String
     color: String
     model: String
+    sku: String
+    collab: String
+    sport: String
   }
 
   input ShoeInput {
@@ -22,6 +25,9 @@ const typeDefs = gql`
     brand: String
     color: String
     model: String
+    sku: String
+    collab: String
+    sport: String
   }
 
   type Order {
@@ -55,7 +61,8 @@ const typeDefs = gql`
     order(_id: ID!): Order
     orders: [Order]
     checkout(shoes: [ID]!): Checkout
-    shoes(brand: String, price: Int, color: String, model: String): [Shoe]
+    shoes(brand: String, price: Int, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
+    shoe(sku: String!): Shoe
     shoe(_id: ID!): Shoe
   }
 

@@ -3,6 +3,7 @@ const { User, Shoe, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
+// need to update shoe queries with new filters
 const resolvers = {
   Query: {
     shoes: async (parent, args, context, info) => {
@@ -31,6 +32,9 @@ const resolvers = {
     },
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
+    },
+    shoe: async (parent, { sku }) => {
+      return await Shoe.findById(sku);
     },
     users: async (parent, args, context) => {
       if (!context.user) {

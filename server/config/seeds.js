@@ -110,7 +110,7 @@ db.once("open", async () => {
       model: "SB Dunk",
       sku: "918321-381",
       collab: "Thomas Campbell",
-      sport: "Skateboarding",
+      sport: "Skateboard",
       image: "Campbell.jpg",
     },
     {
@@ -191,7 +191,7 @@ db.once("open", async () => {
       model: "SB Dunk",
       sku: "BV1310 001",
       collab: "Diamond Supply",
-      sport: "Skateboarding",
+      sport: "Skateboard",
       image: "Diamond.jpg",
     },
     {
