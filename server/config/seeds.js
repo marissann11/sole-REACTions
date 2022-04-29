@@ -2,6 +2,8 @@ const db = require('./connection');
 const { User, Shoe } = require('../models');
 
 db.once('open', async () => {
+  await Shoe.deleteMany();
+
   const shoes = await Shoe.insertMany([
     {
       name: 'Adidas Yeezy Boost 380 Alien',
@@ -321,15 +323,53 @@ db.once('open', async () => {
   ]);
   console.log('shoes seeded');
 
+  await User.deleteMany();
+
   await User.create({
-    firstName: 'Sneakie',
-    lastName: 'Sneakie',
-    email: 'sneak2@testmail.com',
+    firstName: 'Will',
+    lastName: 'York',
+    email: 'will@testemail.com',
     password: 'password',
     isAdmin: true,
     orders: [
       {
         shoes: [shoes[0]._id, shoes[3]._id, shoes[1]._id],
+      },
+    ],
+  });
+  await User.create({
+    firstName: 'Tobby',
+    lastName: 'Brooks',
+    email: 'tobe@testemail.com',
+    password: 'password',
+    isAdmin: true,
+    orders: [
+      {
+        shoes: [shoes[2]._id, shoes[8]._id],
+      },
+    ],
+  });
+  await User.create({
+    firstName: 'Tam',
+    lastName: 'Wilhite',
+    email: 'tam@testemail.com',
+    password: 'password',
+    isAdmin: true,
+    orders: [
+      {
+        shoes: [shoes[4]._id, shoes[0]._id, shoes[1]._id],
+      },
+    ],
+  });
+  await User.create({
+    firstName: 'Marissa',
+    lastName: 'Wilhite',
+    email: 'mar@testemail.com',
+    password: 'password',
+    isAdmin: true,
+    orders: [
+      {
+        shoes: [shoes[12]._id],
       },
     ],
   });

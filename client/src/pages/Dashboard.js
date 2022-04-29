@@ -14,11 +14,6 @@ import { QUERY_ORDERS } from '../utils/queries';
 // reducer function const getSales = () => {...reducer}
 // total sales sent to chart.js
 
-// useEffect(() => {
-//   const { loading, data } = useQuery(QUERY_ORDERS);
-//   console.log(loading, data);
-// }, []);
-
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_ORDERS);
 

@@ -1,6 +1,7 @@
 const { gql } = require('apollo-server-express');
 
 // add collabs and SKU
+
 const typeDefs = gql`
   type Shoe {
     _id: ID
@@ -32,7 +33,6 @@ const typeDefs = gql`
 
   type User {
     _id: ID
-    username: String
     firstName: String
     lastName: String
     email: String
@@ -51,12 +51,12 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(_id: ID!): User
+    user: User
     order(_id: ID!): Order
     orders: [Order]
-    checkout(shoes: [ID]!): Checkout
-    shoes(brand: String, price: Int, color: String, model: String): [Shoe]
     shoe(_id: ID!): Shoe
+    shoes(brand: String, price: Int, color: String, model: String): [Shoe]
+    checkout(shoes: [ID]!): Checkout
   }
 
   type Mutation {
