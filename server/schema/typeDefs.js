@@ -73,7 +73,7 @@ const typeDefs = gql`
       password: String!
     ): Auth
     addOrder(shoes: [ID]!): Order
-    saveShoe(shoeData: ShoeInput): User
+    saveShoe(brand: String, price: Int, color: String, model: String, sku: String, collab: String, sport: String): User
     login(email: String!, password: String!): Auth
   }
 `;
