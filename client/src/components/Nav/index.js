@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import "./style.css";
 import React, { Component } from "react";
 import {
-  Button,
   Container,
   Dropdown,
   Icon,
@@ -39,14 +38,13 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size="large"
             >
-              <Menu.Item as={Link} to="/shoes">
-                Sneakers
-              </Menu.Item>
-
-              <Menu.Item header as={Link} to="/" position="right">
+              <Menu.Item header as={Link} to="/" position="left">
                 <span className="navTitle">SOLE INTENTIONS</span>
               </Menu.Item>
-              <Dropdown item text="Account" position="right">
+              <Menu.Item as={Link} to="/cart">
+                <Icon name="opencart" size="big" />
+              </Menu.Item>
+              <Dropdown item text="Account" position="right" className="drop">
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="/dashboard">
                     Dashboard
@@ -64,7 +62,7 @@ class DesktopContainer extends Component {
     } else {
       return (
         <Media greaterThan="mobile" className="sticky-top">
-          <Segment inverted style={{ minHeight: 10 }} vertical>
+          <Segment inverted style={{ height: 80 }} vertical>
             <Menu
               fixed={fixed ? "top" : null}
               inverted={!fixed}
@@ -72,14 +70,13 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size="large"
             >
-              <Menu.Item as={Link} to="/shoes">
-                Sneakers
-              </Menu.Item>
-
-              <Menu.Item header as={Link} to="/" position="right">
+              <Menu.Item header as={Link} to="/" position="left">
                 <span className="navTitle">SOLE INTENTIONS</span>
               </Menu.Item>
-              <Dropdown item text="Account" position="right">
+              <Menu.Item as={Link} to="/cart">
+                <Icon name="opencart" size="big" />
+              </Menu.Item>
+              <Dropdown item text="Account" position="right" className="drop">
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="/login">
                     Log In
@@ -111,65 +108,105 @@ class MobileContainer extends Component {
   render() {
     const { children } = this.props;
     const { sidebarOpened } = this.state;
-
-    return (
-      <Media as={Sidebar.Pushable} at="mobile">
-        <Sidebar.Pushable>
-          <Sidebar
-            as={Menu}
-            animation="overlay"
-            inverted
-            onHide={this.handleSidebarHide}
-            vertical
-            visible={sidebarOpened}
-          >
-            <Menu.Item as={Link} to="/">
-              Home
-            </Menu.Item>
-            <Menu.Item as={Link} to="/cart">
-              Cart
-            </Menu.Item>
-            <Menu.Item as={Link} to="/dashboard">
-              Dash
-            </Menu.Item>
-          </Sidebar>
-
-          <Sidebar.Pusher dimmed={sidebarOpened}>
-            <Segment
+    if (Auth.loggedIn()) {
+      return (
+        <Media as={Sidebar.Pushable} at="mobile">
+          <Sidebar.Pushable>
+            <Sidebar
+              as={Menu}
+              animation="overlay"
               inverted
-              textAlign="center"
-              style={{ minHeight: 10, padding: "1em 0em" }}
+              onHide={this.handleSidebarHide}
               vertical
+              visible={sidebarOpened}
             >
-              <Container>
-                <Menu inverted pointing secondary size="large">
-                  <Menu.Item onClick={this.handleToggle}>
-                    <Icon name="sidebar" />
-                  </Menu.Item>
-                  <Menu.Item as={Link} to="/" position="right">
-                    <span className="navTitle">SOLE INTENTIONS</span>
-                  </Menu.Item>
-                  <Menu.Item position="right">
-                    <Button as={Link} to="/login" inverted>
-                      Log in
-                    </Button>
-                    <Button
-                      as={Link}
-                      to="/signup"
-                      inverted
-                      style={{ marginLeft: "0.5em" }}
-                    >
-                      Sign Up
-                    </Button>
-                  </Menu.Item>
-                </Menu>
-              </Container>
-            </Segment>
-            {children}
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </Media>
-    );
+              <Menu.Item as={Link} to="/shoes">
+                <span className="drop">Shop</span>
+              </Menu.Item>
+              <Menu.Item as={Link} to="/dashboard">
+                <span className="drop">Dashboard</span>
+              </Menu.Item>
+              <Menu.Item as="a" onClick={() => Auth.logout()}>
+                <span className="drop">Logout</span>
+              </Menu.Item>
+            </Sidebar>
+
+            <Sidebar.Pusher dimmed={sidebarOpened}>
+              <Segment
+                inverted
+                textAlign="center"
+                style={{ minHeight: 10, padding: "1em 0em" }}
+                vertical
+              >
+                <Container>
+                  <Menu inverted pointing secondary size="large">
+                    <Menu.Item onClick={this.handleToggle}>
+                      <Icon name="sidebar" size="large" />
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/" position="right">
+                      <span className="navTitleMobile">SOLE INTENTIONS</span>
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/cart">
+                      <Icon name="opencart" size="big" />
+                    </Menu.Item>
+                  </Menu>
+                </Container>
+              </Segment>
+              {children}
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+        </Media>
+      );
+    } else {
+      return (
+        <Media as={Sidebar.Pushable} at="mobile">
+          <Sidebar.Pushable>
+            <Sidebar
+              as={Menu}
+              animation="overlay"
+              inverted
+              onHide={this.handleSidebarHide}
+              vertical
+              visible={sidebarOpened}
+            >
+              <Menu.Item as={Link} to="/shoes">
+                <span className="drop">Shop</span>
+              </Menu.Item>
+              <Menu.Item as={Link} to="/signup">
+                <span className="drop">Sign Up</span>
+              </Menu.Item>
+              <Menu.Item as={Link} to="/login">
+                <span className="drop">Log In</span>
+              </Menu.Item>
+            </Sidebar>
+
+            <Sidebar.Pusher dimmed={sidebarOpened}>
+              <Segment
+                inverted
+                textAlign="center"
+                style={{ minHeight: 10, padding: "1em 0em" }}
+                vertical
+              >
+                <Container>
+                  <Menu inverted pointing secondary size="large">
+                    <Menu.Item onClick={this.handleToggle}>
+                      <Icon name="sidebar" />
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/" position="right">
+                      <span className="navTitleMobile">SOLE INTENTIONS</span>
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/cart">
+                      <Icon name="opencart" size="big" />
+                    </Menu.Item>
+                  </Menu>
+                </Container>
+              </Segment>
+              {children}
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+        </Media>
+      );
+    }
   }
 }
 

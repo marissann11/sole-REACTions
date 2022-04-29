@@ -1,6 +1,15 @@
 .navTitle {
-  color: rgb(237, 11, 11);
-  font-family: "Sedgwick Ave Display", cursive;
+  color: rgb(222, 94, 44);
+  font-family: "Contrail One", cursive;
   font-size: 5vh;
-  padding-right: 32vw;
+}
+
+.navTitleMobile {
+  color: rgb(222, 94, 44);
+  font-family: "Contrail One", cursive;
+  font-size: 4vh;
+}
+
+.drop {
+  font-family: "Contrail One", cursive;
 }

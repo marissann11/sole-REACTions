@@ -18,7 +18,7 @@ const Jumbotron = () => {
             to="/subscription"
             inverted
             color="grey"
-            size="huge"
+            size="medium"
             className="subBtn"
           >
             <span className="heroBtn">Find Out How!</span>
@@ -31,7 +31,6 @@ const Jumbotron = () => {
             as={Link}
             to="/featured"
             inverted
-            color="white"
             size="medium"
             className="featBtn"
           >
