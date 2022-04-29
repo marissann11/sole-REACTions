@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-// add SKU and collab queries
+// add SKU and collab to queries
 
 export const QUERY_ALL_SHOES = gql`
   {
