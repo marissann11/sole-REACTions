@@ -1,7 +1,5 @@
 import { gql } from '@apollo/client';
 
-// add SKU and collab queries
-
 export const QUERY_ALL_SHOES = gql`
   {
     shoes {
@@ -12,6 +10,9 @@ export const QUERY_ALL_SHOES = gql`
       brand
       color
       model
+      sku
+      collab
+      sport
     }
   }
 `;
@@ -26,6 +27,9 @@ export const QUERY_SHOE = gql`
       image
       color
       model
+      sku
+      collab
+      sport
     }
   }
 `;
@@ -59,6 +63,9 @@ export const QUERY_USER = gql`
           image
           color
           model
+          sku
+          collab
+          sport
         }
       }
     }

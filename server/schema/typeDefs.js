@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-// add collabs and SKU
 
 const typeDefs = gql`
   type Shoe {
@@ -10,8 +9,12 @@ const typeDefs = gql`
     image: String
     price: Int
     brand: String
+    year: String
     color: String
     model: String
+    sku: String
+    collab: String
+    sport: String
   }
 
   input ShoeInput {
@@ -23,6 +26,9 @@ const typeDefs = gql`
     brand: String
     color: String
     model: String
+    sku: String
+    collab: String
+    sport: String
   }
 
   type Order {
@@ -54,6 +60,8 @@ const typeDefs = gql`
     user: User
     order(_id: ID!): Order
     orders: [Order]
+    checkout(shoes: [ID]!): Checkout
+    shoes(brand: String, price: Int, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
     shoe(_id: ID!): Shoe
     shoes(brand: String, price: Int, color: String, model: String): [Shoe]
     checkout(shoes: [ID]!): Checkout

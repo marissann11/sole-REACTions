@@ -28,13 +28,25 @@ const shoeSchema = new Schema({
     type: String,
     required: false,
   },
-  brand: {
-    type: String,
-    required: false,
-  },
+  // brand: {
+  //   type: String,
+  //   required: false,
+  // },
   model: {
     type: String,
     required: false,
+  },
+  sku: {
+    type: String,
+    required: false
+  },
+  collab: {
+    type: String,
+    required: false
+  },
+  sport: {
+    type: String,
+    required: false
   }
 });
 
