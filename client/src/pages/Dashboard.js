@@ -1,5 +1,24 @@
 import React, { Component } from "react";
-import AdminShoe from "../components/AdminShoe"
+import { useQuery } from '@apollo/client';
+
+import AdminShoe from "../components/AdminShoe";
+import LineChart from '../components/LineChart';
+import { QUERY_ORDERS } from '../utils/queries';
+
+// useEffect(() => {
+//   fetchSales = async () => {
+//     const { res } = await fetch(queryOrders);
+//   };
+//   fetchSales();
+// }, []);
+
+// reducer function const getSales = () => {...reducer}
+// total sales sent to chart.js
+
+// const Dashboard = () => {
+//   const { loading, data } = useQuery(QUERY_ORDERS);
+
+//   console.log(loading, data);
 
 class Dashboard extends Component {
   uploadWidget() {
@@ -25,12 +44,11 @@ class Dashboard extends Component {
             </button>
           </div>
           <AdminShoe />
+          <LineChart />
         </div>
       </body>
     );
   }
-}
-
-
+};
 
 export default Dashboard;

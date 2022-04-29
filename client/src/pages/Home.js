@@ -4,8 +4,7 @@ import ShoeList from "../components/ShoeList";
 
 const Home = () => {
   return (
-    <div className="container">
-      Hi, I'm the homepage.
+    <div className="container-fluid p-0 m-0">
       <Jumbotron />
       <ShoeList />
     </div>

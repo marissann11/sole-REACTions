@@ -1,33 +1,35 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Dashboard from "./pages/Dashboard";
-import Detail from "./pages/Detail";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Footer from "./components/Footer";
-import "./App.css";
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Dashboard from './pages/Dashboard';
+import Detail from './pages/Detail';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Subscription from './pages/Subscription';
+import Featured from './pages/Featured';
+import Footer from './components/Footer';
+import './App.css';
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem('id_token');
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
 });
@@ -43,12 +45,14 @@ function App() {
       <Router>
         <div>
           <Nav />
-          <Switch>
+          <Switch className="components">
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/shoes/:id" component={Detail} />
+            <Route exact path="/featured" component={Featured} />
+            <Route exact path="/subscription" component={Subscription} />
             <Route exact path="/cart" component={Cart} />
             {/* <Route exact path="/success" component={Success} /> */}
           </Switch>
