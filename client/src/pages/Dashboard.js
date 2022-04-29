@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AdminShoe from "../components/AdminShoe"
 
 class Dashboard extends Component {
   uploadWidget() {
@@ -20,9 +21,10 @@ class Dashboard extends Component {
               onClick={this.uploadWidget.bind(this)}
               className="upload-button"
             >
-              Click here to Submit Image
+              Click here to Upload Shoe Image
             </button>
           </div>
+          <AdminShoe />
         </div>
       </body>
     );
