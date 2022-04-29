@@ -8,17 +8,17 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
-      // if (!context.user) {
-      //   throw new AuthenticationError('User is not logged in');
-      // } else if (!context.user.isAdmin) {
-      //   throw new AuthenticationError('User is not admin!');
-      // } else {
+       if (!context.user) {
+         throw new AuthenticationError('User is not logged in');
+       } else if (!context.user.isAdmin) {
+         throw new AuthenticationError('User is not admin!');
+       } else {
       const userData = await User.find().select('-__v -password')
       console.log(JSON.stringify(userData));
       let orderData = userData.map(({ orders }) => orders);
       console.log(orderData);
       return userData;
-      // }
+       }
     },
     user: async (parent, args, context) => {
       if (context.user) {
@@ -47,7 +47,7 @@ const resolvers = {
       const { shoes } = await orderData
         .populate({ path: 'orders', populate: 'order.shoes' })
         .execPopulate();
-      console.log(orderData, `hi im order data i hope`, shoes);
+      // console.log(orderData, `hi im order data i hope`, shoes);
       return orderData;
     },
     shoe: async (parent, { _id }) => {
@@ -57,8 +57,8 @@ const resolvers = {
       const { brand, price, color, model, sku, collab, sport } = args;
 
       let result;
-      if (brand && price && model && color) {
-        result = await Shoe.find({ brand, price, color, model });
+      if (args) {
+        result = await Shoe.find({ brand, price, color, model, sku, collab, sport });
         return result;
       } else if (brand) {
         result = await Shoe.find({ brand });

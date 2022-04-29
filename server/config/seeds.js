@@ -786,7 +786,7 @@ db.once("open", async () => {
     isAdmin: true,
     orders: [
       {
-        shoes: [shoes[2]._id, shoes[8]._id],
+        shoes: [shoes[2], shoes[8]],
       },
     ],
   });
@@ -798,7 +798,7 @@ db.once("open", async () => {
     isAdmin: true,
     orders: [
       {
-        shoes: [shoes[4]._id, shoes[0]._id, shoes[1]._id],
+        shoes: [shoes[4], shoes[0], shoes[1]],
       },
     ],
   });
@@ -810,7 +810,7 @@ db.once("open", async () => {
     isAdmin: true,
     orders: [
       {
-        shoes: [shoes[12]._id],
+        shoes: [shoes[12]],
       },
     ],
   });
