@@ -8,17 +8,17 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
-       if (!context.user) {
-         throw new AuthenticationError('User is not logged in');
-       } else if (!context.user.isAdmin) {
-         throw new AuthenticationError('User is not admin!');
-       } else {
-      const userData = await User.find().select('-__v -password')
-      console.log(JSON.stringify(userData));
-      let orderData = userData.map(({ orders }) => orders);
-      console.log(orderData);
-      return userData;
-       }
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        const userData = await User.find().select('-__v -password');
+        console.log(JSON.stringify(userData));
+        let orderData = userData.map(({ orders }) => orders);
+        console.log(orderData);
+        return userData;
+      }
     },
     user: async (parent, args, context) => {
       if (context.user) {
@@ -31,24 +31,17 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    order: async (_parent, { _id }, context) => {
+    order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders',
-          populate: 'orders.shoes',
+          path: 'orders.shoes',
+          populate: 'shoes',
         });
-
-        return user.orders.id(_id);
+        return user.orders;
+        // original is user.orders.id(_id) which comes back null
       }
+
       throw new AuthenticationError('Not logged in');
-    },
-    orders: async () => {
-      const orderData = await Order.find();
-      const { shoes } = await orderData
-        .populate({ path: 'orders', populate: 'order.shoes' })
-        .execPopulate();
-      // console.log(orderData, `hi im order data i hope`, shoes);
-      return orderData;
     },
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
@@ -58,7 +51,15 @@ const resolvers = {
 
       let result;
       if (args) {
-        result = await Shoe.find({ brand, price, color, model, sku, collab, sport });
+        result = await Shoe.find({
+          brand,
+          price,
+          color,
+          model,
+          sku,
+          collab,
+          sport,
+        });
         return result;
       } else if (brand) {
         result = await Shoe.find({ brand });

@@ -39,7 +39,7 @@ const LineChart = () => {
           datasets: [
             {
               // label is the title of whatever
-              label: 'Weekly Revenue',
+              label: 'Latest Sales',
               // the data array will be what we pull from the sales from each checkout session
               data: [20, 30, 5, 3, 5],
               // or an array can be passed through to give each value a different color

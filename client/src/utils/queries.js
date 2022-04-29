@@ -33,15 +33,15 @@ export const QUERY_SHOE = gql`
     }
   }
 `;
-export const QUERY_ORDERS = gql`
+export const QUERY_ALL_USERS = gql`
   {
-    orders {
-      _id
-      purchaseDate
-      shoes {
-        _id
-        price
-        brand
+    users {
+      orders {
+        purchaseDate
+        shoes {
+          price
+          brand
+        }
       }
     }
   }

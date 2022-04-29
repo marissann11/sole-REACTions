@@ -2,22 +2,14 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import LineChart from '../components/LineChart';
 
-import { QUERY_ORDERS } from '../utils/queries';
-
-// useEffect(() => {
-//   fetchSales = async () => {
-//     const { res } = await fetch(queryOrders);
-//   };
-//   fetchSales();
-// }, []);
-
-// reducer function const getSales = () => {...reducer}
-// total sales sent to chart.js
+import { QUERY_ALL_USERS } from '../utils/queries';
 
 const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_ORDERS);
+  const { loading, data } = useQuery(QUERY_ALL_USERS);
 
   console.log(loading, data);
+
+  console.log(JSON.stringify(data));
 
   return (
     <div className="container">
