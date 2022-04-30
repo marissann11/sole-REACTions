@@ -1,12 +1,5 @@
 import React, { Component } from "react";
 
-var myGallery = window.cloudinary.galleryWidget({
-  container: "#adminShoe",
-  cloudName: "gw-bootcamp",
-  mediaAssets: [{ tag: "test1" }],
-//   imageBreakpoint: 200,
-});
-
 const AdminShoe = () => {
   return (
     <div>
@@ -14,6 +7,12 @@ const AdminShoe = () => {
     </div>
   );
 };
+
+var myGallery = window.cloudinary.galleryWidget({
+  container: "#adminShoe",
+  cloudName: "gw-bootcamp",
+  mediaAssets: [{ tag: "test1" }],
+});
 
 myGallery.render();
 
