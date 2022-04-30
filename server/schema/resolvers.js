@@ -53,8 +53,17 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async () => {
-      return await Shoe.find();
+    shoes: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab  } = args
+      let result = {};
+      
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key]
+        }
+      }
+      
+      return await Shoe.find(args);
     },
     
     checkout: async (parent, args, context) => {

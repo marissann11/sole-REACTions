@@ -8,31 +8,6 @@ const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-//socket io
-const http = require("http");
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const cors = require("cors");
-app.use(cors());
-const io = new Server(server, {
-  cors: "http://localhost:3002",
-  methods: ["GET", "POST"],
-});
-
-io.on("connection", (socket) => {
-
-  socket.on("join_room", (data) => {
-  socket.join(data);
-})
-
-  socket.on("send_message", (data) => {
-    socket.to(data.room).emit("receive_message", data);
-  });
-});
-
-server.listen(3002, () => {
-  console.log("Socket server is running on port 3002");
-});
 
 const startServer = async () => {
   const server = new ApolloServer({
