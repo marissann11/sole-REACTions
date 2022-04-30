@@ -10,35 +10,35 @@ import sbbImg from "../../assets/images/shoes/SBB.png";
 
 const SHOES = [
   {
-    id: 1,
+    id: "626cbc4cf9f055c94838b82f",
     img: fusionImg,
     alt: "Air Jordan 1 Light Fusion Red shoe is white base with red accents and gold swoosh",
     name: "Air Jordan 1 Light Fusion Red",
     price: "$160",
   },
   {
-    id: 2,
+    id: "626cbc4cf9f055c94838b833",
     img: latochiImg,
     alt: "Air Jordan 1 SB LA to Chicago shoe is white base with navy accents and yellow swoosh",
     name: "Air Jordan 1 SB LA to Chicago",
     price: "$590",
   },
   {
-    id: 3,
+    id: "626cbc4cf9f055c94838b83c",
     img: royalImg,
     alt: "Air Jordan 1 Royal shoe is black base with royal blue accents and swoosh",
     name: "Air Jordan 1 Royal",
     price: "$475",
   },
   {
-    id: 4,
+    id: "626cbc4cf9f055c94838b83b",
     img: rotyImg,
     alt: "Air Jordan 1 Rookie of the Year shoe is white base with brown accents and black swoosh",
     name: "Air Jordan 1 Rookie of the Year",
     price: "$665",
   },
   {
-    id: 5,
+    id: "626cbc4cf9f055c94838b83e",
     img: sbbImg,
     alt: "Air Jordan 1 Shattered Backboard shoe is white base with orange accents and black swoosh",
     name: "Air Jordan 1 Shattered Backboard",
@@ -52,7 +52,11 @@ const JordanPrev = () => {
       <div className="container-fluid prevRow">
         <div className="ui horizontal list prevCont">
           {SHOES.map((shoe) => (
-            <div className="item" key={shoe.id}>
+            <Link
+              to={`/shoes/${shoe.id}`}
+              className="item prevLink"
+              key={shoe.id}
+            >
               <img
                 className="ui image shoePrev"
                 src={shoe.img}
@@ -63,7 +67,7 @@ const JordanPrev = () => {
                 <br />
                 {shoe.price}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
