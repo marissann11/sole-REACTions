@@ -5,18 +5,26 @@ import LineChart from '../components/LineChart';
 import { QUERY_ALL_USERS } from '../utils/queries';
 
 const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_ALL_USERS);
+  const { data } = useQuery(QUERY_ALL_USERS);
+  let users = [];
 
-  console.log(loading, data);
+  if (data) {
+    users = data.users;
+  }
 
-  console.log(JSON.stringify(data));
+  const newData = [];
+
+  for (let i = 0; i < users.length; i++) {
+    const orderData = users[i].orders;
+    newData.push(orderData);
+  }
+  console.log(newData);
 
   return (
     <div className="container">
       Hi, I'm the dashboard.
-      <LineChart />
+      <LineChart newData={newData} />
     </div>
   );
 };
-
 export default Dashboard;

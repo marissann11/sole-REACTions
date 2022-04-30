@@ -14,9 +14,8 @@ const resolvers = {
         throw new AuthenticationError('User is not admin!');
       } else {
         const userData = await User.find().select('-__v -password');
-        console.log(JSON.stringify(userData));
-        let orderData = userData.map(({ orders }) => orders);
-        console.log(orderData);
+        // console.log(userData[0].orders[0]);
+
         return userData;
       }
     },
@@ -46,47 +45,48 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (parent, args, context, info) => {
-      const { brand, price, color, model, sku, collab, sport } = args;
-
-      let result;
-      if (args) {
-        result = await Shoe.find({
-          brand,
-          price,
-          color,
-          model,
-          sku,
-          collab,
-          sport,
-        });
-        return result;
-      } else if (brand) {
-        result = await Shoe.find({ brand });
-        return result;
-      } else if (price) {
-        result = await Shoe.find({ price });
-        return result;
-      } else if (color) {
-        result = await Shoe.find({ color });
-        return result;
-      } else if (model) {
-        result = await Shoe.find({ model });
-        return result;
-      } else if (sku) {
-        result = await Shoe.find({ sku });
-        return result;
-      } else if (collab) {
-        result = await Shoe.find({ collab });
-        return result;
-      } else if (sport) {
-        result = await Shoe.find({ sport });
-        return result;
-      } else {
-        result = await Shoe.find();
-        return result;
-      }
+    shoes: async () => {
+      return await Shoe.find();
     },
+    // const { brand, price, color, model, sku, collab, sport } = args;
+
+    // let result;
+    // if (args) {
+    //   result = await Shoe.find({
+    //     brand,
+    //     price,
+    //     color,
+    //     model,
+    //     sku,
+    //     collab,
+    //     sport,
+    //   });
+    //   return result;
+    // } else if (brand) {
+    //   result = await Shoe.find({ brand });
+    //   return result;
+    // } else if (price) {
+    //   result = await Shoe.find({ price });
+    //   return result;
+    // } else if (color) {
+    //   result = await Shoe.find({ color });
+    //   return result;
+    // } else if (model) {
+    //   result = await Shoe.find({ model });
+    //   return result;
+    // } else if (sku) {
+    //   result = await Shoe.find({ sku });
+    //   return result;
+    // } else if (collab) {
+    //   result = await Shoe.find({ collab });
+    //   return result;
+    // } else if (sport) {
+    //   result = await Shoe.find({ sport });
+    //   return result;
+    // } else {
+    // const result = await Shoe.find();
+    // return result;
+
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
