@@ -42,14 +42,6 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    orders: async () => {
-      const orderData = await Order.find();
-      const { shoes } = await orderData
-        .populate({ path: 'orders', populate: 'order.shoes' })
-        .execPopulate();
-      // console.log(orderData, `hi im order data i hope`, shoes);
-      return orderData;
-    },
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },

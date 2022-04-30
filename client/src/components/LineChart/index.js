@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = () => {
+const LineChart = ({ newData }) => {
   return (
     <>
       <Line
