@@ -55,6 +55,7 @@ const resolvers = {
     },
     shoes: async (_parent, args, context) => {
       const { brand, color, model, sport, collab  } = args
+      
       let result = {};
       
       for (let key in args) {
@@ -63,7 +64,7 @@ const resolvers = {
         }
       }
       
-      return await Shoe.find(args);
+      return await Shoe.find(args).sort();
     },
     
     checkout: async (parent, args, context) => {
