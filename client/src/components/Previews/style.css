@@ -1,0 +1,24 @@
+.prevRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.prevCont {
+  text-align: center;
+}
+
+.shoePrev {
+  height: 22vh;
+  width: auto;
+}
+
+.prevText {
+  font-family: "Comfortaa", cursive;
+  text-align: center;
+}
+
+.prevBtn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
