@@ -86,7 +86,7 @@ function App() {
           <Route exact path="/cart" component={Cart} />
           {/* <Route exact path="/success" component={Success} /> */}
         </Switch>
-        <div>
+        {/* <div>
           <input
             placeholder="Room Number..."
             onChange={(event) => {
@@ -103,7 +103,7 @@ function App() {
           <button onClick={sendMessage}>Send Message</button>
           <h1>Message:</h1>
           {messageReceived}
-        </div>
+        </div> */}
         <Footer />
       </Router>
     </ApolloProvider>
