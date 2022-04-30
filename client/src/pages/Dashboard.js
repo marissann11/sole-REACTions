@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import AdminShoe from "../components/AdminShoe";
 import LineChart from "../components/LineChart";
+
 // import { QUERY_ORDERS } from '../utils/queries';
 
 // useEffect(() => {
@@ -29,7 +30,7 @@ class Dashboard extends Component {
     );
   }
   render() {
-    return (
+        return (
       <div>
         <div className="container">
           Hi, I'm the dashboard.
@@ -41,14 +42,14 @@ class Dashboard extends Component {
               Click here to Upload Shoe Image
             </button>
           </div>
+          <AdminShoe />  
           <LineChart />
-          <AdminShoe />
-          <a href="https://cloudinary.com/documentation/product_gallery"></a>
-          <div style={{width:"50%"}}id="adminShoe"></div>
         </div>
       </div>
     );
   }
 }
+
+
 
 export default Dashboard;
