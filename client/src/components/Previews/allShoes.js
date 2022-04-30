@@ -10,35 +10,35 @@ import waverunnerImg from "../../assets/images/shoes/WaveRunner.png";
 
 const SHOES = [
   {
-    id: 1,
+    id: "626cbc4cf9f055c94838b824",
     img: belugaImg,
     alt: "Adidas Yeezy Boost 350 V2 Beluga 2.0 shoe main color grey with red writing",
     name: "Adidas Yeezy Boost 350 V2 Beluga 2.0",
     price: "$575",
   },
   {
-    id: 2,
+    id: "626cbc4cf9f055c94838b82a",
     img: CNYImg,
     alt: "Air Jordan 12 Chinese New Year shoe is half black and half white with gold accents",
     name: "Air Jordan 12 Chinese New Year",
     price: "$300",
   },
   {
-    id: 3,
+    id: "626cbc4cf9f055c94838b840",
     img: seasaltImg,
     alt: "New Balance 550 Sea Salt Varsity Gold shoe white main color with yellow/gold accents",
     name: "New Balance 550 Sea Salt Varsity Gold",
     price: "$140",
   },
   {
-    id: 4,
+    id: "626cbc4cf9f055c94838b843",
     img: spiridonImg,
     alt: "Nike x Stussy Air Zoom Spiridon Fossil",
     name: "Nike x Stussy Air Zoom Spiridon Fossil",
     price: "$565",
   },
   {
-    id: 5,
+    id: "626cbc4cf9f055c94838b84e",
     img: waverunnerImg,
     alt: "Adidas Yeezy Boost 700 Wave Runner shoe main color white with black accents",
     name: "Adidas Yeezy Boost 700 Wave Runner",
@@ -52,7 +52,11 @@ const AllPrev = () => {
       <div className="container-fluid prevRow">
         <div className="ui horizontal list prevCont">
           {SHOES.map((shoe) => (
-            <div className="item" key={shoe.id}>
+            <Link
+              to={`/shoes/${shoe.id}`}
+              className="item prevLink"
+              key={shoe.id}
+            >
               <img
                 className="ui image shoePrev"
                 src={shoe.img}
@@ -63,7 +67,7 @@ const AllPrev = () => {
                 <br />
                 {shoe.price}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -13,9 +13,14 @@
   width: auto;
 }
 
+.prevLink {
+  text-decoration: none;
+}
+
 .prevText {
   font-family: "Comfortaa", cursive;
   text-align: center;
+  color: black;
 }
 
 .prevBtn {
