@@ -30,7 +30,7 @@ class DesktopContainer extends Component {
     if (Auth.loggedIn()) {
       return (
         <Media greaterThan="mobile" className="sticky-top">
-          <Segment inverted style={{ minHeight: 10 }} vertical>
+          <Segment inverted style={{ minHeight: 75 }} vertical>
             <Menu
               fixed={fixed ? "top" : null}
               inverted={!fixed}
@@ -62,7 +62,7 @@ class DesktopContainer extends Component {
     } else {
       return (
         <Media greaterThan="mobile" className="sticky-top">
-          <Segment inverted style={{ height: 80 }} vertical>
+          <Segment inverted style={{ minHeight: 75 }} vertical>
             <Menu
               fixed={fixed ? "top" : null}
               inverted={!fixed}

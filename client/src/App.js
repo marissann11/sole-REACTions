@@ -8,10 +8,13 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Dashboard from "./pages/Dashboard";
+import Jordan from "./pages/Jordan";
+import Nike from "./pages/Nike";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -52,6 +55,8 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/shoes/:id" component={Detail} />
           <Route exact path="/shoes" component={Shoes} />
+          <Route exact path="/jordan" component={Jordan} />
+          <Route exact path="/nike" component={Nike} />
           <Route exact path="/featured" component={Featured} />
           <Route exact path="/subscription" component={Subscription} />
           <Route exact path="/cart" component={Cart} />
