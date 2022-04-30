@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import io from 'socket.io-client'
 
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
@@ -40,7 +41,19 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const socket = io.connect("http://localhost:3002")
+
 function App() {
+  const [message, setMessage] = useState("");
+  const sendMessage = () => {
+    socket.emit("send_message", { message })
+  };
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+    alert(data.message)
+    })
+  }, [socket]);
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -57,6 +70,10 @@ function App() {
           <Route exact path="/cart" component={Cart} />
           {/* <Route exact path="/success" component={Success} /> */}
         </Switch>
+        <div>
+          <input placeholder="Message..." />
+          <button onClick={sendMessage}>Send Message</button>
+        </div>
         <Footer />
       </Router>
     </ApolloProvider>
