@@ -14,8 +14,9 @@ const resolvers = {
         throw new AuthenticationError('User is not admin!');
       } else {
         const userData = await User.find().select('-__v -password');
-        // console.log(userData[0].orders[0]);
-
+        console.log(JSON.stringify(userData));
+        let orderData = userData.map(({ orders }) => orders);
+        console.log(orderData);
         return userData;
       }
     },
@@ -33,14 +34,21 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.shoes',
-          populate: 'shoes',
+          path: 'orders',
+          populate: 'orders.shoes',
         });
         return user.orders;
         // original is user.orders.id(_id) which comes back null
       }
-
       throw new AuthenticationError('Not logged in');
+    },
+    orders: async () => {
+      const orderData = await Order.find();
+      const { shoes } = await orderData
+        .populate({ path: 'orders', populate: 'order.shoes' })
+        .execPopulate();
+      // console.log(orderData, `hi im order data i hope`, shoes);
+      return orderData;
     },
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
@@ -48,44 +56,6 @@ const resolvers = {
     shoes: async () => {
       return await Shoe.find();
     },
-    // const { brand, price, color, model, sku, collab, sport } = args;
-
-    // let result;
-    // if (args) {
-    //   result = await Shoe.find({
-    //     brand,
-    //     price,
-    //     color,
-    //     model,
-    //     sku,
-    //     collab,
-    //     sport,
-    //   });
-    //   return result;
-    // } else if (brand) {
-    //   result = await Shoe.find({ brand });
-    //   return result;
-    // } else if (price) {
-    //   result = await Shoe.find({ price });
-    //   return result;
-    // } else if (color) {
-    //   result = await Shoe.find({ color });
-    //   return result;
-    // } else if (model) {
-    //   result = await Shoe.find({ model });
-    //   return result;
-    // } else if (sku) {
-    //   result = await Shoe.find({ sku });
-    //   return result;
-    // } else if (collab) {
-    //   result = await Shoe.find({ collab });
-    //   return result;
-    // } else if (sport) {
-    //   result = await Shoe.find({ sport });
-    //   return result;
-    // } else {
-    // const result = await Shoe.find();
-    // return result;
 
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;

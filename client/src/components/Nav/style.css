@@ -1,0 +1,15 @@
+.navTitle {
+  color: gainsboro;
+  font-family: "Contrail One", cursive;
+  font-size: 5vh;
+}
+
+.navTitleMobile {
+  color: gainsboro;
+  font-family: "Contrail One", cursive;
+  font-size: 4vh;
+}
+
+.drop {
+  font-family: "Contrail One", cursive;
+}

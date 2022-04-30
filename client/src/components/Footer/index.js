@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { List, Grid, Header, Segment, Container } from "semantic-ui-react";
 
 const Footer = () => {
@@ -8,31 +9,47 @@ const Footer = () => {
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
-              <Header inverted as="h4" content="About" />
+              <Header inverted as="h4" content="Shop" />
               <List link inverted>
-                <List.Item as="a">Sitemap</List.Item>
-                <List.Item as="a">Contact Us</List.Item>
-                <List.Item as="a">Religious Ceremonies</List.Item>
-                <List.Item as="a">Gazebo Plans</List.Item>
+                <List.Item as={Link} to="/shoes">
+                  All Shoes
+                </List.Item>
+                <List.Item as={Link} to="/featured">
+                  Featured
+                </List.Item>
+                <List.Item as={Link} to="/nike">
+                  Nike
+                </List.Item>
+                <List.Item as={Link} to="/jordan">
+                  Air Jordan
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as="h4" content="Services" />
               <List link inverted>
-                <List.Item as="a">Banana Pre-Order</List.Item>
-                <List.Item as="a">DNA FAQ</List.Item>
-                <List.Item as="a">How To Access</List.Item>
-                <List.Item as="a">Favorite X-Men</List.Item>
+                <List.Item as={Link} to="/">
+                  Customer Service
+                </List.Item>
+                <List.Item as={Link} to="/">
+                  Become an Admin
+                </List.Item>
+                <List.Item as={Link} to="/">
+                  Careers
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as="h4" inverted>
-                Footer Header
+                Join the Sneakies Community: Be the First to Know!
               </Header>
-              <p>
-                Extra space for a call to action inside the footer that could
-                help re-engage users.
-              </p>
+              <List link inverted>
+                <List.Item>
+                  Never miss a shoe release again.{" "}
+                  <Link to="/subscription">Find out more</Link> about our
+                  exclusive subscription.{" "}
+                </List.Item>
+              </List>
             </Grid.Column>
           </Grid.Row>
         </Grid>
