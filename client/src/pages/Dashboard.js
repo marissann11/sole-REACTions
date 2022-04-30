@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from "react";
 import { useQuery } from '@apollo/client';
-import LineChart from '../components/LineChart';
 
-import { QUERY_ORDERS } from '../utils/queries';
+import AdminShoe from "../components/AdminShoe";
+// import LineChart from '../components/LineChart';
+// import { QUERY_ORDERS } from '../utils/queries';
 
 // useEffect(() => {
 //   fetchSales = async () => {
@@ -14,17 +15,40 @@ import { QUERY_ORDERS } from '../utils/queries';
 // reducer function const getSales = () => {...reducer}
 // total sales sent to chart.js
 
-const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_ORDERS);
+// const Dashboard = () => {
+//   const { loading, data } = useQuery(QUERY_ORDERS);
 
-  console.log(loading, data);
+//   console.log(loading, data);
 
-  return (
-    <div className="container">
-      Hi, I'm the dashboard.
-      <LineChart />
-    </div>
-  );
+class Dashboard extends Component {
+  uploadWidget() {
+   window.cloudinary.openUploadWidget(
+      { cloud_name: "gw-bootcamp", upload_preset: "upload_shoes" },
+      function (error, result) {
+        console.log(result);
+      }
+    );
+  }
+  
+  render() {
+    return (
+      <div>
+        <div className="container">
+          Hi, I'm the dashboard.
+          <div className="upload">
+            <button
+              onClick={this.uploadWidget.bind(this)}
+              className="upload-button"
+            >
+              Click here to Upload Shoe Image
+            </button>
+          </div>
+          <AdminShoe />
+          {/* <LineChart /> */}
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Dashboard;
