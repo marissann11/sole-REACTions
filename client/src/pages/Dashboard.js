@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { useQuery } from '@apollo/client';
+import { useQuery } from "@apollo/client";
 
 import AdminShoe from "../components/AdminShoe";
-// import LineChart from '../components/LineChart';
+import LineChart from "../components/LineChart";
 // import { QUERY_ORDERS } from '../utils/queries';
 
 // useEffect(() => {
@@ -19,17 +19,15 @@ import AdminShoe from "../components/AdminShoe";
 //   const { loading, data } = useQuery(QUERY_ORDERS);
 
 //   console.log(loading, data);
-
 class Dashboard extends Component {
   uploadWidget() {
-   window.cloudinary.openUploadWidget(
+    window.cloudinary.openUploadWidget(
       { cloud_name: "gw-bootcamp", upload_preset: "upload_shoes" },
       function (error, result) {
         console.log(result);
       }
     );
   }
-  
   render() {
     return (
       <div>
@@ -43,12 +41,14 @@ class Dashboard extends Component {
               Click here to Upload Shoe Image
             </button>
           </div>
+          <LineChart />
           <AdminShoe />
-          {/* <LineChart /> */}
+          <a href="https://cloudinary.com/documentation/product_gallery"></a>
+          <div style={{width:"50%"}}id="adminShoe"></div>
         </div>
       </div>
     );
   }
-};
+}
 
 export default Dashboard;
