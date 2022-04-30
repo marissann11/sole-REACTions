@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import io from "socket.io-client";
 
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
@@ -42,7 +43,31 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const socket = io.connect("http://localhost:3002");
+
 function App() {
+  // room state
+  const [room, setRoom] = useState("");
+
+  // message states
+  const [message, setMessage] = useState("");
+  const [messageReceived, setMessageReceived] = useState("");
+
+  const joinRoom = () => {
+    if (room !== "") {
+      socket.emit("join_room", room);
+    }
+  };
+
+  const sendMessage = () => {
+    socket.emit("send_message", { message, room });
+  };
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      setMessageReceived(data.message);
+    });
+  }, [socket]);
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -61,6 +86,24 @@ function App() {
           <Route exact path="/cart" component={Cart} />
           {/* <Route exact path="/success" component={Success} /> */}
         </Switch>
+        <div>
+          <input
+            placeholder="Room Number..."
+            onChange={(event) => {
+              setRoom(event.target.value);
+            }}
+          />
+          <button onClick={joinRoom}> Join Room</button>
+          <input
+            placeholder="Message..."
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }}
+          />
+          <button onClick={sendMessage}>Send Message</button>
+          <h1>Message:</h1>
+          {messageReceived}
+        </div>
         <Footer />
       </Router>
     </ApolloProvider>
