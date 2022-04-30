@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { useQuery } from '@apollo/client';
 
 import AdminShoe from "../components/AdminShoe";
-import LineChart from '../components/LineChart';
-import { QUERY_ORDERS } from '../utils/queries';
+// import LineChart from '../components/LineChart';
+// import { QUERY_ORDERS } from '../utils/queries';
 
 // useEffect(() => {
 //   fetchSales = async () => {
@@ -32,7 +32,7 @@ class Dashboard extends Component {
   
   render() {
     return (
-      <body>
+      <div>
         <div className="container">
           Hi, I'm the dashboard.
           <div className="upload">
@@ -44,9 +44,9 @@ class Dashboard extends Component {
             </button>
           </div>
           <AdminShoe />
-          <LineChart />
+          {/* <LineChart /> */}
         </div>
-      </body>
+      </div>
     );
   }
 };
