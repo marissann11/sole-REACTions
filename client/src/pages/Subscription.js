@@ -43,7 +43,7 @@ const Subscription = () => {
                   textAlign: "center",
                 }}
               >
-                $15.00/month
+                $10.00/month
               </h3>
               <p
                 style={{
