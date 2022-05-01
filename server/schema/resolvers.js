@@ -45,6 +45,7 @@ const resolvers = {
     },
     shoes: async (_parent, args, context) => {
       const { brand, color, model, sport, collab, sku } = args;
+      let ascending = "1"
 
       let result = {};
 
@@ -53,8 +54,9 @@ const resolvers = {
           result[key] = args[key];
         }
       }
-
-      return await Shoe.find(args).sort();
+      
+      console.log(ascending)
+      return await Shoe.find(args).sort({price: ascending});
     },
     adminSales: async (parent, args, context) => {
       if (!context.user) {
