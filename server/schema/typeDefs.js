@@ -1,5 +1,4 @@
-const { gql } = require('apollo-server-express');
-
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Shoe {
@@ -61,7 +60,16 @@ const typeDefs = gql`
     order(_id: ID!): Order
     orders: [Order]
     checkout(shoes: [ID]!): Checkout
-    shoes(brand: String, price: Int, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
+    shoes(
+      brand: String
+      price: Int
+      color: String
+      image: String
+      model: String
+      sku: String
+      collab: String
+      sport: String
+    ): [Shoe]
     shoe(_id: ID!): Shoe
   }
 
@@ -73,7 +81,15 @@ const typeDefs = gql`
       password: String!
     ): Auth
     addOrder(shoes: [ID]!): Order
-    saveShoe(brand: String, price: Int, color: String, model: String, sku: String, collab: String, sport: String): User
+    saveShoe(
+      brand: String
+      price: Int
+      color: String
+      model: String
+      sku: String
+      collab: String
+      sport: String
+    ): User
     login(email: String!, password: String!): Auth
   }
 `;

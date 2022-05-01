@@ -54,19 +54,19 @@ const resolvers = {
       return await Shoe.findById(_id);
     },
     shoes: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab  } = args
-      
+      const { brand, color, model, sport, collab } = args;
+
       let result = {};
-      
+
       for (let key in args) {
         if (args[key]) {
-          result[key] = args[key]
+          result[key] = args[key];
         }
       }
-      
+
       return await Shoe.find(args).sort();
     },
-    
+
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
