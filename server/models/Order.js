@@ -8,7 +8,12 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  shoes: [Shoe.schema],
+  shoes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Shoe',
+    },
+  ],
 });
 
 const Order = mongoose.model('Order', orderSchema);
