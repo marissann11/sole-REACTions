@@ -32,6 +32,7 @@ const Cart = () => {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
       });
+      window.indexedDB.deleteDatabase('sole-reactions');
     }
   }, [data]);
 
