@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
-import { Item } from "semantic-ui-react";
+import { Button, Item, Grid, Segment } from "semantic-ui-react";
 import {
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
@@ -51,24 +51,51 @@ function Detail() {
         <div className="container">
           <Item>
             <div className="row">
-              <div className="col-5">
+              <div className="col-6 my-5 me-5">
                 <Item.Image
                   size="big"
                   src={process.env.PUBLIC_URL + `/images/${currentShoe.image}`}
                   alt={currentShoe.name}
                 />
+                <h3
+                  style={{
+                    fontFamily: "Contrail One, cursive",
+                    fontSize: "3vh",
+                  }}
+                >
+                  ABOUT THIS SHOE:
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "Comfortaa, cursive",
+                    fontSize: "2vh",
+                  }}
+                >
+                  {currentShoe.description}
+                </p>
               </div>
-              <div className="col-5 m-5">
+              <div className="col-4 m-5">
                 <Item.Content>
-                  <Item.Header as="a">{currentShoe.name}</Item.Header>
+                  <Item.Header
+                    style={{
+                      fontFamily: "Contrail One, cursive",
+                      fontSize: "3vh",
+                    }}
+                  >
+                    <strong>{currentShoe.name}</strong>
+                  </Item.Header>
                   <Item.Description>
-                    <p>{currentShoe.description}</p>
-                    <p>
-                      <strong>Price:</strong>${currentShoe.price}{" "}
-                      <button onClick={addToCart}>Add to cart</button>{" "}
+                    <p
+                      style={{
+                        fontFamily: "Comfortaa, cursive",
+                        fontSize: "2vh",
+                      }}
+                    >
+                      ${currentShoe.price}
                     </p>
                   </Item.Description>
                 </Item.Content>
+                <Button onClick={addToCart}>Add to cart</Button>{" "}
               </div>
             </div>
           </Item>
