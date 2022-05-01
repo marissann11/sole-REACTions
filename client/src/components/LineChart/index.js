@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({ newData }) => {
+const LineChart = () => {
   return (
     <>
       <Line
@@ -56,16 +56,6 @@ const LineChart = ({ newData }) => {
         options={{
           // fits to screen instead of allowing scroll
           maintainAspectRatio: true,
-          // scales: {
-          //   yAxes: [
-          //     {
-          //       ticks: {
-          //         // value begins at 0 instead of lowest data value given
-          //         beginAtZero: true,
-          //       },
-          //     },
-          //   ],
-          // },
         }}
       />
     </>

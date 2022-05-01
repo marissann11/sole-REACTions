@@ -42,15 +42,6 @@ const DoughnutChart = () => {
         width={300}
         options={{
           maintainAspectRatio: false,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
         }}
       />
     </>

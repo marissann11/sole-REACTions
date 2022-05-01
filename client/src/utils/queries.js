@@ -80,13 +80,16 @@ export const QUERY_CHECKOUT = gql`
   }
 `;
 export const QUERY_ALL_ADMINSALES = gql`
-  query getAdminSales {
-    shoes {
+  {
+    adminSales {
       _id
-      name
-      price
-      brand
-      sport
+      shoes {
+        _id
+        name
+        price
+        brand
+        sport
+      }
     }
   }
 `;
