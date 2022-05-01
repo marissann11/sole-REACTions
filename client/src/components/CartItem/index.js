@@ -1,5 +1,6 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from "../../utils/helpers";
 import { Link } from "react-router-dom";
 import { List, Image } from "semantic-ui-react";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
@@ -12,6 +13,7 @@ const CartItem = ({ item }) => {
       type: REMOVE_FROM_CART,
       sku: item.sku,
     });
+    idbPromise("cart", "delete", { ...item });
   };
   const onChange = (e) => {
     const value = e.target.value;
@@ -21,12 +23,14 @@ const CartItem = ({ item }) => {
         type: REMOVE_FROM_CART,
         sku: item.sku,
       });
+      idbPromise("cart", "delete", { ...item });
     } else {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         sku: item.sku,
         purchaseQty: parseInt(value),
       });
+      idbPromise("cart", "put", { ...item, purchaseQty: parseInt(value) });
     }
   };
 

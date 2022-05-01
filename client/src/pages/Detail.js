@@ -3,7 +3,8 @@ import SizeChart from "../components/SizeChart";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
-import { Button, Item, Grid, Segment } from "semantic-ui-react";
+import { idbPromise } from "../utils/helpers";
+import { Button, Item } from "semantic-ui-react";
 import {
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
@@ -26,6 +27,16 @@ function Detail() {
         type: UPDATE_SHOES,
         shoes: data.shoes,
       });
+      data.shoes.forEach((shoe) => {
+        idbPromise("shoes", "put", shoe);
+      });
+    } else if (!loading) {
+      idbPromise("shoes", "get").then((indexedShoes) => {
+        dispatch({
+          type: UPDATE_SHOES,
+          shoes: indexedShoes,
+        });
+      });
     }
   }, [shoes, data, loading, dispatch, sku]);
 
@@ -38,11 +49,16 @@ function Detail() {
         sku: sku,
         purchaseQty: parseInt(itemInCart.purchaseQty) + 1,
       });
+      idbPromise("cart", "put", {
+        ...itemInCart,
+        purchaseQty: parseInt(itemInCart.purchaseQty) + 1,
+      });
     } else {
       dispatch({
         type: ADD_TO_CART,
         shoe: { ...currentShoe, purchaseQty: 1 },
       });
+      idbPromise("cart", "put", { ...currentShoe, purchaseQty: 1 });
     }
   };
 

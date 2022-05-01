@@ -75,7 +75,7 @@ export const QUERY_USER = gql`
   }
 `;
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($shoes: [ID]!) {
+  query getCheckout($shoes: [sku]!) {
     checkout(shoes: $shoes) {
       session
     }
