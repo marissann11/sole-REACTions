@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Shoe, Order } = require('../models');
+const AdminSale = require('../models/AdminSale');
 const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -14,9 +15,6 @@ const resolvers = {
         throw new AuthenticationError('User is not admin!');
       } else {
         const userData = await User.find().select('-__v -password');
-        console.log(JSON.stringify(userData));
-        let orderData = userData.map(({ orders }) => orders);
-        console.log(orderData);
         return userData;
       }
     },
@@ -58,13 +56,25 @@ const resolvers = {
 
       return await Shoe.find(args).sort();
     },
-
+    adminSales: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        return await AdminSale.find();
+      }
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
+      const adminSale = new AdminSale({ adminShoes: args.shoes });
+
       const line_items = [];
 
       const { shoes } = await order.populate('shoes').execPopulate();
+
+      const { adminShoes } = await adminSale.populate('shoes').execPopulate();
 
       for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
@@ -147,6 +157,15 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addAdminSale: async (parent, { shoes }, context) => {
+      if (context.user) {
+        const adminSale = new AdminSale({ shoes });
+
+        return adminSale;
+      }
+
+      throw new AuthenticationError('Not logged in');
     },
   },
 };

@@ -43,6 +43,13 @@ const typeDefs = gql`
     email: String
     orders: [Order]
     savedShoes: [Shoe]
+    adminOrders: [AdminSale]
+  }
+
+  type AdminSale {
+    _id: ID
+    purchaseDate: String
+    shoes: [Shoe]
   }
 
   type Checkout {
@@ -70,6 +77,7 @@ const typeDefs = gql`
       sport: String
     ): [Shoe]
     shoe(_id: ID!): Shoe
+    adminSales: [AdminSale]
   }
 
   type Mutation {
@@ -90,6 +98,7 @@ const typeDefs = gql`
       sport: String
     ): User
     login(email: String!, password: String!): Auth
+    addAdminSale(shoes: [ID]!): AdminSale
   }
 `;
 
