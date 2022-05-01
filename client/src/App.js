@@ -24,9 +24,6 @@ import Shoes from './pages/Shoes';
 import Footer from './components/Footer';
 import './App.css';
 
-// Marissa comment this out before pushing
-import AdminDash from './pages/AdminDash';
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -56,7 +53,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/dashboard" component={AdminDash} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/shoes/:id" component={Detail} />
             <Route exact path="/shoes" component={Shoes} />
             <Route exact path="/jordan" component={Jordan} />

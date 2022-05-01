@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_ALL_ADMINSALES } from '../utils/queries';
-import DoughnutChart from '../components/DoughnutChart';
-import LineChart from '../components/LineChart';
+import { QUERY_ALL_ADMINSALES } from '../../utils/queries';
+import DoughnutChart from '../DoughnutChart';
+import LineChart from '../LineChart';
 
 const SalesDash = () => {
   const { data } = useQuery(QUERY_ALL_ADMINSALES);
@@ -33,7 +33,7 @@ const SalesDash = () => {
 
   return (
     <div>
-      AdminDash
+      SalesDash
       <DoughnutChart brandData={brandData} />
       {adminSales ? (
         <>

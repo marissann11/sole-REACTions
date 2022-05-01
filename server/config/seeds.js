@@ -835,6 +835,9 @@ db.once('open', async () => {
   await AdminSale.create({
     shoes: [shoes[42], shoes[0], shoes[18]],
   });
+  await AdminSale.create({
+    shoes: [shoes[12], shoes[34], shoes[27]],
+  });
 
   console.log('adminSales seeded');
 
