@@ -8,9 +8,22 @@
   text-align: center;
 }
 
+.allCont {
+  text-align: center;
+  max-width: 18vw;
+}
+
 .shoePrev {
   height: 22vh;
-  width: auto;
+}
+
+.shoeDiv {
+  height: 150px;
+}
+
+.shoeAll {
+  height: 22vh;
+  width: 17vw;
 }
 
 .prevLink {
@@ -26,4 +39,15 @@
 .prevBtn {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .allCont {
+    max-width: 50vw;
+  }
+
+  .shoeAll {
+    height: 22vh;
+    width: auto;
+  }
 }

@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_ALL_SHOES = gql`
   {
@@ -9,6 +9,7 @@ export const QUERY_ALL_SHOES = gql`
       price
       brand
       color
+      image
       model
       sku
       collab
