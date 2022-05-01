@@ -1,84 +1,80 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Shoe, Order } = require("../models");
-const { populate } = require("../models/Order");
-const { signToken } = require("../utils/auth");
-const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Shoe, Order } = require('../models');
+const AdminSale = require('../models/AdminSale');
+const { populate } = require('../models/Order');
+const { signToken } = require('../utils/auth');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 // need to update shoe queries with new filters
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
       if (!context.user) {
-        throw new AuthenticationError("User is not logged in");
+        throw new AuthenticationError('User is not logged in');
       } else if (!context.user.isAdmin) {
-        throw new AuthenticationError("User is not admin!");
+        throw new AuthenticationError('User is not admin!');
       } else {
-        const userData = await User.find().select("-__v -password");
-        console.log(JSON.stringify(userData));
-        let orderData = userData.map(({ orders }) => orders);
-        console.log(orderData);
+        const userData = await User.find().select('-__v -password');
         return userData;
       }
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "orders",
-          populate: "orders.shoes",
+          path: 'orders',
+          populate: 'orders.shoes',
         });
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
         return user;
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
-    order: async (_parent, { _id }, context) => {
+    order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "orders",
-          populate: "orders.shoes",
+          path: 'orders',
+          populate: 'orders.shoes',
         });
-
-        return user.orders.id(_id);
+        return user.orders;
+        // original is user.orders.id(_id) which comes back null
       }
-      throw new AuthenticationError("Not logged in");
-    },
-    orders: async () => {
-      const orderData = await Order.find();
-      const { shoes } = await orderData
-        .populate({ path: "orders", populate: "order.shoes" })
-        .execPopulate();
-      // console.log(orderData, `hi im order data i hope`, shoes);
-      return orderData;
+      throw new AuthenticationError('Not logged in');
     },
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
     shoes: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab  } = args
-      
+      const { brand, color, model, sport, collab, sku } = args;
+
       let result = {};
-      
+
       for (let key in args) {
         if (args[key]) {
-          result[key] = args[key]
+          result[key] = args[key];
         }
       }
 
-      if (Shoe.find(args)) {
-        return await Shoe.find(args)
-      } else {
-        return await Shoe.find();
-      }
-
-      // return await Shoe.find(args).sort();
+      return await Shoe.find(args).sort();
     },
-    
+    adminSales: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        return await AdminSale.find();
+      }
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
+      const adminSale = new AdminSale({ adminShoes: args.shoes });
+
       const line_items = [];
 
-      const { shoes } = await order.populate("shoes").execPopulate();
+      const { shoes } = await order.populate('shoes').execPopulate();
+      //??
+      const { adminShoes } = await adminSale.populate('shoes').execPopulate();
 
       for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
@@ -89,7 +85,7 @@ const resolvers = {
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: shoes[i].price * 100,
-          currency: "usd",
+          currency: 'usd',
         });
 
         line_items.push({
@@ -98,12 +94,12 @@ const resolvers = {
         });
       }
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
+        payment_method_types: ['card'],
         line_items,
-        mode: "payment",
+        mode: 'payment',
         success_url:
-          "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url: "https://example.com/cancel",
+          'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
         // success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         // cancel_url: `${url}/`,
       });
@@ -130,7 +126,7 @@ const resolvers = {
         return order;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
     saveShoe: async (parent, { shoeData }, context) => {
       if (context.user) {
@@ -142,25 +138,34 @@ const resolvers = {
 
         return updatedUser;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
     login: async (_parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
       // this is a console log!! delete me later please
       console.log(user);
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
 
       return { token, user };
+    },
+    addAdminSale: async (parent, { shoes }, context) => {
+      if (context.user) {
+        const adminSale = new AdminSale({ shoes });
+
+        return adminSale;
+      }
+
+      throw new AuthenticationError('Not logged in');
     },
   },
 };

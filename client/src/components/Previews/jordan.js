@@ -10,38 +10,38 @@ import sbbImg from "../../assets/images/shoes/SBB.png";
 
 const SHOES = [
   {
-    id: "626cbc4cf9f055c94838b82f",
+    id: "555088-603",
     img: fusionImg,
     alt: "Air Jordan 1 Light Fusion Red shoe is white base with red accents and gold swoosh",
-    name: "Air Jordan 1 Light Fusion Red",
+    name: "Air Jordan Light Fusion Red",
     price: "$160",
   },
   {
-    id: "626cbc4cf9f055c94838b833",
+    id: "CD6578-507",
     img: latochiImg,
     alt: "Air Jordan 1 SB LA to Chicago shoe is white base with navy accents and yellow swoosh",
-    name: "Air Jordan 1 SB LA to Chicago",
+    name: "Air Jordan SB LA to Chicago",
     price: "$590",
   },
   {
-    id: "626cbc4cf9f055c94838b83c",
+    id: "555088-007",
     img: royalImg,
     alt: "Air Jordan 1 Royal shoe is black base with royal blue accents and swoosh",
-    name: "Air Jordan 1 Royal",
+    name: "Air Jordan Royal",
     price: "$475",
   },
   {
-    id: "626cbc4cf9f055c94838b83b",
+    id: "555088-700",
     img: rotyImg,
     alt: "Air Jordan 1 Rookie of the Year shoe is white base with brown accents and black swoosh",
-    name: "Air Jordan 1 Rookie of the Year",
+    name: "Air Jordan Rookie of the Year",
     price: "$665",
   },
   {
-    id: "626cbc4cf9f055c94838b83e",
+    id: "555088-005",
     img: sbbImg,
     alt: "Air Jordan 1 Shattered Backboard shoe is white base with orange accents and black swoosh",
-    name: "Air Jordan 1 Shattered Backboard",
+    name: "Air Jordan Shattered Backboard",
     price: "$350",
   },
 ];
@@ -62,7 +62,7 @@ const JordanPrev = () => {
                 src={shoe.img}
                 alt={shoe.alt}
               />
-              <div class="prevText">
+              <div className="prevText">
                 <strong>{shoe.name}</strong>
                 <br />
                 {shoe.price}

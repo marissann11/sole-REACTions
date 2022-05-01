@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
@@ -28,24 +28,28 @@ const shoeSchema = new Schema({
     type: String,
     required: false,
   },
+  image: {
+    type: String,
+    required: false,
+  },
   model: {
     type: String,
     required: false,
   },
   sku: {
     type: String,
-    required: false
+    required: false,
   },
   collab: {
     type: String,
-    required: false
+    required: false,
   },
   sport: {
     type: String,
-    required: false
-  }
+    required: false,
+  },
 });
 
-const Shoe = mongoose.model('Shoe', shoeSchema);
+const Shoe = mongoose.model("Shoe", shoeSchema);
 
 module.exports = Shoe;

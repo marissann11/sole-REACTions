@@ -1,11 +1,16 @@
+.ui.menu {
+  border-bottom: 0 none !important;
+  box-shadow: none;
+}
+
 .navTitle {
-  color: gainsboro;
+  color: black;
   font-family: "Contrail One", cursive;
-  font-size: 5vh;
+  font-size: 4.5vh;
 }
 
 .navTitleMobile {
-  color: gainsboro;
+  color: black;
   font-family: "Contrail One", cursive;
   font-size: 4vh;
 }

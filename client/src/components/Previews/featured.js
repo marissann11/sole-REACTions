@@ -10,35 +10,35 @@ import static700Img from "../../assets/images/shoes/Static700.png";
 
 const SHOES = [
   {
-    id: "626cbc4cf9f055c94838b830",
+    id: "AJ5986-335",
     img: gatoradeImg,
     alt: "Air Jordan 6 Gatorade shoe main color is green with orange on the bottom",
     name: "Air Jordan 6 Gatorade",
     price: "$425",
   },
   {
-    id: "626cbc4cf9f055c94838b83a",
+    id: "130690-003",
     img: PSNYImg,
     alt: "Air Jordan 12 x PSNY shoe all black/dark grey",
     name: "Air Jordan 12 x PSNY",
     price: "$450",
   },
   {
-    id: "626cbc4cf9f055c94838b84a",
+    id: "635525-036",
     img: uglyImg,
     alt: "Nike Dunk SB High x Concepts Ugly Christmas Sweater Grey shoe with snowmen and red flowers",
-    name: "Nike Dunk Ugly Christmas Sweater",
+    name: "Nike Ugly Christmas Sweater",
     price: "$1400",
   },
   {
-    id: "626cbc4cf9f055c94838b84e",
+    id: "EF2829",
     img: static700Img,
     alt: "Adidas Yeezy Boost 700 V2 shoe sleek all white and light grey",
     name: "Adidas Yeezy Boost 700 V2",
     price: "$300",
   },
   {
-    id: "626cbc4cf9f055c94838b835",
+    id: "AQ0818-148",
     img: offwhiteImg,
     alt: "Air Jordan 1 x Off White UNC shoe off white background with blue accents and orange thread",
     name: "Air Jordan 1 x Off White UNC",
@@ -62,7 +62,7 @@ const FeaturedPrev = () => {
                 src={shoe.img}
                 alt={shoe.alt}
               />
-              <div class="prevText">
+              <div className="prevText">
                 <strong>{shoe.name}</strong>
                 <br />
                 {shoe.price}

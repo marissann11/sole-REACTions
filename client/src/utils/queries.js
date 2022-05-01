@@ -5,10 +5,12 @@ export const QUERY_ALL_SHOES = gql`
     shoes {
       _id
       name
+      year
       description
       price
       brand
       color
+      image
       model
       sku
       collab
@@ -17,10 +19,11 @@ export const QUERY_ALL_SHOES = gql`
   }
 `;
 export const QUERY_SHOE = gql`
-  query getShoe($id: ID) {
-    shoe(_id: $id) {
+  query getShoe($sku: sku) {
+    shoe(sku: $sku) {
       _id
       name
+      year
       description
       price
       brand
@@ -33,15 +36,15 @@ export const QUERY_SHOE = gql`
     }
   }
 `;
-export const QUERY_ORDERS = gql`
+export const QUERY_ALL_USERS = gql`
   {
-    orders {
-      _id
-      purchaseDate
-      shoes {
-        _id
-        price
-        brand
+    users {
+      orders {
+        purchaseDate
+        shoes {
+          price
+          brand
+        }
       }
     }
   }
@@ -72,9 +75,23 @@ export const QUERY_USER = gql`
   }
 `;
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($shoes: [ID]!) {
+  query getCheckout($shoes: [sku]!) {
     checkout(shoes: $shoes) {
       session
+    }
+  }
+`;
+export const QUERY_ALL_ADMINSALES = gql`
+  {
+    adminSales {
+      _id
+      shoes {
+        _id
+        name
+        price
+        brand
+        sport
+      }
     }
   }
 `;

@@ -29,15 +29,9 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
     if (Auth.loggedIn()) {
       return (
-        <Media greaterThan="mobile" className="sticky-top">
-          <Segment inverted style={{ minHeight: 75 }} vertical>
-            <Menu
-              fixed={fixed ? "top" : null}
-              inverted={!fixed}
-              pointing={!fixed}
-              secondary={!fixed}
-              size="large"
-            >
+        <Media greaterThan="mobile">
+          <Segment vertical>
+            <Menu pointing={!fixed} secondary={!fixed} size="small">
               <Menu.Item header as={Link} to="/" position="left">
                 <span className="navTitle">SOLE INTENTIONS</span>
               </Menu.Item>
@@ -61,15 +55,9 @@ class DesktopContainer extends Component {
       );
     } else {
       return (
-        <Media greaterThan="mobile" className="sticky-top">
-          <Segment inverted style={{ minHeight: 75 }} vertical>
-            <Menu
-              fixed={fixed ? "top" : null}
-              inverted={!fixed}
-              pointing={!fixed}
-              secondary={!fixed}
-              size="large"
-            >
+        <Media greaterThan="mobile">
+          <Segment vertical>
+            <Menu pointing={!fixed} secondary={!fixed} size="small">
               <Menu.Item header as={Link} to="/" position="left">
                 <span className="navTitle">SOLE INTENTIONS</span>
               </Menu.Item>
@@ -115,7 +103,6 @@ class MobileContainer extends Component {
             <Sidebar
               as={Menu}
               animation="overlay"
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={sidebarOpened}
@@ -132,14 +119,9 @@ class MobileContainer extends Component {
             </Sidebar>
 
             <Sidebar.Pusher dimmed={sidebarOpened}>
-              <Segment
-                inverted
-                textAlign="center"
-                style={{ minHeight: 10, padding: "1em 0em" }}
-                vertical
-              >
+              <Segment textAlign="center" vertical>
                 <Container>
-                  <Menu inverted pointing secondary size="large">
+                  <Menu pointing secondary size="small">
                     <Menu.Item onClick={this.handleToggle}>
                       <Icon name="sidebar" size="large" />
                     </Menu.Item>
@@ -164,7 +146,6 @@ class MobileContainer extends Component {
             <Sidebar
               as={Menu}
               animation="overlay"
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={sidebarOpened}
@@ -181,16 +162,11 @@ class MobileContainer extends Component {
             </Sidebar>
 
             <Sidebar.Pusher dimmed={sidebarOpened}>
-              <Segment
-                inverted
-                textAlign="center"
-                style={{ minHeight: 10, padding: "1em 0em" }}
-                vertical
-              >
+              <Segment textAlign="center" vertical>
                 <Container>
-                  <Menu inverted pointing secondary size="large">
+                  <Menu pointing secondary size="small">
                     <Menu.Item onClick={this.handleToggle}>
-                      <Icon name="sidebar" />
+                      <Icon name="sidebar" size="large" />
                     </Menu.Item>
                     <Menu.Item as={Link} to="/" position="right">
                       <span className="navTitleMobile">SOLE INTENTIONS</span>

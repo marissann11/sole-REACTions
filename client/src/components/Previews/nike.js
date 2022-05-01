@@ -10,38 +10,38 @@ import trainerImg from "../../assets/images/shoes/Trainer.png";
 
 const SHOES = [
   {
-    id: "626cbc4cf9f055c94838b822",
+    id: "AQ0928-700",
     img: animalImg,
     alt: "Nike Air Max 1 x Atmos Animal Pack shoe with cheetah and tiger print",
-    name: "Nike Air Max 1 x Atmos Animal Pack",
+    name: "Nike Atmos Animal Pack",
     price: "$430",
   },
   {
-    id: "626cbc4cf9f055c94838b827",
+    id: "918321-381",
     img: campbellImg,
     alt: "Nike SB Dunk High x Thomas Campbell What The Dunk shoe with lots of multi colored prints",
-    name: "Nike SB Dunk What The Dunk",
+    name: "Nike What The Dunk",
     price: "$775",
   },
   {
-    id: "626cbc4cf9f055c94838b82d",
+    id: "DH4692-100",
     img: drakeImg,
     alt: "Nike Hot Step Air Terra Drake NOCTA White sleek all white shoe",
-    name: "Nike Hot Step Air Terra Drake NOCTA",
+    name: "Nike Air Terra Drake",
     price: "$300",
   },
   {
-    id: "626cbc4cf9f055c94838b837",
+    id: "AT3057-100",
     img: parraImg,
     alt: "Nike Air Max 1 x Parra shoe with multiple stripe and dot patterns",
     name: "Nike Air Max 1 x Parra",
     price: "$675",
   },
   {
-    id: "626cbc4cf9f055c94838b848",
+    id: "532984-014",
     img: trainerImg,
     alt: "Nike Flyknit Trainer+ running shoe with bright multicolored weaving pattern",
-    name: "Nike Flyknit Trainer+",
+    name: "Nike Flyknit Trainer",
     price: "$350",
   },
 ];
@@ -62,7 +62,7 @@ const NikePrev = () => {
                 src={shoe.img}
                 alt={shoe.alt}
               />
-              <div class="prevText">
+              <div className="prevText">
                 <strong>{shoe.name}</strong>
                 <br />
                 {shoe.price}

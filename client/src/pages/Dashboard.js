@@ -1,36 +1,19 @@
-import React, { Component } from "react";
-import { useQuery } from "@apollo/client";
+import React, { Component } from 'react';
 
-import AdminShoe from "../components/AdminShoe";
-import LineChart from "../components/LineChart";
+import AdminShoe from '../components/AdminShoe';
+import SalesDash from '../components/SalesDash';
 
-// import { QUERY_ORDERS } from '../utils/queries';
-
-// useEffect(() => {
-//   fetchSales = async () => {
-//     const { res } = await fetch(queryOrders);
-//   };
-//   fetchSales();
-// }, []);
-
-// reducer function const getSales = () => {...reducer}
-// total sales sent to chart.js
-
-// const Dashboard = () => {
-//   const { loading, data } = useQuery(QUERY_ORDERS);
-
-//   console.log(loading, data);
 class Dashboard extends Component {
   uploadWidget() {
     window.cloudinary.openUploadWidget(
-      { cloud_name: "gw-bootcamp", upload_preset: "upload_shoes" },
+      { cloud_name: 'gw-bootcamp', upload_preset: 'upload_shoes' },
       function (error, result) {
         console.log(result);
       }
     );
   }
   render() {
-        return (
+    return (
       <div>
         <div className="container">
           Hi, I'm the dashboard.
@@ -42,14 +25,12 @@ class Dashboard extends Component {
               Click here to Upload Shoe Image
             </button>
           </div>
-          <AdminShoe />  
-          <LineChart />
+          <AdminShoe />
         </div>
+        <SalesDash />
       </div>
     );
   }
 }
-
-
 
 export default Dashboard;
