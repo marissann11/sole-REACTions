@@ -62,7 +62,7 @@ const AllPrev = () => {
                 src={shoe.img}
                 alt={shoe.alt}
               />
-              <div class="prevText">
+              <div className="prevText">
                 <strong>{shoe.name}</strong>
                 <br />
                 {shoe.price}

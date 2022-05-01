@@ -7,7 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
+import { StoreProvider } from "./utils/GlobalState";
 
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
@@ -47,22 +47,24 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Nav />
-        <Switch className="components">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/shoes/:id" component={Detail} />
-          <Route exact path="/shoes" component={Shoes} />
-          <Route exact path="/jordan" component={Jordan} />
-          <Route exact path="/nike" component={Nike} />
-          <Route exact path="/featured" component={Featured} />
-          <Route exact path="/subscription" component={Subscription} />
-          <Route exact path="/cart" component={Cart} />
-          {/* <Route exact path="/success" component={Success} /> */}
-        </Switch>
-        <Footer />
+        <StoreProvider>
+          <Nav />
+          <Switch className="components">
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/shoes/:id" component={Detail} />
+            <Route exact path="/shoes" component={Shoes} />
+            <Route exact path="/jordan" component={Jordan} />
+            <Route exact path="/nike" component={Nike} />
+            <Route exact path="/featured" component={Featured} />
+            <Route exact path="/subscription" component={Subscription} />
+            <Route exact path="/cart" component={Cart} />
+            {/* <Route exact path="/success" component={Success} /> */}
+          </Switch>
+          <Footer />
+        </StoreProvider>
       </Router>
     </ApolloProvider>
   );
