@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
 ChartJS.register(
   CategoryScale,
@@ -17,40 +18,37 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
-const DoughnutChart = () => {
+const DoughnutChart = ({ brandData }) => {
+  const brands = [];
+  const repeats = [];
+  for (let i = 0; i < brandData.length; i++) {
+    if (brands.includes(brandData[i])) {
+      repeats.push(brandData[i]);
+    } else {
+      brands.push(brandData[i]);
+    }
+  }
   return (
     <>
       <Doughnut
         data={{
-          // doughnut chart we can use for allowing the admin to track what brands are selling more than others
-          labels: ['Adidas', 'Jordan', 'New Balance', 'Nike'],
+          labels: [brands[0], brands[1], brands[2], brands[3]],
           datasets: [
             {
-              label: 'Brands',
-              // this is where we would pass through quantity of each brand that has been sold
-              // we can do this over a longer period of time (all- time)
-              data: [12, 15, 34, 21],
-              // different bg color for each corresponding data value
-              backgroundColor: ['red', 'blue', 'yellow', 'purple'],
+              label: 'Your Top Brands',
+              data: [4, 2, 7, 10],
+              backgroundColor: ['blue', 'orange', 'green', 'yellow'],
             },
           ],
         }}
-        height={300}
-        width={300}
+        height={50}
+        width={50}
         options={{
-          maintainAspectRatio: false,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
+          maintainAspectRatio: true,
         }}
       />
     </>

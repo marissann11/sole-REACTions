@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Shoe = require('./Shoe');
-
 const { Schema } = mongoose;
 
-const orderSchema = new Schema({
+const Shoe = require('./Shoe');
+
+const adminSchema = new Schema({
   purchaseDate: {
     type: Date,
     default: Date.now,
@@ -11,6 +11,6 @@ const orderSchema = new Schema({
   shoes: [Shoe.schema],
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const AdminSale = mongoose.model('AdminSale', adminSchema);
 
-module.exports = Order;
+module.exports = AdminSale;
