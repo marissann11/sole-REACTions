@@ -26,8 +26,8 @@ function ShoeList() {
         <div>
           {shoes.map((shoe) => (
             <ShoeItem
-              key={shoe._id}
-              _id={shoe._id}
+              key={shoe.sku}
+              sku={shoe.sku}
               image={shoe.image}
               name={shoe.name}
               price={shoe.price}

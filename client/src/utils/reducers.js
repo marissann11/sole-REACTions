@@ -20,11 +20,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cartOpen: true,
-        cart: state.cart.map((product) => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity;
+        cart: state.cart.map((shoe) => {
+          if (action._id === shoe._id) {
+            shoe.purchaseQty = action.purchaseQty;
           }
-          return product;
+          return shoe;
         }),
       };
     // if it's none of these actions, do not update state at all and keep things the same!

@@ -18,8 +18,8 @@ export const QUERY_ALL_SHOES = gql`
   }
 `;
 export const QUERY_SHOE = gql`
-  query getShoe($id: ID) {
-    shoe(_id: $id) {
+  query getShoe($sku: sku) {
+    shoe(sku: $sku) {
       _id
       name
       description

@@ -70,7 +70,7 @@ const typeDefs = gql`
       collab: String
       sport: String
     ): [Shoe]
-    shoe(_id: ID!): Shoe
+    shoe(_id: ID!, sku: String): Shoe
   }
 
   type Mutation {

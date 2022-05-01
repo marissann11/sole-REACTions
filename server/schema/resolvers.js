@@ -54,7 +54,7 @@ const resolvers = {
       return await Shoe.findById(_id);
     },
     shoes: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab } = args;
+      const { brand, color, model, sport, collab, sku } = args;
 
       let result = {};
 
