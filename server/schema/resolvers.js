@@ -63,8 +63,14 @@ const resolvers = {
           result[key] = args[key]
         }
       }
-      
-      return await Shoe.find(args).sort();
+
+      if (Shoe.find(args)) {
+        return await Shoe.find(args)
+      } else {
+        return await Shoe.find();
+      }
+
+      // return await Shoe.find(args).sort();
     },
     
     checkout: async (parent, args, context) => {
