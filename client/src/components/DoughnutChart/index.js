@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
 ChartJS.register(
   CategoryScale,
@@ -17,10 +18,13 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
-const DoughnutChart = () => {
+const DoughnutChart = ({ brandData }) => {
+  console.log(brandData);
+
   return (
     <>
       <Doughnut
@@ -38,10 +42,10 @@ const DoughnutChart = () => {
             },
           ],
         }}
-        height={300}
-        width={300}
+        height={100}
+        width={100}
         options={{
-          maintainAspectRatio: false,
+          maintainAspectRatio: true,
         }}
       />
     </>

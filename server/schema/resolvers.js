@@ -73,7 +73,7 @@ const resolvers = {
       const line_items = [];
 
       const { shoes } = await order.populate('shoes').execPopulate();
-
+      //??
       const { adminShoes } = await adminSale.populate('shoes').execPopulate();
 
       for (let i = 0; i < shoes.length; i++) {
