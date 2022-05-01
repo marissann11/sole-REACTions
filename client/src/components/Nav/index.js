@@ -31,7 +31,7 @@ class DesktopContainer extends Component {
       return (
         <Media greaterThan="mobile">
           <Segment vertical>
-            <Menu pointing={!fixed} secondary={!fixed} size="medium">
+            <Menu pointing={!fixed} secondary={!fixed} size="small">
               <Menu.Item header as={Link} to="/" position="left">
                 <span className="navTitle">SOLE INTENTIONS</span>
               </Menu.Item>
@@ -57,7 +57,7 @@ class DesktopContainer extends Component {
       return (
         <Media greaterThan="mobile">
           <Segment vertical>
-            <Menu pointing={!fixed} secondary={!fixed} size="medium">
+            <Menu pointing={!fixed} secondary={!fixed} size="small">
               <Menu.Item header as={Link} to="/" position="left">
                 <span className="navTitle">SOLE INTENTIONS</span>
               </Menu.Item>
@@ -121,7 +121,7 @@ class MobileContainer extends Component {
             <Sidebar.Pusher dimmed={sidebarOpened}>
               <Segment textAlign="center" vertical>
                 <Container>
-                  <Menu pointing secondary size="large">
+                  <Menu pointing secondary size="medium">
                     <Menu.Item onClick={this.handleToggle}>
                       <Icon name="sidebar" size="large" />
                     </Menu.Item>
@@ -164,9 +164,9 @@ class MobileContainer extends Component {
             <Sidebar.Pusher dimmed={sidebarOpened}>
               <Segment textAlign="center" vertical>
                 <Container>
-                  <Menu pointing secondary size="medium">
+                  <Menu pointing secondary size="small">
                     <Menu.Item onClick={this.handleToggle}>
-                      <Icon name="sidebar" />
+                      <Icon name="sidebar" size="large" />
                     </Menu.Item>
                     <Menu.Item as={Link} to="/" position="right">
                       <span className="navTitleMobile">SOLE INTENTIONS</span>

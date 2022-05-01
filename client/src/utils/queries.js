@@ -5,6 +5,7 @@ export const QUERY_ALL_SHOES = gql`
     shoes {
       _id
       name
+      year
       description
       price
       brand
@@ -22,6 +23,7 @@ export const QUERY_SHOE = gql`
     shoe(sku: $sku) {
       _id
       name
+      year
       description
       price
       brand

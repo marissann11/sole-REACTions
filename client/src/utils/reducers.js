@@ -21,7 +21,7 @@ export const reducer = (state, action) => {
         ...state,
         cartOpen: true,
         cart: state.cart.map((shoe) => {
-          if (action._id === shoe._id) {
+          if (action.sku === shoe.sku) {
             shoe.purchaseQty = action.purchaseQty;
           }
           return shoe;

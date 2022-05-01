@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SizeChart from "../components/SizeChart";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
@@ -48,9 +49,9 @@ function Detail() {
   return (
     <>
       {currentShoe ? (
-        <div className="container">
+        <div className="container d-flex">
           <Item>
-            <div className="row">
+            <div className="row justify-content-between">
               <div className="col-6 my-5 me-5">
                 <Item.Image
                   size="big"
@@ -65,14 +66,21 @@ function Detail() {
                 >
                   ABOUT THIS SHOE:
                 </h3>
-                <p
+                <div
                   style={{
                     fontFamily: "Comfortaa, cursive",
                     fontSize: "2vh",
                   }}
                 >
-                  {currentShoe.description}
-                </p>
+                  <p>{currentShoe.description}</p>
+                  <p>
+                    <strong>Release Year:</strong> {currentShoe.year}
+                  </p>
+
+                  <p>
+                    <strong>SKU:</strong> {currentShoe.sku}
+                  </p>
+                </div>
               </div>
               <div className="col-4 m-5">
                 <Item.Content>
@@ -88,14 +96,33 @@ function Detail() {
                     <p
                       style={{
                         fontFamily: "Comfortaa, cursive",
-                        fontSize: "2vh",
+                        fontSize: "3vh",
                       }}
                     >
                       ${currentShoe.price}
+                      <br /> <br />
                     </p>
                   </Item.Description>
                 </Item.Content>
-                <Button onClick={addToCart}>Add to cart</Button>{" "}
+                <h4
+                  style={{
+                    fontFamily: "Comfortaa, cursive",
+                    fontSize: "2vh",
+                  }}
+                >
+                  Size (US Mens):
+                </h4>
+                <SizeChart />
+                <Button
+                  color="green"
+                  onClick={addToCart}
+                  className="mt-4"
+                  style={{
+                    fontFamily: "Comfortaa, cursive",
+                  }}
+                >
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
           </Item>
