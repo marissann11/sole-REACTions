@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const QUERY_ALL_SHOES = gql`
   {
@@ -76,6 +76,17 @@ export const QUERY_CHECKOUT = gql`
   query getCheckout($shoes: [ID]!) {
     checkout(shoes: $shoes) {
       session
+    }
+  }
+`;
+export const QUERY_ALL_ADMINSALES = gql`
+  query getAdminSales {
+    shoes {
+      _id
+      name
+      price
+      brand
+      sport
     }
   }
 `;
