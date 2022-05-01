@@ -2,7 +2,7 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
 import { Link } from "react-router-dom";
-import { List, Image } from "semantic-ui-react";
+import { List, Image, Icon } from "semantic-ui-react";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 
 const CartItem = ({ item }) => {
@@ -35,33 +35,50 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <List divided verticalAlign="middle">
-      <List.Item>
-        <Image size="small" src={`/images/${item.image}`} alt={item.name} />
-        <List.Content>
-          <List.Header as={Link} to={`/shoes/${item.sku}`}>
-            {item.name}
-          </List.Header>
-          <List.Description>${item.price}</List.Description>
-          <div>
-            <span>Qty:</span>
-            <input
-              type="number"
-              placeholder="1"
-              value={item.purchaseQty}
-              onChange={onChange}
-            />
-            <span
-              role="img"
-              aria-label="trash"
-              onClick={() => removeFromCart(item)}
-            >
-              🗑️
-            </span>{" "}
+    <div className="container">
+      <List divided verticalAlign="middle">
+        <List.Item>
+          <div className="row m-4 border align-items-center justify-content-evenly">
+            <div className="col-3">
+              <Image
+                size="small"
+                src={`/images/${item.image}`}
+                alt={item.name}
+                className="me-5"
+              />
+            </div>
+            <div className="col-8">
+              <List.Content>
+                <div className="row">
+                  <div className="col">
+                    <List.Header as={Link} to={`/shoes/${item.sku}`}>
+                      {item.name}
+                    </List.Header>
+                    <List.Description>${item.price}</List.Description>
+                  </div>
+                  <div className="col">
+                    <span>Qty:</span>
+                    <input
+                      type="number"
+                      placeholder="1"
+                      value={item.purchaseQty}
+                      onChange={onChange}
+                    />
+                  </div>
+                  <div
+                    className="col"
+                    aria-label="trash"
+                    onClick={() => removeFromCart(item)}
+                  >
+                    <Icon link color="red" name="trash alternate outline" />
+                  </div>{" "}
+                </div>
+              </List.Content>
+            </div>
           </div>
-        </List.Content>
-      </List.Item>
-    </List>
+        </List.Item>
+      </List>
+    </div>
   );
 };
 

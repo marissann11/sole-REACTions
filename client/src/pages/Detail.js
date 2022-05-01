@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SizeChart from "../components/SizeChart";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
 import { idbPromise } from "../utils/helpers";
@@ -132,6 +132,8 @@ function Detail() {
                 <Button
                   color="green"
                   onClick={addToCart}
+                  as={Link}
+                  to="/cart"
                   className="mt-4"
                   style={{
                     fontFamily: "Comfortaa, cursive",

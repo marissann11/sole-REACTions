@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import CartItem from "../components/CartItem";
 import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 import { idbPromise } from "../utils/helpers";
 import { ADD_MULTIPLE_TO_CART } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalState";
@@ -45,7 +47,7 @@ const Cart = () => {
     const shoeIds = [];
     state.cart.forEach((item) => {
       for (let i = 0; i < item.purchaseQty; i++) {
-        shoeIds.push(item._id);
+        shoeIds.push(item.sku);
       }
     });
     getCheckout({
@@ -54,25 +56,71 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart">
-      <h2>Shopping Cart</h2>
-      {state.cart.length ? (
-        <div>
-          {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
-          ))}
-          <div className="flex-row space-between">
-            Total: ${calculateTotal()}
-            {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
-            ) : (
-              <span>(log in to check out)</span>
-            )}
+    <div className="cart container" style={{ minHeight: "70vh" }}>
+      <div className="row">
+        <div className="col-6"></div>
+        <h2
+          style={{
+            fontFamily: "Contrail One, cursive",
+            fontSize: "3vh",
+          }}
+        >
+          Your Shopping Cart
+        </h2>
+        {state.cart.length ? (
+          <div
+            style={{
+              fontFamily: "Comfortaa, cursive",
+              fontSize: "2vh",
+            }}
+          >
+            {state.cart.map((item) => (
+              <CartItem key={item._id} item={item} />
+            ))}
+            <div className="flex-row space-between">
+              <strong>Total:</strong> ${calculateTotal()}*
+              <p style={{ fontSize: "1vh" }}>
+                *Taxes and shipping costs calculated at checkout.
+              </p>
+              {Auth.loggedIn() ? (
+                <Button
+                  color="green"
+                  onClick={submitCheckout}
+                  style={{
+                    fontFamily: "Comfortaa, cursive",
+                  }}
+                >
+                  Proceed to Checkout
+                </Button>
+              ) : (
+                <span>(log in to check out)</span>
+              )}
+            </div>
           </div>
-        </div>
-      ) : (
-        <h3>Cart is Empty</h3>
-      )}
+        ) : (
+          <div className="m-5">
+            <h3
+              style={{
+                fontFamily: "Contrail One, cursive",
+                fontSize: "3vh",
+                color: "red",
+              }}
+            >
+              Uh Oh! Your Cart is Empty!
+            </h3>
+            <Button
+              color="green"
+              as={Link}
+              to="/"
+              style={{
+                fontFamily: "Comfortaa, cursive",
+              }}
+            >
+              Start Shopping!
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
