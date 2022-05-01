@@ -27,7 +27,7 @@ const SHOES = [
     id: "626cbc4cf9f055c94838b84a",
     img: uglyImg,
     alt: "Nike Dunk SB High x Concepts Ugly Christmas Sweater Grey shoe with snowmen and red flowers",
-    name: "Nike Dunk Ugly Christmas Sweater",
+    name: "Nike Ugly Christmas Sweater",
     price: "$1400",
   },
   {

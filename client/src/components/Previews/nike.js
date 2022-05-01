@@ -13,21 +13,21 @@ const SHOES = [
     id: "626cbc4cf9f055c94838b822",
     img: animalImg,
     alt: "Nike Air Max 1 x Atmos Animal Pack shoe with cheetah and tiger print",
-    name: "Nike Air Max 1 x Atmos Animal Pack",
+    name: "Nike Atmos Animal Pack",
     price: "$430",
   },
   {
     id: "626cbc4cf9f055c94838b827",
     img: campbellImg,
     alt: "Nike SB Dunk High x Thomas Campbell What The Dunk shoe with lots of multi colored prints",
-    name: "Nike SB Dunk What The Dunk",
+    name: "Nike What The Dunk",
     price: "$775",
   },
   {
     id: "626cbc4cf9f055c94838b82d",
     img: drakeImg,
     alt: "Nike Hot Step Air Terra Drake NOCTA White sleek all white shoe",
-    name: "Nike Hot Step Air Terra Drake NOCTA",
+    name: "Nike Air Terra Drake",
     price: "$300",
   },
   {
@@ -41,7 +41,7 @@ const SHOES = [
     id: "626cbc4cf9f055c94838b848",
     img: trainerImg,
     alt: "Nike Flyknit Trainer+ running shoe with bright multicolored weaving pattern",
-    name: "Nike Flyknit Trainer+",
+    name: "Nike Flyknit Trainer",
     price: "$350",
   },
 ];

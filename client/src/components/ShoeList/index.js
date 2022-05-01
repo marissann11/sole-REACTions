@@ -21,7 +21,7 @@ function ShoeList() {
   }, [data, loading, dispatch]);
 
   return (
-    <div className="container-fluid prevRow">
+    <div className="container-fluid prevRow ms-4">
       {state.shoes.length ? (
         <div>
           {shoes.map((shoe) => (

@@ -6,10 +6,18 @@
 
 .prevCont {
   text-align: center;
+}
+
+.allCont {
+  text-align: center;
   max-width: 18vw;
 }
 
 .shoePrev {
+  height: 22vh;
+}
+
+.shoeAll {
   height: 22vh;
   width: 17vw;
 }
@@ -30,11 +38,11 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .prevCont {
-    max-width: none;
+  .allCont {
+    max-width: 50vw;
   }
 
-  .shoePrev {
+  .shoeAll {
     height: 22vh;
     width: auto;
   }
