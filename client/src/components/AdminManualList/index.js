@@ -17,7 +17,7 @@ const AdminManualList = () => {
         name: formState.name,
         description: formState.description,
         image: comingsoon,
-        price: 1,
+        price: parseInt(formState.price),
         brand: formState.brand,
         year: formState.year,
         sku: formState.sku,

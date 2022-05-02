@@ -11,35 +11,30 @@ const SHOES = [
     img: uglyImg,
     alt: 'This is a test',
     name: 'Test Shoe One',
-    price: 5,
     sku: '12345',
   },
   {
     img: uglyImg,
     alt: 'This is a test',
     name: 'Test Shoe Two',
-    price: 5,
     sku: '23456',
   },
   {
     img: uglyImg,
     alt: 'This is a test',
     name: 'Test Shoe Three',
-    price: 5,
     sku: '34567',
   },
   {
     img: uglyImg,
     alt: 'This is a test',
     name: 'Test Shoe Four',
-    price: 5,
     sku: '45678',
   },
   {
     img: uglyImg,
     alt: 'This is a test',
     name: 'Test Shoe Five',
-    price: 5,
     sku: '56789',
   },
 ];
@@ -55,7 +50,7 @@ const AdminQuickSelect = () => {
         name: formState.name,
         description: formState.description,
         image: uglyImg,
-        price: formState.price,
+        price: parseInt(formState.price),
         brand: formState.brand,
         year: formState.year,
         sku: formState.sku,
@@ -87,7 +82,6 @@ const AdminQuickSelect = () => {
                 <div className="prevText">
                   <strong>{shoe.name}</strong>
                   <br />
-                  {shoe.price}
                 </div>
                 <Form>
                   <Form.Input
@@ -95,7 +89,6 @@ const AdminQuickSelect = () => {
                     name="name"
                     type="name"
                     id="name"
-                    value={shoe.name}
                     onChange={handleChange}
                   />
                   <Form.Input
@@ -106,11 +99,10 @@ const AdminQuickSelect = () => {
                     onChange={handleChange}
                   />
                   <Form.Input
-                    placeholder={shoe.price}
-                    name={shoe.price}
+                    placeholder="price"
+                    name="price"
                     type="price"
                     id="price"
-                    value={shoe.price}
                     onChange={handleChange}
                   />
                   <Form.Input
@@ -132,7 +124,6 @@ const AdminQuickSelect = () => {
                     name="sku"
                     type="sku"
                     id="sku"
-                    value={shoe.sku}
                     onChange={handleChange}
                   />
                 </Form>
