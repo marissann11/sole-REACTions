@@ -39,6 +39,8 @@ class AuthService {
     localStorage.removeItem("id_token");
     // this will reload the page and reset the state of the application
     window.location.assign("/");
+    // clear indexeddb data upon logout so cart data does not persist across users
+    window.indexedDB.deleteDatabase("sole-reactions");
   }
 }
 
