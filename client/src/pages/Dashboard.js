@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import AdminShoe from '../components/AdminShoe';
-import SalesDash from '../components/SalesDash';
 
 class Dashboard extends Component {
   uploadWidget() {
@@ -27,7 +26,6 @@ class Dashboard extends Component {
           </div>
           <AdminShoe />
         </div>
-        <SalesDash />
       </div>
     );
   }

@@ -5,7 +5,6 @@ const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
-// need to update shoe queries with new filters
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
