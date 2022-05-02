@@ -32,11 +32,10 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders',
-          populate: 'orders.shoes',
+          path: 'orders.shoes',
+          path: 'shoes',
         });
-        return user.orders;
-        // original is user.orders.id(_id) which comes back null
+        return user.orders.id(_id);
       }
       throw new AuthenticationError('Not logged in');
     },
@@ -70,18 +69,18 @@ const resolvers = {
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
-      const adminSale = new AdminSale({ adminShoes: args.shoes });
+      const { shoes } = await order.populate('shoes');
+      // const adminSale = new AdminSale({ adminShoes: args.shoes });
 
       const line_items = [];
 
-      const { shoes } = await order.populate('shoes').execPopulate();
       //??
-      const { adminShoes } = await adminSale.populate('shoes').execPopulate();
+      // const { adminShoes } = await adminSale.populate('shoes').execPopulate();
 
       for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
           name: shoes[i].name,
-          images: [`${url}/images/${shoes[i].image}`],
+          images: [`${url}/assets/images/${shoes[i].image}`],
         });
 
         const price = await stripe.prices.create({
@@ -89,7 +88,6 @@ const resolvers = {
           unit_amount: shoes[i].price * 100,
           currency: 'usd',
         });
-
         line_items.push({
           price: price.id,
           quantity: 1,
@@ -117,7 +115,6 @@ const resolvers = {
       return { token, user };
     },
     addOrder: async (_parent, { shoes }, context) => {
-      console.log(context);
       if (context.user) {
         const order = new Order({ shoes });
 
