@@ -765,6 +765,7 @@ db.once('open', async () => {
     email: 'sneak2@testmail.com',
     password: 'password',
     isAdmin: true,
+    isSubscribed: true,
     orders: [
       {
         shoes: [shoes[0], shoes[3], shoes[1]],
@@ -777,6 +778,7 @@ db.once('open', async () => {
     email: 'tobe@testemail.com',
     password: 'password',
     isAdmin: true,
+    isSubscribed: true,
     orders: [
       {
         shoes: [shoes[2], shoes[8]],
@@ -789,6 +791,7 @@ db.once('open', async () => {
     email: 'tam@testemail.com',
     password: 'password',
     isAdmin: true,
+    isSubscribed: true,
     orders: [
       {
         shoes: [shoes[4], shoes[0], shoes[1]],
@@ -801,9 +804,36 @@ db.once('open', async () => {
     email: 'mar@testemail.com',
     password: 'password',
     isAdmin: true,
+    isSubscribed: true,
     orders: [
       {
         shoes: [shoes[12]],
+      },
+    ],
+  });
+  await User.create({
+    firstName: 'Reg',
+    lastName: 'User',
+    email: 'reg@testmail.com',
+    password: 'password',
+    isAdmin: false,
+    isSubscribed: false,
+    orders: [
+      {
+        shoes: [shoes[0]],
+      },
+    ],
+  });
+  await User.create({
+    firstName: 'Sub',
+    lastName: 'User',
+    email: 'sub@testmail.com',
+    password: 'password',
+    isAdmin: true,
+    isSubscribed: true,
+    orders: [
+      {
+        shoes: [shoes[41]],
       },
     ],
   });

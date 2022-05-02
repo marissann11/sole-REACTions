@@ -164,6 +164,26 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    addShoe: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        const shoe = await Shoe.create(args);
+        return shoe;
+      }
+    },
+    removeShoe: async (parent, { _id }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        const shoe = await Shoe.deleteOne({ _id });
+        return shoe;
+      }
+    },
   },
 };
 

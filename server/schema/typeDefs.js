@@ -99,6 +99,19 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addAdminSale(shoes: [ID]!): AdminSale
+    addShoe(
+      _id: ID
+      name: String
+      description: String
+      image: String
+      price: Int
+      brand: String
+      year: String
+      color: String
+      model: String
+      sku: String
+    ): Shoe
+    removeShoe(_id: [ID]!): Shoe
   }
 `;
 
