@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_SHOE } from '../../utils/mutations';
 import { Button, Form } from 'semantic-ui-react';
 
+// image path has to be fixed (and actual shortcut images added)
+
 const SHOES = [
   {
     img: uglyImg,
@@ -48,7 +50,6 @@ const AdminQuickSelect = () => {
 
   const submitShoe = async (event) => {
     event.preventDefault();
-    console.log(formState);
     const shoeData = await addShoe({
       variables: {
         name: formState.name,
@@ -60,12 +61,10 @@ const AdminQuickSelect = () => {
         sku: formState.sku,
       },
     });
-    console.log(shoeData);
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target);
     setFormState({
       ...formState,
       [name]: value,
@@ -74,6 +73,7 @@ const AdminQuickSelect = () => {
 
   return (
     <div>
+      <h1>Your popular shortcuts</h1>
       <div className="container-fluid prevRow">
         <div className="ui horizontal list prevCont">
           {SHOES.map((shoe) => (
@@ -136,7 +136,7 @@ const AdminQuickSelect = () => {
                     onChange={handleChange}
                   />
                 </Form>
-                <Button onClick={submitShoe}>Add Shoe{shoe.name}</Button>
+                <Button onClick={submitShoe}>Add Shoe</Button>
               </div>
             </>
           ))}

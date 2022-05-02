@@ -1,10 +1,10 @@
 import React from 'react';
-import AdminQuickSelect from '../components/AdminQuickSelect';
+import AdminManualList from '../components/AdminManualList';
 
 const Admin = () => {
   return (
     <div>
-      <AdminQuickSelect />
+      <AdminManualList />
     </div>
   );
 };
