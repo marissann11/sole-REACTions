@@ -42,9 +42,8 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (_parent, args, context) => {
+    shoesPriceASC: async (_parent, args, context) => {
       const { brand, color, model, sport, collab, sku } = args;
-      let ascending = "1"
 
       let result = {};
 
@@ -54,8 +53,46 @@ const resolvers = {
         }
       }
       
-      console.log(ascending)
-      return await Shoe.find(args).sort({price: ascending});
+      return await Shoe.find(args).sort({price: 1});
+    },
+    shoesPriceDSC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
+
+      let result = {};
+
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
+      
+      return await Shoe.find(args).sort({price: -1});
+    },
+    shoesYearASC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
+
+      let result = {};
+
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
+      
+      return await Shoe.find(args).sort({year: 1});
+    },
+    shoesYearDSC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
+
+      let result = {};
+
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
+      
+      return await Shoe.find(args).sort({year: -1});
     },
     adminSales: async (parent, args, context) => {
       if (!context.user) {

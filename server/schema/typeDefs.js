@@ -66,16 +66,10 @@ const typeDefs = gql`
     user: User
     order(_id: ID!): Order
     checkout(shoes: [ID]!): Checkout
-    shoes(
-      brand: String
-      price: Int
-      color: String
-      image: String
-      model: String
-      sku: String
-      collab: String
-      sport: String
-    ): [Shoe]
+    shoesPriceASC(brand: String, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
+    shoesPriceDSC(brand: String, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
+    shoesYearASC(brand: String, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
+    shoesYearDSC(brand: String, color: String, model: String, sku: String, collab: String, sport: String): [Shoe]
     shoe(_id: ID!, sku: String): Shoe
     adminSales: [AdminSale]
   }
