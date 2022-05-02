@@ -23,7 +23,6 @@ const AdminManualList = () => {
         sku: formState.sku,
       },
     });
-    console.log(newShoeData);
   };
 
   const handleChange = (event) => {

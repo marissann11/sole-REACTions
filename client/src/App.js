@@ -14,6 +14,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
+import UserDash from './pages/UserDash';
 import Jordan from './pages/Jordan';
 import Nike from './pages/Nike';
 import Detail from './pages/Detail';
@@ -54,7 +55,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={UserDash} />
             <Route exact path="/shoes/:sku" component={Detail} />
             <Route exact path="/shoes" component={Shoes} />
             <Route exact path="/jordan" component={Jordan} />

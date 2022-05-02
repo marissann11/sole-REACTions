@@ -54,58 +54,58 @@ const resolvers = {
 
       return await Shoe.find(args).sort();
     },
-    // shoesPriceASC: async (_parent, args, context) => {
-    //   const { brand, color, model, sport, collab, sku } = args;
+    shoesPriceASC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
 
-    //   let result = {};
+      let result = {};
 
-    //   for (let key in args) {
-    //     if (args[key]) {
-    //       result[key] = args[key];
-    //     }
-    //   }
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
 
-    //   return await Shoe.find(args).sort({price: 1});
-    // },
-    // shoesPriceDSC: async (_parent, args, context) => {
-    //   const { brand, color, model, sport, collab, sku } = args;
+      return await Shoe.find(args).sort({ price: 1 });
+    },
+    shoesPriceDSC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
 
-    //   let result = {};
+      let result = {};
 
-    //   for (let key in args) {
-    //     if (args[key]) {
-    //       result[key] = args[key];
-    //     }
-    //   }
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
 
-    //   return await Shoe.find(args).sort({price: -1});
-    // },
-    // shoesYearASC: async (_parent, args, context) => {
-    //   const { brand, color, model, sport, collab, sku } = args;
+      return await Shoe.find(args).sort({ price: -1 });
+    },
+    shoesYearASC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
 
-    //   let result = {};
+      let result = {};
 
-    //   for (let key in args) {
-    //     if (args[key]) {
-    //       result[key] = args[key];
-    //     }
-    //   }
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
 
-    //   return await Shoe.find(args).sort({year: 1});
-    // },
-    // shoesYearDSC: async (_parent, args, context) => {
-    //   const { brand, color, model, sport, collab, sku } = args;
+      return await Shoe.find(args).sort({ year: 1 });
+    },
+    shoesYearDSC: async (_parent, args, context) => {
+      const { brand, color, model, sport, collab, sku } = args;
 
-    //   let result = {};
+      let result = {};
 
-    //   for (let key in args) {
-    //     if (args[key]) {
-    //       result[key] = args[key];
-    //     }
-    //   }
+      for (let key in args) {
+        if (args[key]) {
+          result[key] = args[key];
+        }
+      }
 
-    //   return await Shoe.find(args).sort({year: -1});
-    // },
+      return await Shoe.find(args).sort({ year: -1 });
+    },
     adminSales: async (parent, args, context) => {
       if (!context.user) {
         throw new AuthenticationError('User is not logged in');
