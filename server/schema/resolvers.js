@@ -5,7 +5,6 @@ const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
-// need to update shoe queries with new filters
 const resolvers = {
   Query: {
     users: async (parent, args, context) => {
@@ -107,12 +106,8 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
       const { shoes } = await order.populate('shoes');
-      // const adminSale = new AdminSale({ adminShoes: args.shoes });
 
       const line_items = [];
-
-      //??
-      // const { adminShoes } = await adminSale.populate('shoes').execPopulate();
 
       for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({
@@ -202,6 +197,26 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    addShoe: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        const shoe = await Shoe.create(args);
+        return shoe;
+      }
+    },
+    removeShoe: async (parent, { _id }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('User is not logged in');
+      } else if (!context.user.isAdmin) {
+        throw new AuthenticationError('User is not admin!');
+      } else {
+        const shoe = await Shoe.deleteOne({ _id });
+        return shoe;
+      }
     },
   },
 };

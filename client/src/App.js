@@ -13,6 +13,7 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Dashboard from './pages/Dashboard';
+import Admin from './pages/Admin';
 import Jordan from './pages/Jordan';
 import Nike from './pages/Nike';
 import Detail from './pages/Detail';
