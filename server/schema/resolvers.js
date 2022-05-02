@@ -68,12 +68,8 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
       const { shoes } = await order.populate('shoes');
-      // const adminSale = new AdminSale({ adminShoes: args.shoes });
 
       const line_items = [];
-
-      //??
-      // const { adminShoes } = await adminSale.populate('shoes').execPopulate();
 
       for (let i = 0; i < shoes.length; i++) {
         const product = await stripe.products.create({

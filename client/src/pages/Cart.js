@@ -94,7 +94,28 @@ const Cart = () => {
                   Proceed to Checkout
                 </Button>
               ) : (
-                <span>(log in to check out)</span>
+                <>
+                  <Button
+                    color="green"
+                    onClick={submitCheckout}
+                    style={{
+                      fontFamily: 'Comfortaa, cursive',
+                    }}
+                  >
+                    Guest Checkout
+                  </Button>
+                  <Link to="/login">
+                    <Button
+                      color="green"
+                      onClick={submitCheckout}
+                      style={{
+                        fontFamily: 'Comfortaa, cursive',
+                      }}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </>
               )}
             </div>
           </div>
