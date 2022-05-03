@@ -6,6 +6,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.7",
     "@artsy/fresnel": "^3.5.0",
+    "@cloudinary/url-gen": "^1.7.0",
     "@stripe/stripe-js": "^1.27.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

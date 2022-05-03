@@ -17,14 +17,19 @@
   height: 22vh;
 }
 
-.shoeDiv {
+/* .shoeDiv {
   min-height: 150px;
+  min-width: 40vw;
+  width: 12vw; 
 }
 
 .shoeAll {
   height: 22vh;
-  width: 17vw;
-}
+  width: 15vw;
+  max-width: 20vw;
+  min-width: 15vw;
+  aspect-ratio: auto;
+} */
 
 .prevLink {
   text-decoration: none;

@@ -8,10 +8,18 @@ import uglyImg from "../../assets/images/shoes/Ugly.png";
 import offwhiteImg from "../../assets/images/shoes/OffWhiteUNC.png";
 import static700Img from "../../assets/images/shoes/Static700.png";
 
+// import {Cloudinary} from "@cloudinary/url-gen";
+
+// const cld = new Cloundiary({
+//   cloud: {
+//     cloudname: 'gw-bootcamp'
+//   }
+// })
+
 const SHOES = [
   {
     id: "AJ5986-335",
-    img: gatoradeImg,
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651533613/sole-intentions/Travis_yiz1nd.png",
     alt: "Air Jordan 6 Gatorade shoe main color is green with orange on the bottom",
     name: "Air Jordan 6 Gatorade",
     price: "$425",
