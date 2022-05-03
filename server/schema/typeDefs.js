@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Shoe {
@@ -74,17 +74,17 @@ const typeDefs = gql`
   }
 
   input Filters {
-    brand: String
-    color: String
-    collab: String
-    model: String
-    sku: String
-    sport: String
+    brand: [String]
+    color: [String]
+    collab: [String]
+    model: [String]
+    sku: [String]
+    sport: [String]
   }
 
   input SortBy {
-    price: String
-    year: String
+    field: String
+    direction: String
   }
 
   type Query {
