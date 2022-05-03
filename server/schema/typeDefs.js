@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Shoe {
@@ -56,36 +56,40 @@ const typeDefs = gql`
     session: ID
   }
 
+  type Subscription {
+    itemId: String
+    priceId: String
+    session: ID
+  }
+
   type Auth {
     token: ID
     user: User
   }
 
-input Filters {
-  brand: String,
-  color: String,
-  collab: String,
-  model: String,
-  sku: String,
-  sport: String
-}
+  input Filters {
+    brand: [String]
+    color: [String]
+    collab: [String]
+    model: [String]
+    sku: [String]
+    sport: [String]
+  }
 
   input SortBy {
-  field: String!
-  sortOrder: String!
-}
+    field: String
+    direction: String
+  }
 
   type Query {
     users: [User]
     user: User
     order(_id: ID!): Order
     checkout(shoes: [ID]!): Checkout
-    shoes(
-      filters: Filters
-      sortBy: SortBy
-    ): [Shoe]
+    shoes(filters: Filters, sortBy: SortBy): [Shoe]
     shoe(_id: ID!, sku: String): Shoe
     adminSales: [AdminSale]
+    subscription: Subscription
   }
 
   type Mutation {

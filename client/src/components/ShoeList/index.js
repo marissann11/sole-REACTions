@@ -5,6 +5,7 @@ import { UPDATE_SHOES } from "../../utils/actions";
 import ShoeItem from "../ShoeItem";
 import { QUERY_ALL_SHOES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
+import FilterBar from "../FilterBar";
 
 function ShoeList() {
   const [state, dispatch] = useStoreContext();
@@ -34,23 +35,27 @@ function ShoeList() {
   }, [data, loading, dispatch]);
 
   return (
-    <div className="container-fluid prevRow ms-4">
-      {state.shoes.length ? (
-        <div>
-          {shoes.map((shoe) => (
-            <ShoeItem
-              key={shoe.sku}
-              sku={shoe.sku}
-              image={shoe.image}
-              name={shoe.name}
-              price={shoe.price}
-            />
-          ))}
-        </div>
-      ) : (
-        <h3>loading products</h3>
-      )}
-    </div>
+    <>
+      <FilterBar />
+
+      <div className="container-fluid prevRow ms-4">
+        {state.shoes.length ? (
+          <div>
+            {shoes.map((shoe) => (
+              <ShoeItem
+                key={shoe.sku}
+                sku={shoe.sku}
+                image={shoe.image}
+                name={shoe.name}
+                price={shoe.price}
+              />
+            ))}
+          </div>
+        ) : (
+          <h3>loading products</h3>
+        )}
+      </div>
+    </>
   );
 }
 
