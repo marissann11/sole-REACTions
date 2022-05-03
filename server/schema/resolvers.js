@@ -43,8 +43,7 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (_parent, { filters, sortBy=null }, context) => {
-      
+    shoes: async (_parent, { filters, sortBy = null }, context) => {
       let result = {};
 
       for (let key in filters) {
@@ -63,9 +62,6 @@ const resolvers = {
       } else {
         return await AdminSale.find().populate('shoes');
       }
-    },
-    adminSale: async (parent, { admindId }, context) => {
-      return await AdminSale.findOne({ admindId }).populate('shoes');
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
@@ -185,19 +181,9 @@ const resolvers = {
         return shoe;
       }
     },
-    addSale: async (_parent, args, context) => {
-      console.log(args);
+    addSale: async (_parent, { shoes }, context) => {
+      const adminSale = await AdminSale.create({ shoes });
 
-      const adminId = '6270c7e08172320d84753559';
-      const adminSale = await AdminSale.findOneAndUpdate(
-        { admindId: adminId },
-        {
-          $push: {
-            shoes: args.shoeIds,
-          },
-        },
-        { new: true, runValidators: true }
-      );
       return adminSale;
     },
   },

@@ -49,7 +49,6 @@ const typeDefs = gql`
 
   type AdminSale {
     _id: ID
-    adminId: String
     purchaseDate: String
     shoes: [Shoe]
   }
@@ -74,32 +73,28 @@ const typeDefs = gql`
     user: User
   }
 
-input Filters {
-  brand: String,
-  color: String,
-  collab: String,
-  model: String,
-  sku: String,
-  sport: String
-}
+  input Filters {
+    brand: String
+    color: String
+    collab: String
+    model: String
+    sku: String
+    sport: String
+  }
 
   input SortBy {
-  price: String
-  year: String
-}
+    price: String
+    year: String
+  }
 
   type Query {
     users: [User]
     user: User
     order(_id: ID!): Order
     checkout(shoes: [ID]!): Checkout
-    shoes(
-      filters: Filters
-      sortBy: SortBy
-    ): [Shoe]
+    shoes(filters: Filters, sortBy: SortBy): [Shoe]
     shoe(_id: ID!, sku: String): Shoe
     adminSales: [AdminSale]
-    adminSale(adminId: String): AdminSale
     subscription: Subscription
     subPortal: SubPortal
   }
@@ -113,7 +108,6 @@ input Filters {
     ): Auth
     addOrder(shoes: [ID]!): Order
     login(email: String!, password: String!): Auth
-    addAdminSale(shoes: [ID]!): AdminSale
     addShoe(
       _id: ID
       name: String
@@ -128,7 +122,7 @@ input Filters {
     ): Shoe
     removeShoe(_id: [ID]!): Shoe
     subscribeUser(_id: [ID]!): User
-    addSale(shoes: [ID], admindId: String): AdminSale
+    addSale(shoes: [ID]!): AdminSale
   }
 `;
 

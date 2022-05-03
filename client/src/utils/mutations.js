@@ -57,8 +57,8 @@ export const ADD_SHOE = gql`
 `;
 
 export const ADD_SALE = gql`
-  mutation addSale($shoes: [ID]!, $adminId: String) {
-    addSale(shoes: $shoes, adminId: $adminId) {
+  mutation addSale($shoes: [ID]!) {
+    addSale(shoes: $shoes) {
       shoes {
         _id
         name
