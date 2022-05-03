@@ -9,8 +9,9 @@ import { useStoreContext } from '../utils/GlobalState';
 import { QUERY_CHECKOUT } from '../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
+import { STRIPE_PUBLIC_KEY } from '../utils/keys';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
