@@ -56,6 +56,12 @@ const typeDefs = gql`
     session: ID
   }
 
+  type Subscription {
+    itemId: String
+    priceId: String
+    session: ID
+  }
+
   type Auth {
     token: ID
     user: User
@@ -110,6 +116,7 @@ const typeDefs = gql`
     ): [Shoe]
     shoe(_id: ID!, sku: String): Shoe
     adminSales: [AdminSale]
+    subscription: Subscription
   }
 
   type Mutation {

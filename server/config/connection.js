@@ -7,7 +7,8 @@ mongoose.connect(
     useUnifiedTopology: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
-  }
+  },
+  process.env.STRIPE_SECRET_KEY
 );
 
 module.exports = mongoose.connection;

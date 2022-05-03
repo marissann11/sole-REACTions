@@ -81,6 +81,14 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
+export const QUERY_SUBSCRIPTION = gql`
+  query getSubscription {
+    subscription {
+      session
+    }
+  }
+`;
+
 export const QUERY_ALL_ADMINSALES = gql`
   {
     adminSales {

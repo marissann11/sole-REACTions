@@ -3,7 +3,9 @@ const { User, Shoe, Order } = require('../models');
 const AdminSale = require('../models/AdminSale');
 const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { STRIPE_SECRET_KEY } = require('../config/keys');
+
+const stripe = require('stripe')(STRIPE_SECRET_KEY);
 
 const resolvers = {
   Query: {
@@ -112,7 +114,7 @@ const resolvers = {
       } else if (!context.user.isAdmin) {
         throw new AuthenticationError('User is not admin!');
       } else {
-        return await AdminSale.find();
+        return await AdminSale.find().populate('shoes');
       }
     },
     checkout: async (parent, args, context) => {
@@ -147,6 +149,24 @@ const resolvers = {
         cancel_url: 'https://example.com/cancel',
         // success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         // cancel_url: `${url}/`,
+      });
+
+      return { session: session.id };
+    },
+    subscription: async (parent, args, context) => {
+      const line_items = [];
+
+      line_items.push({
+        price: 'price_1Kv668DT393wRvxWu8GVsOHO',
+        quantity: 1,
+      });
+
+      const session = await stripe.checkout.sessions.create({
+        mode: 'subscription',
+        line_items,
+        success_url:
+          'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
       });
 
       return { session: session.id };
