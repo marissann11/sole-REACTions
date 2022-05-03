@@ -171,6 +171,13 @@ const resolvers = {
 
       return { session: session.id };
     },
+    subPortal: async (parent, args, context) => {
+      const session = await stripe.billingPortal.sessions.create({
+        customer: 'cus_LcQEzmAbGiuXKP',
+        return_url: 'https://example.com/account',
+      });
+      return { session: session.return_url };
+    },
   },
   Mutation: {
     addUser: async (_parent, args) => {

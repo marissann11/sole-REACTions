@@ -88,6 +88,13 @@ export const QUERY_SUBSCRIPTION = gql`
     }
   }
 `;
+export const QUERY_PORTAL = gql`
+  query getPortal {
+    subPortal {
+      session
+    }
+  }
+`;
 
 export const QUERY_ALL_ADMINSALES = gql`
   {

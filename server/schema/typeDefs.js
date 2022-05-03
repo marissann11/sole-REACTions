@@ -53,13 +53,17 @@ const typeDefs = gql`
   }
 
   type Checkout {
-    session: ID
+    session: String
   }
 
   type Subscription {
     itemId: String
     priceId: String
     session: ID
+  }
+
+  type SubPortal {
+    session: String
   }
 
   type Auth {
@@ -117,6 +121,7 @@ const typeDefs = gql`
     shoe(_id: ID!, sku: String): Shoe
     adminSales: [AdminSale]
     subscription: Subscription
+    subPortal: SubPortal
   }
 
   type Mutation {
