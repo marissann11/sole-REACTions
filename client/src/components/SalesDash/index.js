@@ -40,15 +40,6 @@ const SalesDash = () => {
           <h2>Sales To Date: {salesToDate}</h2>
           <h3>Active Orders: {numOrders}</h3>
           <h3>Shoes sold: {numShoes}</h3>
-          {adminSales.map((sale) =>
-            sale.shoes.map((shoe) => (
-              <div key={shoe._id}>
-                <div>{shoe.name}</div>
-                <div>{shoe.brand}</div>
-                <div>{shoe.price}</div>
-              </div>
-            ))
-          )}
         </>
       ) : null}
       <LineChart adminSales={adminSales} />
