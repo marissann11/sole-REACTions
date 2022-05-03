@@ -210,7 +210,7 @@ db.once('open', async () => {
       sku: 'DH4692-100',
       collab: 'Drake',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538855/sole-intentions2/Drake_ggkuoo.png',
+      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651545605/sole-intentions2/Drake_ggkuoo.png',
     },
     {
       name: 'Air Jordan 13 Flint',
@@ -509,7 +509,7 @@ db.once('open', async () => {
       sku: 'BB550LA1',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651540705/sole-intentions2/SeaSalt_lbv1ft.png',
+      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651545440/sole-intentions2/SeaSalt_xxcqlk.png',
       
     },
     {

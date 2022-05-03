@@ -42,7 +42,7 @@ const CartItem = ({ item }) => {
             <div className="col-3">
               <Image
                 size="small"
-                src={`/images/${item.image}`}
+                src={item.image}
                 alt={item.name}
                 className="me-5"
               />

@@ -71,7 +71,7 @@ function Detail() {
               <div className="col-6 my-5 me-5">
                 <Item.Image
                   size="big"
-                  src={process.env.PUBLIC_URL + `/images/${currentShoe.image}`}
+                  src={currentShoe.image}
                   alt={currentShoe.name}
                 />
                 <h3

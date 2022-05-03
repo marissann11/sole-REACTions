@@ -11,8 +11,7 @@ function ShoeItem(shoe) {
         <div className="shoeDiv">
           <img
             className="ui image shoeAll"
-            src={image}
-            // src={process.env.PUBLIC_URL + `/images/${image}`}
+            src={shoe.image}
             alt={name}
           />
         </div>
