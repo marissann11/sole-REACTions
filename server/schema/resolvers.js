@@ -43,70 +43,17 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab, sku } = args;
-
+    shoes: async (_parent, { filters, sortBy=null }, context) => {
+      
       let result = {};
 
-      for (let key in args) {
-        if (args[key]) {
-          result[key] = args[key];
+      for (let key in filters) {
+        if (filters[key]) {
+          result[key] = filters[key];
         }
       }
 
-      return await Shoe.find(args).sort();
-    },
-    shoesPriceASC: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab, sku } = args;
-
-      let result = {};
-
-      for (let key in args) {
-        if (args[key]) {
-          result[key] = args[key];
-        }
-      }
-
-      return await Shoe.find(args).sort({ price: 1 });
-    },
-    shoesPriceDSC: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab, sku } = args;
-
-      let result = {};
-
-      for (let key in args) {
-        if (args[key]) {
-          result[key] = args[key];
-        }
-      }
-
-      return await Shoe.find(args).sort({ price: -1 });
-    },
-    shoesYearASC: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab, sku } = args;
-
-      let result = {};
-
-      for (let key in args) {
-        if (args[key]) {
-          result[key] = args[key];
-        }
-      }
-
-      return await Shoe.find(args).sort({ year: 1 });
-    },
-    shoesYearDSC: async (_parent, args, context) => {
-      const { brand, color, model, sport, collab, sku } = args;
-
-      let result = {};
-
-      for (let key in args) {
-        if (args[key]) {
-          result[key] = args[key];
-        }
-      }
-
-      return await Shoe.find(args).sort({ year: -1 });
+      return await Shoe.find(filters).sort(sortBy);
     },
     adminSales: async (parent, args, context) => {
       if (!context.user) {
