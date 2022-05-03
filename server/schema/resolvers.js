@@ -117,6 +117,9 @@ const resolvers = {
         return await AdminSale.find().populate('shoes');
       }
     },
+    adminSale: async (parent, { admindId }, context) => {
+      return await AdminSale.findOne({ admindId }).populate('shoes');
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ shoes: args.shoes });
@@ -169,7 +172,7 @@ const resolvers = {
         cancel_url: 'https://example.com/cancel',
       });
 
-      return { session: session.id };
+      return { session: session.id, costumer: session.customer };
     },
     subPortal: async (parent, args, context) => {
       const session = await stripe.billingPortal.sessions.create({
@@ -199,26 +202,12 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    saveShoe: async (parent, { shoeData }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { savedShoes: shoeData } },
-          { new: true, runValidators: true }
-        );
-
-        return updatedUser;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
     login: async (_parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      // this is a console log!! delete me later please
-      console.log(user);
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
@@ -228,15 +217,6 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    },
-    addAdminSale: async (parent, { shoes }, context) => {
-      if (context.user) {
-        const adminSale = new AdminSale({ shoes });
-
-        return adminSale;
-      }
-
-      throw new AuthenticationError('Not logged in');
     },
     addShoe: async (parent, args, context) => {
       if (!context.user) {
@@ -257,6 +237,21 @@ const resolvers = {
         const shoe = await Shoe.deleteOne({ _id });
         return shoe;
       }
+    },
+    addSale: async (_parent, args, context) => {
+      console.log(args);
+
+      const adminId = '6270c7e08172320d84753559';
+      const adminSale = await AdminSale.findOneAndUpdate(
+        { admindId: adminId },
+        {
+          $push: {
+            shoes: args.shoeIds,
+          },
+        },
+        { new: true, runValidators: true }
+      );
+      return adminSale;
     },
   },
 };

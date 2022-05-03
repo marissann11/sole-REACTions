@@ -55,3 +55,16 @@ export const ADD_SHOE = gql`
     }
   }
 `;
+
+export const ADD_SALE = gql`
+  mutation addSale($shoes: [ID]!, $adminId: String) {
+    addSale(shoes: $shoes, adminId: $adminId) {
+      shoes {
+        _id
+        name
+        price
+        brand
+      }
+    }
+  }
+`;

@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 const Shoe = require('./Shoe');
 
 const adminSchema = new Schema({
+  adminId: {
+    type: String,
+  },
   purchaseDate: {
     type: Date,
     default: Date.now,

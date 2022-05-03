@@ -43,7 +43,6 @@ const userSchema = new Schema({
     default: false,
   },
   orders: [Order.schema],
-  savedShoes: [Shoe.schema],
   adminOrders: [AdminSale.schema],
 });
 

@@ -843,31 +843,44 @@ db.once('open', async () => {
   await AdminSale.deleteMany();
 
   await AdminSale.create({
-    shoes: [shoes[4], shoes[0], shoes[1]],
-  });
-  await AdminSale.create({
-    shoes: [shoes[19], shoes[20], shoes[13], shoes[34], shoes[1]],
-  });
-  await AdminSale.create({
     shoes: [
       shoes[4],
-      shoes[11],
+      shoes[0],
+      shoes[1],
       shoes[19],
       shoes[4],
       shoes[10],
       shoes[14],
-      shoes[40],
+      shoes[1],
+      shoes[23],
+      shoes[13],
+      shoes[37],
+      shoes[11],
     ],
   });
-  await AdminSale.create({
-    shoes: [shoes[1], shoes[23], shoes[13], shoes[37], shoes[11]],
-  });
-  await AdminSale.create({
-    shoes: [shoes[42], shoes[0], shoes[18]],
-  });
-  await AdminSale.create({
-    shoes: [shoes[12], shoes[34], shoes[27]],
-  });
+  // await AdminSale.create({
+  //   shoes: [shoes[19], shoes[20], shoes[13], shoes[34], shoes[1]],
+  // });
+  // await AdminSale.create({
+  //   shoes: [
+  //     shoes[4],
+  //     shoes[11],
+  //     shoes[19],
+  //     shoes[4],
+  //     shoes[10],
+  //     shoes[14],
+  //     shoes[40],
+  //   ],
+  // });
+  // await AdminSale.create({
+  //   shoes: [shoes[1], shoes[23], shoes[13], shoes[37], shoes[11]],
+  // });
+  // await AdminSale.create({
+  //   shoes: [shoes[42], shoes[0], shoes[18]],
+  // });
+  // await AdminSale.create({
+  //   shoes: [shoes[12], shoes[34], shoes[27]],
+  // });
 
   console.log('adminSales seeded');
 

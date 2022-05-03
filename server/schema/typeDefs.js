@@ -43,11 +43,13 @@ const typeDefs = gql`
     email: String
     orders: [Order]
     savedShoes: [Shoe]
-    adminOrders: [AdminSale]
+    isAdmin: Boolean
+    isSubscribed: Boolean
   }
 
   type AdminSale {
     _id: ID
+    adminId: String
     purchaseDate: String
     shoes: [Shoe]
   }
@@ -60,6 +62,7 @@ const typeDefs = gql`
     itemId: String
     priceId: String
     session: ID
+    customer: String
   }
 
   type SubPortal {
@@ -120,6 +123,7 @@ const typeDefs = gql`
     ): [Shoe]
     shoe(_id: ID!, sku: String): Shoe
     adminSales: [AdminSale]
+    adminSale(adminId: String): AdminSale
     subscription: Subscription
     subPortal: SubPortal
   }
@@ -132,15 +136,6 @@ const typeDefs = gql`
       password: String!
     ): Auth
     addOrder(shoes: [ID]!): Order
-    saveShoe(
-      brand: String
-      price: Int
-      color: String
-      model: String
-      sku: String
-      collab: String
-      sport: String
-    ): User
     login(email: String!, password: String!): Auth
     addAdminSale(shoes: [ID]!): AdminSale
     addShoe(
@@ -156,6 +151,8 @@ const typeDefs = gql`
       sku: String
     ): Shoe
     removeShoe(_id: [ID]!): Shoe
+    subscribeUser(_id: [ID]!): User
+    addSale(shoes: [ID], admindId: String): AdminSale
   }
 `;
 
