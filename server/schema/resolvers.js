@@ -3,7 +3,9 @@ const { User, Shoe, Order } = require('../models');
 const AdminSale = require('../models/AdminSale');
 const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { STRIPE_SECRET_KEY } = require('../config/keys');
+
+const stripe = require('stripe')(STRIPE_SECRET_KEY);
 
 const resolvers = {
   Query: {
@@ -41,9 +43,7 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (_parent, { filters, sortBy }, context) => {
-      console.log(sortBy)
-
+    shoes: async (_parent, { filters, sortBy = null }, context) => {
       let result = {};
 
       for (let key in filters) {
@@ -52,7 +52,7 @@ const resolvers = {
         }
       }
 
-      return await Shoe.find(filters).sort();
+      return await Shoe.find(filters).sort(sortBy);
     },
     adminSales: async (parent, args, context) => {
       if (!context.user) {
@@ -60,7 +60,7 @@ const resolvers = {
       } else if (!context.user.isAdmin) {
         throw new AuthenticationError('User is not admin!');
       } else {
-        return await AdminSale.find();
+        return await AdminSale.find().populate('shoes');
       }
     },
     checkout: async (parent, args, context) => {
@@ -99,6 +99,31 @@ const resolvers = {
 
       return { session: session.id };
     },
+    subscription: async (parent, args, context) => {
+      const line_items = [];
+
+      line_items.push({
+        price: 'price_1Kv668DT393wRvxWu8GVsOHO',
+        quantity: 1,
+      });
+
+      const session = await stripe.checkout.sessions.create({
+        mode: 'subscription',
+        line_items,
+        success_url:
+          'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
+      });
+
+      return { session: session.id, costumer: session.customer };
+    },
+    subPortal: async (parent, args, context) => {
+      const session = await stripe.billingPortal.sessions.create({
+        customer: 'cus_LcQEzmAbGiuXKP',
+        return_url: 'https://example.com/account',
+      });
+      return { session: session.return_url };
+    },
   },
   Mutation: {
     addUser: async (_parent, args) => {
@@ -120,26 +145,12 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    saveShoe: async (parent, { shoeData }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { savedShoes: shoeData } },
-          { new: true, runValidators: true }
-        );
-
-        return updatedUser;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
     login: async (_parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      // this is a console log!! delete me later please
-      console.log(user);
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
@@ -149,15 +160,6 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    },
-    addAdminSale: async (parent, { shoes }, context) => {
-      if (context.user) {
-        const adminSale = new AdminSale({ shoes });
-
-        return adminSale;
-      }
-
-      throw new AuthenticationError('Not logged in');
     },
     addShoe: async (parent, args, context) => {
       if (!context.user) {
@@ -178,6 +180,11 @@ const resolvers = {
         const shoe = await Shoe.deleteOne({ _id });
         return shoe;
       }
+    },
+    addSale: async (_parent, { shoes }, context) => {
+      const adminSale = await AdminSale.create({ shoes });
+
+      return adminSale;
     },
   },
 };
