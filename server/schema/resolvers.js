@@ -41,9 +41,8 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (_parent, { filters, sortBy }, context) => {
-      console.log(sortBy)
-
+    shoes: async (_parent, { filters, sortBy=null }, context) => {
+      
       let result = {};
 
       for (let key in filters) {
@@ -52,7 +51,7 @@ const resolvers = {
         }
       }
 
-      return await Shoe.find(filters).sort();
+      return await Shoe.find(filters).sort(sortBy);
     },
     adminSales: async (parent, args, context) => {
       if (!context.user) {

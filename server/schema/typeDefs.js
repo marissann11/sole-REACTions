@@ -71,8 +71,8 @@ input Filters {
 }
 
   input SortBy {
-  field: String!
-  sortOrder: String!
+  price: String
+  year: String
 }
 
   type Query {
