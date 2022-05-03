@@ -843,10 +843,15 @@ db.once('open', async () => {
   await AdminSale.deleteMany();
 
   await AdminSale.create({
-    shoes: [shoes[4], shoes[0], shoes[1]],
-  });
-  await AdminSale.create({
-    shoes: [shoes[19], shoes[20], shoes[13], shoes[34], shoes[1]],
+    shoes: [
+      shoes[4],
+      shoes[10],
+      shoes[1],
+      shoes[23],
+      shoes[13],
+      shoes[37],
+      shoes[11],
+    ],
   });
   await AdminSale.create({
     shoes: [

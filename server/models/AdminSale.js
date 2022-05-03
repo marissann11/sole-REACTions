@@ -8,7 +8,12 @@ const adminSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  shoes: [Shoe.schema],
+  shoes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Shoe',
+    },
+  ],
 });
 
 const AdminSale = mongoose.model('AdminSale', adminSchema);

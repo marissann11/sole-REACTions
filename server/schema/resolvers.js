@@ -43,8 +43,7 @@ const resolvers = {
     shoe: async (parent, { _id }) => {
       return await Shoe.findById(_id);
     },
-    shoes: async (_parent, { filters, sortBy=null }, context) => {
-      
+    shoes: async (_parent, { filters, sortBy = null }, context) => {
       let result = {};
 
       for (let key in filters) {
@@ -116,7 +115,14 @@ const resolvers = {
         cancel_url: 'https://example.com/cancel',
       });
 
-      return { session: session.id };
+      return { session: session.id, costumer: session.customer };
+    },
+    subPortal: async (parent, args, context) => {
+      const session = await stripe.billingPortal.sessions.create({
+        customer: 'cus_LcQEzmAbGiuXKP',
+        return_url: 'https://example.com/account',
+      });
+      return { session: session.return_url };
     },
   },
   Mutation: {
@@ -139,26 +145,12 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    saveShoe: async (parent, { shoeData }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { savedShoes: shoeData } },
-          { new: true, runValidators: true }
-        );
-
-        return updatedUser;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
     login: async (_parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      // this is a console log!! delete me later please
-      console.log(user);
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
@@ -168,15 +160,6 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    },
-    addAdminSale: async (parent, { shoes }, context) => {
-      if (context.user) {
-        const adminSale = new AdminSale({ shoes });
-
-        return adminSale;
-      }
-
-      throw new AuthenticationError('Not logged in');
     },
     addShoe: async (parent, args, context) => {
       if (!context.user) {
@@ -197,6 +180,11 @@ const resolvers = {
         const shoe = await Shoe.deleteOne({ _id });
         return shoe;
       }
+    },
+    addSale: async (_parent, { shoes }, context) => {
+      const adminSale = await AdminSale.create({ shoes });
+
+      return adminSale;
     },
   },
 };
