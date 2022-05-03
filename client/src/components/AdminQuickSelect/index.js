@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import uglyImg from '../../assets/images/shoes/Ugly.png';
+// import uglyImg from '../../assets/images/shoes/Ugly.png';
 import { useMutation } from '@apollo/client';
 import { ADD_SHOE } from '../../utils/mutations';
 import { Button, Form } from 'semantic-ui-react';
@@ -8,31 +8,31 @@ import { Button, Form } from 'semantic-ui-react';
 
 const SHOES = [
   {
-    img: uglyImg,
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
     alt: 'This is a test',
     name: 'Test Shoe One',
     sku: '12345',
   },
   {
-    img: uglyImg,
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
     alt: 'This is a test',
     name: 'Test Shoe Two',
     sku: '23456',
   },
   {
-    img: uglyImg,
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
     alt: 'This is a test',
     name: 'Test Shoe Three',
     sku: '34567',
   },
   {
-    img: uglyImg,
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
     alt: 'This is a test',
     name: 'Test Shoe Four',
     sku: '45678',
   },
   {
-    img: uglyImg,
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
     alt: 'This is a test',
     name: 'Test Shoe Five',
     sku: '56789',
@@ -49,7 +49,7 @@ const AdminQuickSelect = () => {
       variables: {
         name: formState.name,
         description: formState.description,
-        image: uglyImg,
+        image: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
         price: parseInt(formState.price),
         brand: formState.brand,
         year: formState.year,
