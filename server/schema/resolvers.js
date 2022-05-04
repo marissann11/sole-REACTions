@@ -101,6 +101,7 @@ const resolvers = {
       }
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
+        allow_promotion_codes: true,
         line_items,
         mode: 'payment',
         cancel_url: 'https://example.com/cancel',
@@ -110,6 +111,7 @@ const resolvers = {
       return { session: session.id };
     },
     subscription: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
       const line_items = [];
 
       line_items.push({
@@ -120,8 +122,7 @@ const resolvers = {
       const session = await stripe.checkout.sessions.create({
         mode: 'subscription',
         line_items,
-        success_url:
-          'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        success_url: `${url}/successsub?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: 'https://example.com/cancel',
       });
 

@@ -1,7 +1,7 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_ALL_ADMINSALES } from "../../utils/queries";
-import DoughnutChart from "../DoughnutChart";
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_ALL_ADMINSALES } from '../../utils/queries';
+import DoughnutChart from '../DoughnutChart';
 
 const SalesDash = () => {
   const { data } = useQuery(QUERY_ALL_ADMINSALES);
@@ -32,21 +32,21 @@ const SalesDash = () => {
 
   return (
     <div className="border col-12 text-center row justify-content-around align-items-center">
-      <div className="col-12">
-        <h1 style={{ fontFamily: "Contrail One, cursive" }}>SalesDash</h1>
+      <div className="col-12 p-2">
+        <h1 style={{ fontFamily: 'Contrail One, cursive' }}>SalesDash</h1>
       </div>
       <div className="col-5 p-3">
         <DoughnutChart brandData={brandData} />
       </div>
       {adminSales ? (
         <div className="col-5">
-          <h2 style={{ fontFamily: "Comfortaa, cursive" }}>
+          <h2 style={{ fontFamily: 'Comfortaa, cursive' }}>
             <strong>Sales To Date:</strong> ${salesToDate}
           </h2>
-          <h3 style={{ fontFamily: "Comfortaa, cursive" }}>
+          <h3 style={{ fontFamily: 'Comfortaa, cursive' }}>
             <strong>Active Orders:</strong> {numOrders}
           </h3>
-          <h3 style={{ fontFamily: "Comfortaa, cursive" }}>
+          <h3 style={{ fontFamily: 'Comfortaa, cursive' }}>
             <strong>Shoes Sold:</strong> {numShoes}
           </h3>
         </div>

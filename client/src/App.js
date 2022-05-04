@@ -14,7 +14,6 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Admin from './pages/Admin';
-import UserDash from './pages/UserDash';
 import Jordan from './pages/Jordan';
 import Nike from './pages/Nike';
 import Detail from './pages/Detail';
@@ -24,6 +23,7 @@ import Subscription from './pages/Subscription';
 import Featured from './pages/Featured';
 import Shoes from './pages/Shoes';
 import Success from './pages/Success';
+import SuccessSub from './pages/SuccessSub';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -66,6 +66,7 @@ function App() {
               <Route exact path="/subscription" component={Subscription} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/success" component={Success} />
+              <Route exact path="/successsub" component={SuccessSub} />
             </Switch>
             <Footer />
           </StoreProvider>

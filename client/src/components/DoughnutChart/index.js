@@ -49,8 +49,7 @@ const DoughnutChart = ({ brandData }) => {
 
   return (
     <div className="donut">
-      {' '}
-      <Doughnut data={data} />
+      <h2>Brand Popularity Tracking</h2> <Doughnut data={data} />
     </div>
   );
 };
