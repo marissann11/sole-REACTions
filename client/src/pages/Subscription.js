@@ -3,9 +3,10 @@ import { Button, Grid, Icon } from 'semantic-ui-react';
 import { QUERY_SUBSCRIPTION } from '../utils/queries';
 import { useLazyQuery } from '@apollo/client';
 import { loadStripe } from '@stripe/stripe-js';
-// import { STRIPE_PUBLIC_KEY } from '../utils/keys';
 
-const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
+const stripePromise = loadStripe(
+  'pk_test_51KYkduDT393wRvxWYLAwE9GsAaZhXIRpdJportUTqDUA0azNhYPia8KPae5AA1wTUZLNeHiA34nbWGuK5SoGGXLn00yLgCSSx2'
+);
 
 const Subscription = () => {
   const [getSubscription, { data }] = useLazyQuery(QUERY_SUBSCRIPTION);

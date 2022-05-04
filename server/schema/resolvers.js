@@ -3,9 +3,10 @@ const { User, Shoe, Order } = require('../models');
 const AdminSale = require('../models/AdminSale');
 const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
-// const { STRIPE_SECRET_KEY } = require("../config/keys");
 
-const stripe = require('stripe')(`${process.env.SECRET_KEY}`);
+const stripe = require('stripe')(
+  'sk_test_51KYkduDT393wRvxW2rJP7fKH7P7eZk3WEi2w4mt4vcK2N8pCuovVnd63lNBoAQQw17cpiRLAj5ExVooEVzhcMzab00m10g4G9X'
+);
 
 const resolvers = {
   Query: {
