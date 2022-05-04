@@ -1,9 +1,9 @@
-import React from "react";
-import Jumbotron from "../components/Jumbotron";
-import FeaturedPrev from "../components/Previews/featured";
-import AllPrev from "../components/Previews/allShoes";
-import NikePrev from "../components/Previews/nike";
-import JordanPrev from "../components/Previews/jordan";
+import React from 'react';
+import Jumbotron from '../components/Jumbotron';
+import FeaturedPrev from '../components/Previews/featured';
+import AllPrev from '../components/Previews/allShoes';
+import NikePrev from '../components/Previews/nike';
+import JordanPrev from '../components/Previews/jordan';
 
 const Home = () => {
   return (

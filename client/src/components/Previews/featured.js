@@ -48,9 +48,9 @@ const FeaturedPrev = () => {
         <div className="ui horizontal list prevCont">
           {SHOES.map((shoe) => (
             <Link
-              to={`/shoes/${shoe.id}`}
+              to={`/shoes/${shoe.sku}`}
               className="item prevLink"
-              key={shoe.id}
+              key={shoe.sku}
             >
               <img
                 className="ui image shoePrev"
@@ -75,5 +75,4 @@ const FeaturedPrev = () => {
     </div>
   );
 };
-
 export default FeaturedPrev;

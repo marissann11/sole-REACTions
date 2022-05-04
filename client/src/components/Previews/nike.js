@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import './style.css';
-// to change the shoe image use the url from cloudinary and replace in IMG
 
 const SHOES = [
   {
@@ -49,9 +48,9 @@ const NikePrev = () => {
         <div className="ui horizontal list prevCont">
           {SHOES.map((shoe) => (
             <Link
-              to={`/shoes/${shoe.id}`}
+              to={`/shoes/${shoe.sku}`}
               className="item prevLink"
-              key={shoe.id}
+              key={shoe.sku}
             >
               <img
                 className="ui image shoePrev"

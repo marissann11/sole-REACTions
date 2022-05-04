@@ -50,7 +50,7 @@ const AllPrev = () => {
             <Link
               to={`/shoes/${shoe.sku}`}
               className="item prevLink"
-              key={shoe.id}
+              key={shoe.sku}
             >
               <img
                 className="ui image shoePrev"
