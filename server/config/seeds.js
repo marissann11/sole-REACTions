@@ -20,7 +20,8 @@ db.once('open', async () => {
       sku: 'FB6878',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538858/sole-intentions2/Alien_ul0iyl.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647363/sole-intentions3/Alien_ul0iyl_t6zklw.png',
     },
     {
       name: 'Nike Air Max 1 x Atmos Animal Pack (2018)',
@@ -36,7 +37,8 @@ db.once('open', async () => {
       sku: 'AQ0928-700',
       collab: 'Atmos',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538859/sole-intentions2/Animal_aqsngd.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647471/sole-intentions3/Animal_aqsngd_o2mpl7.png',
     },
     {
       name: 'Nike Air Max 1 x Atmos Safari (2016)',
@@ -51,7 +53,8 @@ db.once('open', async () => {
       sku: '665873-200',
       collab: 'Atmos',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538857/sole-intentions2/AtmosSafari_xl6mmm.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647511/sole-intentions3/AtmosSafari_xl6mmm_wopfra.png',
     },
     {
       name: 'Adidas Yeezy Boost 350 V2 Beluga 2.0',
@@ -68,7 +71,8 @@ db.once('open', async () => {
       sku: 'AH2203',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538860/sole-intentions2/Beluga2_iusasz.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647514/sole-intentions3/Beluga2_iusasz_hpoufx.png',
     },
     {
       name: 'New Balance 550 Shadow',
@@ -82,7 +86,8 @@ db.once('open', async () => {
       sku: 'BB550SR1',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538866/sole-intentions2/Black550_pbmw2y.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647518/sole-intentions3/Black550_pbmw2y_l207bk.png',
     },
     {
       name: 'Air Jordan 4 Bred (2019)',
@@ -97,7 +102,8 @@ db.once('open', async () => {
       sku: '308497-060',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538862/sole-intentions2/Bred_mghzbv.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647523/sole-intentions3/Bred_mghzbv_lhbhau.png',
     },
     {
       name: 'Nike SB Dunk High x Thomas Campbell What The Dunk',
@@ -113,7 +119,8 @@ db.once('open', async () => {
       sku: '918321-381',
       collab: 'Thomas Campbell',
       sport: 'Skateboarding',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538869/sole-intentions2/Campbell_af1fjc.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647528/sole-intentions3/Campbell_af1fjc_v3kes7.png',
     },
     {
       name: 'Air Jordan 6 Retro Carmine (2021)',
@@ -132,7 +139,8 @@ db.once('open', async () => {
       sku: 'CT8529-106',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538865/sole-intentions2/Carmines_b1t0gr.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647538/sole-intentions3/Carmines_b1t0gr_zorqt8.png',
     },
     {
       name: 'Air Jordan 4 Cement',
@@ -149,7 +157,8 @@ db.once('open', async () => {
       sku: '840606-192',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538862/sole-intentions2/Cement_zyucfv.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647539/sole-intentions3/Cement_zyucfv_yrzmgu.png',
     },
     {
       name: 'Air Jordan 12 Chinese New Year',
@@ -165,7 +174,8 @@ db.once('open', async () => {
       sku: '881427-122',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538865/sole-intentions2/CNY_jgvujw.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647539/sole-intentions3/CNY_jgvujw_jdl3aj.png',
     },
     {
       name: 'Air Jordan 11 Concord (2018)',
@@ -180,7 +190,8 @@ db.once('open', async () => {
       sku: '378037-100',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538868/sole-intentions2/Concord_yevb5u.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647539/sole-intentions3/Concord_yevb5u_psdss2.png',
     },
     {
       name: 'Nike SB Dunk Low x Diamond Supply Company Black Diamond',
@@ -194,7 +205,8 @@ db.once('open', async () => {
       sku: 'BV1310-001',
       collab: 'Diamond Supply',
       sport: 'Skateboarding',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538869/sole-intentions2/Diamond_duf2z2.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647539/sole-intentions3/Diamond_duf2z2_dgui2g.png',
     },
     {
       name: 'Nike Hot Step Air Terra Drake NOCTA White',
@@ -210,7 +222,8 @@ db.once('open', async () => {
       sku: 'DH4692-100',
       collab: 'Drake',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651545605/sole-intentions2/Drake_ggkuoo.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647539/sole-intentions3/Drake_ggkuoo_z3amzm.png',
     },
     {
       name: 'Air Jordan 13 Flint',
@@ -226,7 +239,8 @@ db.once('open', async () => {
       sku: '414571-404',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538859/sole-intentions2/Flint_cqkvsn.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Flint_cqkvsn_py2oti.png',
     },
     {
       name: 'Air Jordan 1 Light Fusion Red',
@@ -240,7 +254,8 @@ db.once('open', async () => {
       sku: '555088-603',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538859/sole-intentions2/Fusion_frcdbn.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Fusion_frcdbn_c4ua2o.png',
     },
     {
       name: 'Air Jordan 6 Gatorade',
@@ -255,7 +270,8 @@ db.once('open', async () => {
       sku: 'AJ5986-335',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538859/sole-intentions2/Gatorade_cz0d7u.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Gatorade_cz0d7u_sm2kd3.png',
     },
     {
       name: 'Air Jordan 6 Gold Hoops',
@@ -270,7 +286,8 @@ db.once('open', async () => {
       sku: 'DH9696-100',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538861/sole-intentions2/Hoops_pvudkj.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Hoops_pvudkj_dxagfh.png',
     },
     {
       name: 'New Balance 990v3 x JJJJound',
@@ -286,7 +303,8 @@ db.once('open', async () => {
       sku: 'M990JD3',
       collab: 'JJJJound',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538862/sole-intentions2/JJJJound_bfdt57.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/JJJJound_bfdt57_lzqmiu.png',
     },
     {
       name: 'Air Jordan 1 SB LA to Chicago',
@@ -301,7 +319,8 @@ db.once('open', async () => {
       sku: 'CD6578-507',
       collab: 'N/A',
       sport: 'Skateboarding',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538862/sole-intentions2/LaToChi_abx05o.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/LaToChi_abx05o_gosmgm.png',
     },
     {
       name: 'Air Jordan 4 Golf Military Blue',
@@ -316,7 +335,8 @@ db.once('open', async () => {
       sku: 'CU9981-101',
       collab: 'N/A',
       sport: 'Golf',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538861/sole-intentions2/Military_cfthje.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Military_cfthje_up4dcr.png',
     },
     {
       name: 'Air Jordan 1 x Off White UNC ',
@@ -332,7 +352,8 @@ db.once('open', async () => {
       sku: 'AQ0818-148',
       collab: 'Off White',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538864/sole-intentions2/OffWhiteUNC_s9jtxl.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/OffWhiteUNC_s9jtxl_jbdguu.png',
     },
     {
       name: 'Air Jordan 1 Mid Paris White',
@@ -349,7 +370,8 @@ db.once('open', async () => {
       sku: 'DR8038-100',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538864/sole-intentions2/Paris_pceuvs.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Paris_pceuvs_bqi9mj.png',
     },
     {
       name: 'Nike Air Max 1 x Parra',
@@ -367,7 +389,8 @@ db.once('open', async () => {
       sku: 'AT3057-100',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538865/sole-intentions2/ParraAM1_wbfbdc.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/ParraAM1_wbfbdc_pz1mcp.png',
     },
     {
       name: 'Air Jordan 12 Playoffs (2022)',
@@ -384,7 +407,8 @@ db.once('open', async () => {
       sku: 'CT8013-006',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538866/sole-intentions2/Playoffs_ydxrjd.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/Playoffs_ydxrjd_eqsuwe.png',
     },
     {
       name: 'Air Jordan 1 Mid Pomegranate (W)',
@@ -400,7 +424,8 @@ db.once('open', async () => {
       sku: 'DH5894-600',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538867/sole-intentions2/Pom_pwv72t.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/Pom_pwv72t_l6pbv9.png',
     },
     {
       name: 'Air Jordan 12 x PSNY',
@@ -415,7 +440,8 @@ db.once('open', async () => {
       sku: '130690-003',
       collab: 'PSNY',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538869/sole-intentions2/PSNY_i5xger.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/PSNY_i5xger_n4h04i.png',
     },
     {
       name: 'Air Jordan 1 Rookie of the Year',
@@ -430,7 +456,8 @@ db.once('open', async () => {
       sku: '555088-700',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538870/sole-intentions2/ROTY_creeb6.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/ROTY_creeb6_ma8azt.png',
     },
     {
       name: 'Air Jordan 1 Royal',
@@ -446,7 +473,8 @@ db.once('open', async () => {
       sku: '555088-007',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538870/sole-intentions2/Royal_idzo22.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Royal_idzo22_vzcsvx.png',
     },
     {
       name: 'Air Jordan 1 Royal Toe',
@@ -462,7 +490,8 @@ db.once('open', async () => {
       sku: '555088-041',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538871/sole-intentions2/RoyalToe_yaormv.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/RoyalToe_yaormv_brnouw.png',
     },
     {
       name: 'Air Jordan 1 Shattered Backboard',
@@ -478,7 +507,8 @@ db.once('open', async () => {
       sku: '555088-005',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538871/sole-intentions2/SBB_tqol2a.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/SBB_tqol2a_tnh5hd.png',
     },
     {
       name: 'Air Jordan 1 OG Seafoam',
@@ -493,7 +523,8 @@ db.once('open', async () => {
       sku: 'CD0461-002',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538872/sole-intentions2/Seafoam_f5lagu.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Seafoam_f5lagu_fdj9p3.png',
     },
     {
       name: 'New Balance 550 Sea Salt Varsity Gold',
@@ -509,8 +540,8 @@ db.once('open', async () => {
       sku: 'BB550LA1',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651545440/sole-intentions2/SeaSalt_xxcqlk.png',
-      
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/SeaSalt_xxcqlk_hbw43i.png',
     },
     {
       name: 'Air Jordan 1 Shadow',
@@ -526,7 +557,8 @@ db.once('open', async () => {
       sku: '555088-013',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538872/sole-intentions2/Shadow_wq91mx.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Shadow_wq91mx_amlhq8.png',
     },
     {
       name: 'Air Jordan 11 Space Jam',
@@ -542,7 +574,8 @@ db.once('open', async () => {
       sku: '378037-003',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538873/sole-intentions2/Space_x1cslg.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Space_x1cslg_o164xb.png',
     },
     {
       name: 'Nike x Stussy Air Zoom Spiridon Fossil',
@@ -559,7 +592,8 @@ db.once('open', async () => {
       sku: 'CQ5486-200',
       collab: 'Stussy',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538873/sole-intentions2/Spiridon_uoqxgp.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Spiridon_uoqxgp_pfrqlz.png',
     },
     {
       name: 'Adidas Yeezy Boost 350 V2 Static (Non-Reflective)',
@@ -574,7 +608,8 @@ db.once('open', async () => {
       sku: 'EF2905',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538874/sole-intentions2/Static_tjkwlw.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Static_tjkwlw_wy5ygo.png',
     },
     {
       name: 'Adidas Yeezy Boost 700 V2',
@@ -588,7 +623,8 @@ db.once('open', async () => {
       sku: 'EF2829',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538874/sole-intentions2/Static700_e3s5hk.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Static700_e3s5hk_ddr4um.png',
     },
     {
       name: 'Nike Air Force 1 Low x Supreme Wheat',
@@ -604,7 +640,8 @@ db.once('open', async () => {
       sku: 'DN1555-200',
       collab: 'Supreme',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538875/sole-intentions2/SupAF1_ykd3xj.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/SupAF1_ykd3xj_i3gnjg.png',
     },
     {
       name: 'Nike Air Max 98 x Supreme Snakeskin',
@@ -619,7 +656,8 @@ db.once('open', async () => {
       sku: '844694-100',
       collab: 'Supreme',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/SupAM98_no9t5c.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/SupAM98_no9t5c_zm5iei.png',
     },
     {
       name: 'Nike Flyknit Trainer+',
@@ -635,7 +673,8 @@ db.once('open', async () => {
       sku: '532984-014',
       collab: 'N/A',
       sport: 'Running',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538875/sole-intentions2/Trainer_eu8ftb.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/Trainer_eu8ftb_bnpdun.png',
     },
     {
       name: 'Air Jordan 4 x Travis Scott Cactus Jack',
@@ -652,7 +691,8 @@ db.once('open', async () => {
       sku: '308497-406',
       collab: 'Travis Scott',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538876/sole-intentions2/Travis_wcxb1a.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/Travis_wcxb1a_wng6wx.png',
     },
     {
       name: 'Nike Dunk SB High x Concepts Ugly Christmas Sweater Grey',
@@ -668,7 +708,8 @@ db.once('open', async () => {
       sku: '635525-036',
       collab: 'Concepts',
       sport: 'Skateboarding',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/Ugly_nx7dg3_ofdgh6.png',
     },
     {
       name: 'New Balance 550 UNC White University Blue',
@@ -685,7 +726,8 @@ db.once('open', async () => {
       sku: 'BB550HL1',
       collab: 'N/A',
       sport: 'Basketball',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/UNC550_d7mrug.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/UNC550_d7mrug_so6mxv.png',
     },
     {
       name: 'Nike Air Max 97 X Undefeated Black',
@@ -701,7 +743,8 @@ db.once('open', async () => {
       sku: 'AJ1986-001',
       collab: 'Undefeated',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/UNDFTDBlack_thgf5p.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/UNDFTDBlack_thgf5p_qbext5.png',
     },
     {
       name: 'Nike Air Max 97 X Undefeated White',
@@ -717,7 +760,8 @@ db.once('open', async () => {
       sku: 'AJ1986-100',
       collab: 'Undefeated',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538878/sole-intentions2/UNDFTDWhite_uk6kch.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/UNDFTDWhite_uk6kch_ajqavq.png',
     },
     {
       name: 'Adidas Yeezy Boost 700 Wave Runner',
@@ -735,7 +779,8 @@ db.once('open', async () => {
       sku: 'B75571',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538878/sole-intentions2/WaveRunner_enizdb.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/WaveRunner_enizdb_oletaz.png',
     },
     {
       name: 'Adidas Yeezy Boost 350 V2 Zebra',
@@ -753,7 +798,8 @@ db.once('open', async () => {
       sku: 'CP9654',
       collab: 'N/A',
       sport: 'Casual',
-      image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538878/sole-intentions2/Zebras_yxrvao.png',
+      image:
+        'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647562/sole-intentions3/Zebras_yxrvao_rcktot.png',
     },
   ]);
   console.log('shoes seeded');

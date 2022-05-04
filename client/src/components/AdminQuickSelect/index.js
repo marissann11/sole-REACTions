@@ -1,66 +1,71 @@
 import React, { useState } from 'react';
-// import uglyImg from '../../assets/images/shoes/Ugly.png';
 import { useMutation } from '@apollo/client';
 import { ADD_SHOE } from '../../utils/mutations';
 import { Button, Form } from 'semantic-ui-react';
 
-// image path has to be fixed (and actual shortcut images added)
-
 const SHOES = [
   {
-    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
-    alt: 'This is a test',
-    name: 'Test Shoe One',
-    sku: '12345',
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651650243/sole-intentions3/Untitled_design_6_uwpr8b.png',
+    alt: 'Nike Air Force 1 Low',
+    name: 'Nike Air Force 1 Low',
+    sku: '5432-1243',
   },
   {
-    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
     alt: 'This is a test',
     name: 'Test Shoe Two',
-    sku: '23456',
+    sku: '5472-1243',
   },
   {
-    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
     alt: 'This is a test',
     name: 'Test Shoe Three',
-    sku: '34567',
+    sku: '5432-1943',
   },
   {
-    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
     alt: 'This is a test',
     name: 'Test Shoe Four',
-    sku: '45678',
+    sku: '5432-63',
   },
   {
-    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
     alt: 'This is a test',
     name: 'Test Shoe Five',
-    sku: '56789',
+    sku: '132-1243',
   },
 ];
 
 const AdminQuickSelect = () => {
   const [formState, setFormState] = useState({});
+  const [currentShoe, setCurrentShoe] = useState({});
   const [addShoe] = useMutation(ADD_SHOE);
 
   const submitShoe = async (event) => {
     event.preventDefault();
     const shoeData = await addShoe({
       variables: {
-        name: formState.name,
+        name: currentShoe.name,
         description: formState.description,
-        image: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png",
+        image: currentShoe.image,
         price: parseInt(formState.price),
         brand: formState.brand,
         year: formState.year,
-        sku: formState.sku,
+        sku: currentShoe.sku,
       },
+    });
+  };
+
+  const saveShoe = (shoe) => {
+    setCurrentShoe({
+      name: shoe.name,
+      image: shoe.img,
+      sku: shoe.sku,
     });
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target);
     setFormState({
       ...formState,
       [name]: value,
@@ -87,9 +92,10 @@ const AdminQuickSelect = () => {
                 <Form>
                   <Form.Input
                     placeholder={shoe.name}
-                    name="name"
+                    name="Name"
                     type="name"
                     id="name"
+                    value={shoe.name}
                     onChange={handleChange}
                   />
                   <Form.Input
@@ -107,24 +113,18 @@ const AdminQuickSelect = () => {
                     onChange={handleChange}
                   />
                   <Form.Input
-                    placeholder="brand"
+                    placeholder="Brand"
                     name="brand"
                     type="brand"
                     id="brand"
                     onChange={handleChange}
                   />
                   <Form.Input
-                    placeholder="year"
+                    placeholder="Year"
                     name="year"
                     type="year"
                     id="year"
-                    onChange={handleChange}
-                  />
-                  <Form.Input
-                    placeholder={shoe.sku}
-                    name="sku"
-                    type="sku"
-                    id="sku"
+                    onClick={() => saveShoe(shoe)}
                     onChange={handleChange}
                   />
                 </Form>
