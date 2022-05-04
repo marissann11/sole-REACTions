@@ -4,7 +4,6 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { UPDATE_SHOES } from "../../utils/actions";
 import ShoeItem from "../ShoeItem";
 import { QUERY_ALL_SHOES } from "../../utils/queries";
-import { idbPromise } from "../../utils/helpers";
 import FilterBar from "../FilterBar";
 
 function ShoeList() {
@@ -18,18 +17,6 @@ function ShoeList() {
       dispatch({
         type: UPDATE_SHOES,
         shoes: data.shoes,
-      });
-      data.shoes.forEach((shoe) => {
-        idbPromise("shoes", "put", shoe);
-      });
-    } else if (!loading) {
-      // since we're offline, get all of the data from the `products` store
-      idbPromise("shoes", "get").then((shoes) => {
-        // use retrieved data to set global state for offline browsing
-        dispatch({
-          type: UPDATE_SHOES,
-          shoes: shoes,
-        });
       });
     }
   }, [data, loading, dispatch]);

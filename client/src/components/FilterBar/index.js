@@ -82,6 +82,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    queryAllShoes({ filters: [...filters], sortBy: null });
     if (data) {
       dispatch({
         type: UPDATE_SHOES,

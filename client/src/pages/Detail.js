@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import SizeChart from '../components/SizeChart';
-import { useParams, Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../utils/GlobalState';
-import { idbPromise } from '../utils/helpers';
-import { Button, Item } from 'semantic-ui-react';
+import React, { useEffect, useState } from "react";
+import SizeChart from "../components/SizeChart";
+import { useParams, Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { useStoreContext } from "../utils/GlobalState";
+import { idbPromise } from "../utils/helpers";
+import { Button, Item } from "semantic-ui-react";
 import {
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
   UPDATE_SHOES,
-} from '../utils/actions';
-import { QUERY_ALL_SHOES } from '../utils/queries';
+} from "../utils/actions";
+import { QUERY_SHOE } from "../utils/queries";
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
   const { sku } = useParams();
   const [currentShoe, setCurrentShoe] = useState({});
-  const { loading, data } = useQuery(QUERY_ALL_SHOES);
+  const { loading, data } = useQuery(QUERY_SHOE);
   const { shoes, cart } = state;
 
   useEffect(() => {
@@ -26,16 +26,6 @@ function Detail() {
       dispatch({
         type: UPDATE_SHOES,
         shoes: data.shoes,
-      });
-      data.shoes.forEach((shoe) => {
-        idbPromise('shoes', 'put', shoe);
-      });
-    } else if (!loading) {
-      idbPromise('shoes', 'get').then((indexedShoes) => {
-        dispatch({
-          type: UPDATE_SHOES,
-          shoes: indexedShoes,
-        });
       });
     }
   }, [shoes, data, loading, dispatch, sku]);
@@ -49,7 +39,7 @@ function Detail() {
         sku: sku,
         purchaseQty: parseInt(itemInCart.purchaseQty) + 1,
       });
-      idbPromise('cart', 'put', {
+      idbPromise("cart", "put", {
         ...itemInCart,
         purchaseQty: parseInt(itemInCart.purchaseQty) + 1,
       });
@@ -58,7 +48,7 @@ function Detail() {
         type: ADD_TO_CART,
         shoe: { ...currentShoe, purchaseQty: 1 },
       });
-      idbPromise('cart', 'put', { ...currentShoe, purchaseQty: 1 });
+      idbPromise("cart", "put", { ...currentShoe, purchaseQty: 1 });
     }
   };
 
@@ -76,16 +66,16 @@ function Detail() {
                 />
                 <h3
                   style={{
-                    fontFamily: 'Contrail One, cursive',
-                    fontSize: '3vh',
+                    fontFamily: "Contrail One, cursive",
+                    fontSize: "3vh",
                   }}
                 >
                   ABOUT THIS SHOE:
                 </h3>
                 <div
                   style={{
-                    fontFamily: 'Comfortaa, cursive',
-                    fontSize: '2vh',
+                    fontFamily: "Comfortaa, cursive",
+                    fontSize: "2vh",
                   }}
                 >
                   <p>{currentShoe.description}</p>
@@ -102,8 +92,8 @@ function Detail() {
                 <Item.Content>
                   <Item.Header
                     style={{
-                      fontFamily: 'Contrail One, cursive',
-                      fontSize: '3vh',
+                      fontFamily: "Contrail One, cursive",
+                      fontSize: "3vh",
                     }}
                   >
                     <strong>{currentShoe.name}</strong>
@@ -111,8 +101,8 @@ function Detail() {
                   <Item.Description>
                     <p
                       style={{
-                        fontFamily: 'Comfortaa, cursive',
-                        fontSize: '3vh',
+                        fontFamily: "Comfortaa, cursive",
+                        fontSize: "3vh",
                       }}
                     >
                       ${currentShoe.price}
@@ -122,8 +112,8 @@ function Detail() {
                 </Item.Content>
                 <h4
                   style={{
-                    fontFamily: 'Comfortaa, cursive',
-                    fontSize: '2vh',
+                    fontFamily: "Comfortaa, cursive",
+                    fontSize: "2vh",
                   }}
                 >
                   Size (US Mens):
@@ -136,11 +126,11 @@ function Detail() {
                   to="/cart"
                   className="mt-4"
                   style={{
-                    fontFamily: 'Comfortaa, cursive',
+                    fontFamily: "Comfortaa, cursive",
                   }}
                 >
                   Add to Cart
-                </Button>{' '}
+                </Button>{" "}
               </div>
             </div>
           </Item>

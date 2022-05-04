@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import "./style.css";
 
-
 const SHOES = [
   {
     id: "555088-603",
