@@ -23,6 +23,7 @@ import Signup from './pages/Signup';
 import Subscription from './pages/Subscription';
 import Featured from './pages/Featured';
 import Shoes from './pages/Shoes';
+import Success from './pages/Success';
 import Footer from './components/Footer';
 import './App.css';
 
