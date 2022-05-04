@@ -1,42 +1,42 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from "@apollo/client";
-import { QueryParamProvider } from "use-query-params";
-import { setContext } from "@apollo/client/link/context";
-import { StoreProvider } from "./utils/GlobalState";
+} from '@apollo/client';
+import { QueryParamProvider } from 'use-query-params';
+import { setContext } from '@apollo/client/link/context';
+import { StoreProvider } from './utils/GlobalState';
 
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Dashboard from "./pages/Dashboard";
-import Admin from "./pages/Admin";
-import UserDash from "./pages/UserDash";
-import Jordan from "./pages/Jordan";
-import Nike from "./pages/Nike";
-import Detail from "./pages/Detail";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Subscription from "./pages/Subscription";
-import Featured from "./pages/Featured";
-import Shoes from "./pages/Shoes";
-import Footer from "./components/Footer";
-import "./App.css";
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Dashboard from './pages/Dashboard';
+import Admin from './pages/Admin';
+import UserDash from './pages/UserDash';
+import Jordan from './pages/Jordan';
+import Nike from './pages/Nike';
+import Detail from './pages/Detail';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Subscription from './pages/Subscription';
+import Featured from './pages/Featured';
+import Shoes from './pages/Shoes';
+import Footer from './components/Footer';
+import './App.css';
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem('id_token');
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
 });
@@ -57,7 +57,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/dashboard" component={UserDash} />
+              <Route exact path="/dashboard" component={Admin} />
               <Route exact path="/shoes/:sku" component={Detail} />
               <Route exact path="/shoes" component={Shoes} />
               <Route exact path="/jordan" component={Jordan} />
