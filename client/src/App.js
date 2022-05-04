@@ -13,7 +13,6 @@ import { StoreProvider } from './utils/GlobalState';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import UserDash from './pages/UserDash';
 import Jordan from './pages/Jordan';

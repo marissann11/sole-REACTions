@@ -17,21 +17,21 @@ const SHOES = [
     sku: '5472-1243',
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
-    alt: 'This is a test',
-    name: 'Test Shoe Three',
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651682621/sole-intentions3/vapormax_gd5trc.png',
+    alt: 'Nike Air VaporMax Plus',
+    name: 'Nike Air VaporMax Plus',
     sku: '5432-1943',
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
-    alt: 'This is a test',
-    name: 'Test Shoe Four',
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651683280/sole-intentions3/newbal_j1n9a2.png',
+    alt: 'New Balance x JJJound 990v4 sneaker',
+    name: 'New Balance x JJJound 990v4 sneaker',
     sku: '5432-63',
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
-    alt: 'This is a test',
-    name: 'Test Shoe Five',
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651683409/sole-intentions3/adid_v4psvz.png',
+    alt: 'Adidas Forum 84 ADV low sneaker',
+    name: 'Adidas Forum 84 ADV low sneaker',
     sku: '132-1243',
   },
 ];
@@ -74,7 +74,7 @@ const AdminQuickSelect = () => {
 
   return (
     <div>
-      <h1>Your popular shortcuts</h1>
+      <h1>Restock on one of your most popular</h1>
       <div className="container-fluid prevRow">
         <div className="ui horizontal list prevCont">
           {SHOES.map((shoe) => (
