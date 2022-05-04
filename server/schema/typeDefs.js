@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Shoe {
@@ -92,8 +92,8 @@ const typeDefs = gql`
     user: User
     order(_id: ID!): Order
     checkout(shoes: [ID]!): Checkout
-    shoes(filters: Filters, sortBy: SortBy): [Shoe]
-    shoe(_id: ID!, sku: String): Shoe
+    shoes(filters: Filters): [Shoe]
+    shoe(_id: ID, sku: String): Shoe
     adminSales: [AdminSale]
     subscription: Subscription
     subPortal: SubPortal

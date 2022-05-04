@@ -41,23 +41,31 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    shoe: async (parent, { _id }) => {
-      return await Shoe.findById(_id);
+    shoe: async (parent, { _id, sku }) => {
+      if (!_id) {
+        return await Shoe.findOne({ sku });
+      } else {
+        return await Shoe.findById(_id);
+      }
     },
-    shoes: async (_parent, { filters, sortBy = null }, context) => {
-      let result = {};
+    shoes: async (_parent, { filters }, context) => {
+      if (filters) {
+        let result = {};
 
-      for (let key in filters) {
-        if (filters[key]) {
-          result[key] = filters[key];
+        for (let key in filters) {
+          if (filters[key]) {
+            result[key] = filters[key];
+          }
         }
+        const where = {};
+        for (const [key, value] of Object.entries(filters)) {
+          console.log(`${key}: ${value}`);
+          where[key] = { $in: value };
+        }
+        return await Shoe.find(where);
+      } else {
+        return await Shoe.find();
       }
-      const where = {};
-      for (const [key, value] of Object.entries(filters)) {
-        console.log(`${key}: ${value}`);
-        where[key] = { $in: value };
-      }
-      return await Shoe.find(where).sort(sortBy);
     },
     adminSales: async (parent, args, context) => {
       if (!context.user) {
