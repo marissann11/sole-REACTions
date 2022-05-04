@@ -6,7 +6,7 @@ import AdminQuickSelect from '../components/AdminQuickSelect';
 const Admin = () => {
   return (
     <div>
-      {/* <SalesDash /> */}
+      <SalesDash />
       <AdminManualList /> <AdminQuickSelect />
     </div>
   );
