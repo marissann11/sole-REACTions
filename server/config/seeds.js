@@ -76,7 +76,7 @@ db.once('open', async () => {
     },
     {
       name: 'New Balance 550 Shadow',
-      brand: 'NewBalance',
+      brand: 'Newbalance',
       year: 2021,
       description: `The New Balance 550 Shadow features a black and grey leather upper with mesh paneling around the collars. 
       A puffed New Balance logo and "550" branding on the quarter panels nods to the origins of New Balance's basketball line.`,
@@ -291,7 +291,7 @@ db.once('open', async () => {
     },
     {
       name: 'New Balance 990v3 x JJJJound',
-      brand: 'NewBalance',
+      brand: 'Newbalance',
       year: 2022,
       description: `JJJJound and New Balance teamed up again for their second 990v3 design with the New Balance 990v3 JJJJound Olive.
       Arriving with olive mesh and premium suede uppers, the New Balance 990v3 JJJJound Olive uses a minimalist approach to create 
@@ -528,7 +528,7 @@ db.once('open', async () => {
     },
     {
       name: 'New Balance 550 Sea Salt Varsity Gold',
-      brand: 'NewBalance',
+      brand: 'Newbalance',
       year: 2022,
       description: `The 550 'Varsity Gold' features a retro two-tone look on its retro basketball construction. 
       The shoe's leather upper sports a white base, with Varsity Gold bringing color to the branding, quarter panel and tongue lining. 
@@ -713,7 +713,7 @@ db.once('open', async () => {
     },
     {
       name: 'New Balance 550 UNC White University Blue',
-      brand: 'NewBalance',
+      brand: 'Newbalance',
       year: '2022',
       description: `New Balance has a handful of firm favorites among the sneakerhead community, 
       but none have taken off quite like its 550 silhouette. As expected, the retro Basketball 

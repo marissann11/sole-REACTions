@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ALL_SHOES = gql`
-  query Shoes($filters: Filters, $sortBy: SortBy) {
-    shoes(filters: $filters, sortBy: $sortBy) {
+  query Shoes($filters: Filters) {
+    shoes(filters: $filters) {
       _id
       name
       year
