@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_SHOE } from '../../utils/mutations';
 import { Button, Form } from 'semantic-ui-react';
-import comingsoon from '../../assets/images/shoes/comingsoon.png';
-
-//need to correct this image path as well
 
 const AdminManualList = () => {
   const [formState, setFormState] = useState({});
@@ -16,7 +13,8 @@ const AdminManualList = () => {
       variables: {
         name: formState.name,
         description: formState.description,
-        image: comingsoon,
+        image:
+          'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651658547/sole-intentions3/Coming_Soon_uqhjj2.png',
         price: parseInt(formState.price),
         brand: formState.brand,
         year: formState.year,
@@ -38,35 +36,35 @@ const AdminManualList = () => {
       <h1>Manually Insert your Shoesies</h1>
       <Form onSubmit={handleShoeSubmit}>
         <Form.Input
-          placeholder="name"
+          placeholder="Name"
           name="name"
           type="name"
           id="name"
           onChange={handleChange}
         />
         <Form.Input
-          placeholder="description"
+          placeholder="Description"
           name="description"
           type="description"
           id="description"
           onChange={handleChange}
         />
         <Form.Input
-          placeholder="price"
+          placeholder="Price"
           name="price"
           type="price"
           id="price"
           onChange={handleChange}
         />
         <Form.Input
-          placeholder="brand"
+          placeholder="Brand"
           name="brand"
           type="brand"
           id="brand"
           onChange={handleChange}
         />
         <Form.Input
-          placeholder="year"
+          placeholder="Year"
           name="year"
           type="year"
           id="year"
