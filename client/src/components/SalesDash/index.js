@@ -1,8 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_ADMINSALES } from '../../utils/queries';
-// import DoughnutChart from '../DoughnutChart';
-// import LineChart from '../LineChart';
+import Chart from '../Chart';
 
 const SalesDash = () => {
   const { data } = useQuery(QUERY_ALL_ADMINSALES);
@@ -34,7 +33,7 @@ const SalesDash = () => {
   return (
     <div>
       SalesDash
-      {/* <DoughnutChart brandData={brandData} /> */}
+      <Chart brandData={brandData} />
       {adminSales ? (
         <>
           <h2>Sales To Date: {salesToDate}</h2>
@@ -42,7 +41,6 @@ const SalesDash = () => {
           <h3>Shoes sold: {numShoes}</h3>
         </>
       ) : null}
-      {/* <LineChart adminSales={adminSales} /> */}
     </div>
   );
 };
