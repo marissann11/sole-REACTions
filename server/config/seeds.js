@@ -39,6 +39,7 @@ db.once('open', async () => {
       sport: 'Casual',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647471/sole-intentions3/Animal_aqsngd_o2mpl7.png',
+      featured: true,
     },
     {
       name: 'Nike Air Max 1 x Atmos Safari (2016)',
@@ -121,6 +122,7 @@ db.once('open', async () => {
       sport: 'Skateboarding',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647528/sole-intentions3/Campbell_af1fjc_v3kes7.png',
+      featured: true,
     },
     {
       name: 'Air Jordan 6 Retro Carmine (2021)',
@@ -272,6 +274,7 @@ db.once('open', async () => {
       sport: 'Basketball',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/Gatorade_cz0d7u_sm2kd3.png',
+      featured: true,
     },
     {
       name: 'Air Jordan 6 Gold Hoops',
@@ -354,6 +357,7 @@ db.once('open', async () => {
       sport: 'Basketball',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647550/sole-intentions3/OffWhiteUNC_s9jtxl_jbdguu.png',
+      featured: true,
     },
     {
       name: 'Air Jordan 1 Mid Paris White',
@@ -426,6 +430,7 @@ db.once('open', async () => {
       sport: 'Basketball',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/Pom_pwv72t_l6pbv9.png',
+      featured: true,
     },
     {
       name: 'Air Jordan 12 x PSNY',
@@ -442,6 +447,7 @@ db.once('open', async () => {
       sport: 'Basketball',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647551/sole-intentions3/PSNY_i5xger_n4h04i.png',
+      featured: true,
     },
     {
       name: 'Air Jordan 1 Rookie of the Year',
@@ -625,6 +631,7 @@ db.once('open', async () => {
       sport: 'Casual',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647560/sole-intentions3/Static700_e3s5hk_ddr4um.png',
+      featured: true,
     },
     {
       name: 'Nike Air Force 1 Low x Supreme Wheat',
@@ -675,6 +682,7 @@ db.once('open', async () => {
       sport: 'Running',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/Trainer_eu8ftb_bnpdun.png',
+      featured: true,
     },
     {
       name: 'Air Jordan 4 x Travis Scott Cactus Jack',
@@ -693,6 +701,7 @@ db.once('open', async () => {
       sport: 'Basketball',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/Travis_wcxb1a_wng6wx.png',
+      featured: true,
     },
     {
       name: 'Nike Dunk SB High x Concepts Ugly Christmas Sweater Grey',
@@ -710,6 +719,7 @@ db.once('open', async () => {
       sport: 'Skateboarding',
       image:
         'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651647561/sole-intentions3/Ugly_nx7dg3_ofdgh6.png',
+      featured: true,
     },
     {
       name: 'New Balance 550 UNC White University Blue',

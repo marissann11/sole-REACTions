@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
@@ -48,8 +48,12 @@ const shoeSchema = new Schema({
     type: String,
     required: false,
   },
+  featured: {
+    type: Boolean,
+    required: false,
+  },
 });
 
-const Shoe = mongoose.model("Shoe", shoeSchema);
+const Shoe = mongoose.model('Shoe', shoeSchema);
 
 module.exports = Shoe;

@@ -11,9 +11,9 @@ const SHOES = [
     sku: '5432-1243',
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
-    alt: 'This is a test',
-    name: 'Test Shoe Two',
+    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651678026/sole-intentions3/nmd_bdmcgg.png',
+    alt: 'Adidas NMD R1',
+    name: 'Adidas NMD R1',
     sku: '5472-1243',
   },
   {

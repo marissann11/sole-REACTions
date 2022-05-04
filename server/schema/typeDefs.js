@@ -14,6 +14,7 @@ const typeDefs = gql`
     sku: String
     collab: String
     sport: String
+    featured: Boolean
   }
 
   input ShoeInput {
@@ -80,6 +81,7 @@ const typeDefs = gql`
     model: [String]
     sku: [String]
     sport: [String]
+    featured: [String]
   }
 
   input SortBy {

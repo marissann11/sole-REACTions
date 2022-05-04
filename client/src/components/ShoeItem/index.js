@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../Previews/style.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../Previews/style.css';
 
 function ShoeItem(shoe) {
   const { image, name, sku, _id, price } = shoe;
@@ -8,7 +8,7 @@ function ShoeItem(shoe) {
 
   return (
     <div className="ui horizontal list allCont m-5 row justify-content-start">
-      <Link to={`/shoes/${sku}`} className="item prevLink" key={_id}>
+      <Link to={`/shoes/${sku}`} className="item prevLink" key={sku}>
         <div className="shoeDiv">
           <img className="ui image shoeAll" src={shoe.image} alt={name} />
         </div>

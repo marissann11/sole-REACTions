@@ -15,6 +15,7 @@ export const QUERY_ALL_SHOES = gql`
       sku
       collab
       sport
+      featured
     }
   }
 `;
