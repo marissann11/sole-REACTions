@@ -1,10 +1,11 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import './style.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Chart = ({ brandData }) => {
+const DoughnutChart = ({ brandData }) => {
   let nike = [];
   let adidas = [];
   let jordan = [];
@@ -46,7 +47,12 @@ const Chart = ({ brandData }) => {
     ],
   };
 
-  return <Doughnut data={data} />;
+  return (
+    <div className="donut">
+      {' '}
+      <Doughnut data={data} />
+    </div>
+  );
 };
 
-export default Chart;
+export default DoughnutChart;
