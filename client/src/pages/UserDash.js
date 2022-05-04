@@ -5,7 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 // import { STRIPE_PUBLIC_KEY } from '../utils/keys';
 import { QUERY_PORTAL } from '../utils/queries';
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
 
 const UserDash = () => {
   const [getPortal, { data }] = useLazyQuery(QUERY_PORTAL);

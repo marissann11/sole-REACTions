@@ -5,7 +5,7 @@ const { populate } = require('../models/Order');
 const { signToken } = require('../utils/auth');
 // const { STRIPE_SECRET_KEY } = require("../config/keys");
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(`${process.env.SECRET_KEY}`);
 
 const resolvers = {
   Query: {

@@ -12,7 +12,7 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { ADD_SALE } from '../utils/mutations';
 // import { STRIPE_PUBLIC_KEY } from '../utils/keys';
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
