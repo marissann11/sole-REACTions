@@ -48,6 +48,7 @@ const AdminQuickSelect = () => {
 
   const submitShoe = async (event) => {
     event.preventDefault();
+    console.log(currentShoe, 'current shoe');
     const shoeData = await addShoe({
       variables: {
         name: currentShoe.name,
@@ -69,8 +70,9 @@ const AdminQuickSelect = () => {
     });
   };
 
+  console.log(currentShoe);
+
   const handleChange = (event) => {
-    console.log(event.target);
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -85,55 +87,63 @@ const AdminQuickSelect = () => {
       </h1>
       <div className="container">
         <div className="row">
-          {SHOES.map((shoe) => (
-            <div key={shoe.sid} className="col-4">
-              <img
-                className="ui image shoePrev"
-                src={shoe.img}
-                alt={shoe.alt}
-              />
-              <Form>
-                <Form.Input
-                  placeholder={shoe.name}
-                  name="Name"
-                  type="name"
-                  id="name"
-                  value={shoe.name}
-                  onChange={handleChange}
+          {SHOES.map((shoe) => {
+            return (
+              <div key={shoe.sid} className="col-4">
+                <img
+                  className="ui image shoePrev"
+                  src={shoe.img}
+                  alt={shoe.alt}
                 />
-                <Form.Input
-                  placeholder="Description"
-                  name="description"
-                  type="description"
-                  id="description"
-                  onChange={handleChange}
-                />
-                <Form.Input
-                  placeholder="Price"
-                  name="price"
-                  type="price"
-                  id="price"
-                  onChange={handleChange}
-                />
-                <Form.Input
-                  placeholder="Brand"
-                  name="brand"
-                  type="brand"
-                  id="brand"
-                  onChange={handleChange}
-                />
-                <Form.Input
-                  placeholder="Year"
-                  name="year"
-                  type="year"
-                  id="year"
-                  onClick={() => saveShoe(shoe)}
-                  onChange={handleChange}
-                />
-              </Form>
-              <Button onClick={submitShoe}>Add Shoe</Button>
-            </div>
-          ))}
+                <Form>
+                  <Form.Input
+                    placeholder={shoe.name}
+                    name="Name"
+                    type="name"
+                    id="name"
+                    value={shoe.name}
+                    onChange={handleChange}
+                  />
+                  <Form.Input
+                    placeholder="Description"
+                    name="description"
+                    type="description"
+                    id="description"
+                    onChange={handleChange}
+                  />
+                  <Form.Input
+                    placeholder="Price"
+                    name="price"
+                    type="price"
+                    id="price"
+                    onChange={handleChange}
+                  />
+                  <Form.Input
+                    placeholder="Brand"
+                    name="brand"
+                    type="brand"
+                    id="brand"
+                    onChange={handleChange}
+                  />
+                  <Form.Input
+                    placeholder="Year"
+                    name="year"
+                    type="year"
+                    id="year"
+                    onClick={() =>
+                      setCurrentShoe({
+                        name: shoe.name,
+                        image: shoe.img,
+                        sku: shoe.sku,
+                      })
+                    }
+                    onChange={handleChange}
+                  />
+                </Form>
+                <Button onClick={submitShoe}>Add Shoe</Button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
