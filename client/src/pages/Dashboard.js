@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-
-import AdminShoe from '../components/AdminShoe';
+import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
+import AdminShoe from "../components/AdminShoe";
 
 class Dashboard extends Component {
   uploadWidget() {
     window.cloudinary.openUploadWidget(
-      { cloud_name: 'gw-bootcamp', upload_preset: 'upload_shoes' },
+      { cloud_name: "gw-bootcamp", upload_preset: "upload_shoes" },
       function (error, result) {
         console.log(result);
       }
@@ -14,18 +14,15 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          Hi, I'm the dashboard.
-          <div className="upload">
-            <button
-              onClick={this.uploadWidget.bind(this)}
-              className="upload-button"
-            >
-              Click here to Upload Shoe Image
-            </button>
-          </div>
-          <AdminShoe />
+        <div className="upload">
+          <Button
+            onClick={this.uploadWidget.bind(this)}
+            className="upload-button"
+          >
+            Click to Upload Image
+          </Button>
         </div>
+        <AdminShoe />
       </div>
     );
   }

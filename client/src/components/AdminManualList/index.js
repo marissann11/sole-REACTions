@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_SHOE } from '../../utils/mutations';
-import { Button, Form } from 'semantic-ui-react';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_SHOE } from "../../utils/mutations";
+import { Button, Form, Message } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const AdminManualList = () => {
   const [formState, setFormState] = useState({});
@@ -14,7 +15,7 @@ const AdminManualList = () => {
         name: formState.name,
         description: formState.description,
         image:
-          'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651658547/sole-intentions3/Coming_Soon_uqhjj2.png',
+          "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651658547/sole-intentions3/Coming_Soon_uqhjj2.png",
         price: parseInt(formState.price),
         brand: formState.brand,
         year: formState.year,
@@ -33,7 +34,7 @@ const AdminManualList = () => {
 
   return (
     <div>
-      <h1>Manually Insert your Shoesies</h1>
+      <h1 style={{ fontFamily: "Contrail One, cursive" }}>Manual Upload</h1>
       <Form onSubmit={handleShoeSubmit}>
         <Form.Input
           placeholder="Name"
@@ -77,8 +78,7 @@ const AdminManualList = () => {
           id="sku"
           onChange={handleChange}
         />
-
-        <Button type="submit">List</Button>
+        <Button type="submit">Post</Button>
       </Form>
     </div>
   );

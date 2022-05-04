@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_SHOE } from '../../utils/mutations';
-import { Button, Form } from 'semantic-ui-react';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_SHOE } from "../../utils/mutations";
+import { Button, Form } from "semantic-ui-react";
 
 const SHOES = [
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651650243/sole-intentions3/Untitled_design_6_uwpr8b.png',
-    alt: 'Nike Air Force 1 Low',
-    name: 'Nike Air Force 1 Low',
-    sku: '5432-1243',
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651650243/sole-intentions3/Untitled_design_6_uwpr8b.png",
+    alt: "Nike Air Force 1 Low",
+    name: "Nike Air Force 1 Low",
+    sku: "5432-1243",
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651678026/sole-intentions3/nmd_bdmcgg.png',
-    alt: 'Adidas NMD R1',
-    name: 'Adidas NMD R1',
-    sku: '5472-1243',
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651678026/sole-intentions3/nmd_bdmcgg.png",
+    alt: "Adidas NMD R1",
+    name: "Adidas NMD R1",
+    sku: "5472-1243",
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651682621/sole-intentions3/vapormax_gd5trc.png',
-    alt: 'Nike Air VaporMax Plus',
-    name: 'Nike Air VaporMax Plus',
-    sku: '5432-1943',
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651682621/sole-intentions3/vapormax_gd5trc.png",
+    alt: "Nike Air VaporMax Plus",
+    name: "Nike Air VaporMax Plus",
+    sku: "5432-1943",
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651683280/sole-intentions3/newbal_j1n9a2.png',
-    alt: 'New Balance x JJJound 990v4 sneaker',
-    name: 'New Balance x JJJound 990v4 sneaker',
-    sku: '5432-63',
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651683280/sole-intentions3/newbal_j1n9a2.png",
+    alt: "New Balance x JJJound 990v4 sneaker",
+    name: "New Balance x JJJound 990v4 sneaker",
+    sku: "5432-63",
   },
   {
-    img: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651683409/sole-intentions3/adid_v4psvz.png',
-    alt: 'Adidas Forum 84 ADV low sneaker',
-    name: 'Adidas Forum 84 ADV low sneaker',
-    sku: '132-1243',
+    img: "https://res.cloudinary.com/gw-bootcamp/image/upload/v1651683409/sole-intentions3/adid_v4psvz.png",
+    alt: "Adidas Forum 84 ADV low sneaker",
+    name: "Adidas Forum 84 ADV low sneaker",
+    sku: "132-1243",
   },
 ];
 
@@ -73,22 +73,20 @@ const AdminQuickSelect = () => {
   };
 
   return (
-    <div>
-      <h1>Restock on one of your most popular</h1>
-      <div className="container-fluid prevRow">
-        <div className="ui horizontal list prevCont">
+    <div className="ms-5 mb-3">
+      <h1 style={{ fontFamily: "Contrail One, cursive" }}>
+        Restock on one of your most popular
+      </h1>
+      <div className="container">
+        <div className="row">
           {SHOES.map((shoe) => (
             <>
-              <div key={shoe.sku}>
+              <div key={shoe.sku} className="col-4">
                 <img
                   className="ui image shoePrev"
                   src={shoe.img}
                   alt={shoe.alt}
                 />
-                <div className="prevText">
-                  <strong>{shoe.name}</strong>
-                  <br />
-                </div>
                 <Form>
                   <Form.Input
                     placeholder={shoe.name}
