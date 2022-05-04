@@ -112,7 +112,7 @@ db.once('open', async () => {
       model: 'Dunk',
       sku: '918321-381',
       collab: 'Thomas Campbell',
-      sport: 'Skateboard',
+      sport: 'Skateboarding',
       image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538869/sole-intentions2/Campbell_af1fjc.png',
     },
     {
@@ -193,7 +193,7 @@ db.once('open', async () => {
       model: 'Dunk',
       sku: 'BV1310-001',
       collab: 'Diamond Supply',
-      sport: 'Skateboard',
+      sport: 'Skateboarding',
       image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538869/sole-intentions2/Diamond_duf2z2.png',
     },
     {
@@ -235,7 +235,7 @@ db.once('open', async () => {
       description: `The Air Jordan 1 Light Fusion Red features a white leather upper with Light Fusion Red overlays and 
       Laser Orange on the Swoosh and ankle wrap. A woven Nike label stitched atop the tongue completes the design.`,
       price: 160,
-      color: 'Pink',
+      color: 'Red',
       model: 'Jordan 1',
       sku: '555088-603',
       collab: 'N/A',
@@ -497,7 +497,7 @@ db.once('open', async () => {
     },
     {
       name: 'New Balance 550 Sea Salt Varsity Gold',
-      brand: 'New Balance',
+      brand: 'NewBalance',
       year: 2022,
       description: `The 550 'Varsity Gold' features a retro two-tone look on its retro basketball construction. 
       The shoe's leather upper sports a white base, with Varsity Gold bringing color to the branding, quarter panel and tongue lining. 
@@ -667,7 +667,7 @@ db.once('open', async () => {
       model: 'Dunk',
       sku: '635525-036',
       collab: 'Concepts',
-      sport: 'Skateboard',
+      sport: 'Skateboarding',
       image: 'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651538877/sole-intentions2/Ugly_nx7dg3.png',
     },
     {

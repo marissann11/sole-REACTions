@@ -83,8 +83,8 @@ const typeDefs = gql`
   }
 
   input SortBy {
-    field: String
-    direction: String
+    price: String
+    year: String
   }
 
   type Query {
