@@ -1,11 +1,11 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { QUERY_ALL_SHOES } from '../utils/queries';
-import ShoeItem from '../components/ShoeItem';
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_ALL_SHOES } from "../utils/queries";
+import ShoeItem from "../components/ShoeItem";
 
 const Nike = () => {
   const { loading, data } = useQuery(QUERY_ALL_SHOES, {
-    variables: { filters: { brand: 'Nike' } },
+    variables: { filters: { brand: "Nike" } },
   });
 
   if (loading) {
@@ -14,7 +14,17 @@ const Nike = () => {
 
   if (data) {
     return (
-      <div className="container-fluid prevRow ms-4">
+      <div>
+        <div
+          className="m-5 p-5 text-center"
+          style={{
+            fontFamily: "Contrail One, cursive",
+            fontSize: "6vh",
+            backgroundColor: "lightgrey",
+          }}
+        >
+          Nike
+        </div>
         <div>
           {data.shoes.map((shoe) => (
             <ShoeItem
