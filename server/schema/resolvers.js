@@ -173,14 +173,14 @@ const resolvers = {
       return { token, user };
     },
     addShoe: async (parent, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError('User is not logged in');
-      } else if (!context.user.isAdmin) {
-        throw new AuthenticationError('User is not admin!');
-      } else {
-        const shoe = await Shoe.create(args);
-        return shoe;
-      }
+      // if (!context.user) {
+      //   throw new AuthenticationError('User is not logged in');
+      // } else if (!context.user.isAdmin) {
+      //   throw new AuthenticationError('User is not admin!');
+      // } else {
+      const shoe = await Shoe.create(args);
+      return shoe;
+      // }
     },
     removeShoe: async (parent, { _id }, context) => {
       if (!context.user) {
