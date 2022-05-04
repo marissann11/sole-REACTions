@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import SizeChart from "../components/SizeChart";
-import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { useStoreContext } from "../utils/GlobalState";
-import { idbPromise } from "../utils/helpers";
-import { Button, Item } from "semantic-ui-react";
+import React, { useEffect, useState } from 'react';
+import SizeChart from '../components/SizeChart';
+import { useParams, Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { useStoreContext } from '../utils/GlobalState';
+import { idbPromise } from '../utils/helpers';
+import { Button, Item } from 'semantic-ui-react';
 import {
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
   UPDATE_SHOES,
-} from "../utils/actions";
-import { QUERY_SHOE } from "../utils/queries";
+} from '../utils/actions';
+import { QUERY_SHOE } from '../utils/queries';
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
@@ -18,6 +18,9 @@ function Detail() {
   const [currentShoe, setCurrentShoe] = useState({});
   const { loading, data } = useQuery(QUERY_SHOE);
   const { shoes, cart } = state;
+
+  const comingSoon =
+    'https://res.cloudinary.com/gw-bootcamp/image/upload/v1651658547/sole-intentions3/Coming_Soon_uqhjj2.png';
 
   useEffect(() => {
     if (shoes.length) {
@@ -39,7 +42,7 @@ function Detail() {
         sku: sku,
         purchaseQty: parseInt(itemInCart.purchaseQty) + 1,
       });
-      idbPromise("cart", "put", {
+      idbPromise('cart', 'put', {
         ...itemInCart,
         purchaseQty: parseInt(itemInCart.purchaseQty) + 1,
       });
@@ -48,7 +51,7 @@ function Detail() {
         type: ADD_TO_CART,
         shoe: { ...currentShoe, purchaseQty: 1 },
       });
-      idbPromise("cart", "put", { ...currentShoe, purchaseQty: 1 });
+      idbPromise('cart', 'put', { ...currentShoe, purchaseQty: 1 });
     }
   };
 
@@ -66,16 +69,16 @@ function Detail() {
                 />
                 <h3
                   style={{
-                    fontFamily: "Contrail One, cursive",
-                    fontSize: "3vh",
+                    fontFamily: 'Contrail One, cursive',
+                    fontSize: '3vh',
                   }}
                 >
                   ABOUT THIS SHOE:
                 </h3>
                 <div
                   style={{
-                    fontFamily: "Comfortaa, cursive",
-                    fontSize: "2vh",
+                    fontFamily: 'Comfortaa, cursive',
+                    fontSize: '2vh',
                   }}
                 >
                   <p>{currentShoe.description}</p>
@@ -92,8 +95,8 @@ function Detail() {
                 <Item.Content>
                   <Item.Header
                     style={{
-                      fontFamily: "Contrail One, cursive",
-                      fontSize: "3vh",
+                      fontFamily: 'Contrail One, cursive',
+                      fontSize: '3vh',
                     }}
                   >
                     <strong>{currentShoe.name}</strong>
@@ -101,8 +104,8 @@ function Detail() {
                   <Item.Description>
                     <p
                       style={{
-                        fontFamily: "Comfortaa, cursive",
-                        fontSize: "3vh",
+                        fontFamily: 'Comfortaa, cursive',
+                        fontSize: '3vh',
                       }}
                     >
                       ${currentShoe.price}
@@ -112,25 +115,44 @@ function Detail() {
                 </Item.Content>
                 <h4
                   style={{
-                    fontFamily: "Comfortaa, cursive",
-                    fontSize: "2vh",
+                    fontFamily: 'Comfortaa, cursive',
+                    fontSize: '2vh',
                   }}
                 >
                   Size (US Mens):
                 </h4>
                 <SizeChart />
-                <Button
-                  color="green"
-                  onClick={addToCart}
-                  as={Link}
-                  to="/cart"
-                  className="mt-4"
-                  style={{
-                    fontFamily: "Comfortaa, cursive",
-                  }}
-                >
-                  Add to Cart
-                </Button>{" "}
+                {currentShoe.image !== comingSoon ? (
+                  <>
+                    <Button
+                      color="green"
+                      onClick={addToCart}
+                      as={Link}
+                      to="/cart"
+                      className="mt-4"
+                      style={{
+                        fontFamily: 'Comfortaa, cursive',
+                      }}
+                    >
+                      Add to Cart
+                    </Button>{' '}
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      color="green"
+                      // onClick={addToCart}
+                      as={Link}
+                      to="/subscription"
+                      className="mt-4"
+                      style={{
+                        fontFamily: 'Comfortaa, cursive',
+                      }}
+                    >
+                      Get Updates
+                    </Button>{' '}
+                  </>
+                )}
               </div>
             </div>
           </Item>

@@ -99,14 +99,14 @@ const AdminQuickSelect = () => {
                     onChange={handleChange}
                   />
                   <Form.Input
-                    placeholder="description"
+                    placeholder="Description"
                     name="description"
                     type="description"
                     id="description"
                     onChange={handleChange}
                   />
                   <Form.Input
-                    placeholder="price"
+                    placeholder="Price"
                     name="price"
                     type="price"
                     id="price"
