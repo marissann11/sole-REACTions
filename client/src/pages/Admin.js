@@ -1,18 +1,20 @@
-import React from "react";
-import SalesDash from "../components/SalesDash";
-import AdminManualList from "../components/AdminManualList";
-import AdminQuickSelect from "../components/AdminQuickSelect";
-import Dashboard from "./Dashboard";
+import React from 'react';
+import SalesDash from '../components/SalesDash';
+import AdminManualList from '../components/AdminManualList';
+import AdminQuickSelect from '../components/AdminQuickSelect';
+import Dashboard from './Dashboard';
 
 const Admin = () => {
+  // admin auth requirement commented out for Admin Dash
+
   return (
     <div className="container-fluid">
       <div
         className="m-5 p-5 text-center"
         style={{
-          fontFamily: "Contrail One, cursive",
-          fontSize: "6vh",
-          backgroundColor: "lightgrey",
+          fontFamily: 'Contrail One, cursive',
+          fontSize: '6vh',
+          backgroundColor: 'lightgrey',
         }}
       >
         Administrator Dashboard

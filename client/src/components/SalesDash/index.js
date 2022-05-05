@@ -6,6 +6,8 @@ import DoughnutChart from '../DoughnutChart';
 const SalesDash = () => {
   const { data } = useQuery(QUERY_ALL_ADMINSALES);
 
+  // refactor necessary at some point but just grabbing all needed data
+  // admin auth requirement to access sales turned off for production for the time being
   let adminSales;
   let numOrders;
   let numShoes;

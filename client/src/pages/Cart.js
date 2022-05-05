@@ -1,28 +1,30 @@
-import React, { useEffect } from "react";
-import CartItem from "../components/CartItem";
-import Auth from "../utils/auth";
-import { Link } from "react-router-dom";
-import { Button } from "semantic-ui-react";
-import { idbPromise } from "../utils/helpers";
-import { ADD_MULTIPLE_TO_CART } from "../utils/actions";
-import { useStoreContext } from "../utils/GlobalState";
-import { QUERY_CHECKOUT } from "../utils/queries";
-import { loadStripe } from "@stripe/stripe-js";
-import { useLazyQuery, useMutation } from "@apollo/client";
-import { ADD_SALE } from "../utils/mutations";
+import React, { useEffect } from 'react';
+import CartItem from '../components/CartItem';
+import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
+import { idbPromise } from '../utils/helpers';
+import { ADD_MULTIPLE_TO_CART } from '../utils/actions';
+import { useStoreContext } from '../utils/GlobalState';
+import { QUERY_CHECKOUT } from '../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { ADD_SALE } from '../utils/mutations';
 
 const stripePromise = loadStripe(
-  "pk_test_51KYkduDT393wRvxWYLAwE9GsAaZhXIRpdJportUTqDUA0azNhYPia8KPae5AA1wTUZLNeHiA34nbWGuK5SoGGXLn00yLgCSSx2"
+  'pk_test_51KYkduDT393wRvxWYLAwE9GsAaZhXIRpdJportUTqDUA0azNhYPia8KPae5AA1wTUZLNeHiA34nbWGuK5SoGGXLn00yLgCSSx2'
 );
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
+  // add sale called with checkout session - this adds sales data to AdminSale model in database!
   const [addSale, { error }] = useMutation(ADD_SALE);
 
   useEffect(() => {
     async function getCart() {
-      const cart = await idbPromise("cart", "get");
+      const cart = await idbPromise('cart', 'get');
       dispatch({ type: ADD_MULTIPLE_TO_CART, shoes: [...cart] });
     }
 
@@ -36,7 +38,7 @@ const Cart = () => {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
       });
-      window.indexedDB.deleteDatabase("sole-reactions");
+      window.indexedDB.deleteDatabase('sole-reactions');
     }
   }, [data]);
 
@@ -64,13 +66,13 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart container" style={{ minHeight: "70vh" }}>
+    <div className="cart container" style={{ minHeight: '70vh' }}>
       <div className="row">
         <div className="col-6"></div>
         <h2
           style={{
-            fontFamily: "Contrail One, cursive",
-            fontSize: "3vh",
+            fontFamily: 'Contrail One, cursive',
+            fontSize: '3vh',
           }}
         >
           Your Shopping Cart
@@ -78,8 +80,8 @@ const Cart = () => {
         {state.cart.length ? (
           <div
             style={{
-              fontFamily: "Comfortaa, cursive",
-              fontSize: "2vh",
+              fontFamily: 'Comfortaa, cursive',
+              fontSize: '2vh',
             }}
           >
             {state.cart.map((item) => (
@@ -87,7 +89,7 @@ const Cart = () => {
             ))}
             <div className="flex-row space-between">
               <strong>Total:</strong> ${calculateTotal()}*
-              <p style={{ fontSize: "1vh" }}>
+              <p style={{ fontSize: '1vh' }}>
                 *Taxes and shipping costs calculated at checkout.
               </p>
               {Auth.loggedIn() ? (
@@ -95,7 +97,7 @@ const Cart = () => {
                   color="green"
                   onClick={submitCheckout}
                   style={{
-                    fontFamily: "Comfortaa, cursive",
+                    fontFamily: 'Comfortaa, cursive',
                   }}
                 >
                   Proceed to Checkout
@@ -106,7 +108,7 @@ const Cart = () => {
                     color="green"
                     onClick={submitCheckout}
                     style={{
-                      fontFamily: "Comfortaa, cursive",
+                      fontFamily: 'Comfortaa, cursive',
                     }}
                   >
                     Guest Checkout
@@ -116,7 +118,7 @@ const Cart = () => {
                       color="green"
                       onClick={submitCheckout}
                       style={{
-                        fontFamily: "Comfortaa, cursive",
+                        fontFamily: 'Comfortaa, cursive',
                       }}
                     >
                       Login
@@ -130,9 +132,9 @@ const Cart = () => {
           <div className="m-5">
             <h3
               style={{
-                fontFamily: "Contrail One, cursive",
-                fontSize: "3vh",
-                color: "red",
+                fontFamily: 'Contrail One, cursive',
+                fontSize: '3vh',
+                color: 'red',
               }}
             >
               Uh Oh! Your Cart is Empty!
@@ -142,7 +144,7 @@ const Cart = () => {
               as={Link}
               to="/"
               style={{
-                fontFamily: "Comfortaa, cursive",
+                fontFamily: 'Comfortaa, cursive',
               }}
             >
               Start Shopping!
