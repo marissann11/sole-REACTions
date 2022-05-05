@@ -5,6 +5,8 @@ import AdminQuickSelect from '../components/AdminQuickSelect';
 import Dashboard from './Dashboard';
 
 const Admin = () => {
+  // admin auth requirement commented out for Admin Dash
+
   return (
     <div className="container-fluid">
       <div
@@ -19,10 +21,10 @@ const Admin = () => {
       </div>
       <div className="row justify-content-around">
         <SalesDash />
-        <div className="col-4 ms-5 mt-5">
+        <div className="col-md-4 ms-5 mt-5">
           <AdminManualList />
         </div>
-        <div className="col-7 mt-5">
+        <div className="col-md-7 mt-5">
           <Dashboard />
         </div>
         <div className="col-12 mt-5">

@@ -32,6 +32,7 @@ export const ADD_USER = gql`
   }
 `;
 
+// only admin can use this mutation or err is thrown
 export const ADD_SHOE = gql`
   mutation addShoe(
     $name: String!
@@ -56,6 +57,7 @@ export const ADD_SHOE = gql`
   }
 `;
 
+// when checkout is called, this mutation is called to track sales data
 export const ADD_SALE = gql`
   mutation addSale($shoes: [ID]!) {
     addSale(shoes: $shoes) {

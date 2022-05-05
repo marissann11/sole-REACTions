@@ -1,4 +1,0 @@
-const STRIPE_PUBLIC_KEY =
-  'pk_test_51KYkduDT393wRvxWYLAwE9GsAaZhXIRpdJportUTqDUA0azNhYPia8KPae5AA1wTUZLNeHiA34nbWGuK5SoGGXLn00yLgCSSx2';
-
-module.exports = { STRIPE_PUBLIC_KEY };

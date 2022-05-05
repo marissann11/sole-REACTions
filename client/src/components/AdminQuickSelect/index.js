@@ -48,30 +48,25 @@ const AdminQuickSelect = () => {
 
   const submitShoe = async (event) => {
     event.preventDefault();
-    console.log(currentShoe, 'current shoe');
-    const shoeData = await addShoe({
-      variables: {
-        name: currentShoe.name,
-        description: formState.description,
-        image: currentShoe.image,
-        price: parseInt(formState.price),
-        brand: formState.brand,
-        year: formState.year,
-        sku: currentShoe.sku,
-      },
-    });
+    try {
+      const shoeData = await addShoe({
+        variables: {
+          name: currentShoe.name,
+          description: formState.description,
+          image: currentShoe.image,
+          price: parseInt(formState.price),
+          brand: formState.brand,
+          year: formState.year,
+          sku: currentShoe.sku,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const saveShoe = (shoe) => {
-    setCurrentShoe({
-      name: shoe.name,
-      image: shoe.img,
-      sku: shoe.sku,
-    });
-  };
-
-  console.log(currentShoe);
-
+  // shoe data inserted grabbed from this setting of state for the Form along with the onClick setCurrentShoe function
+  // below to grab the current mapped shoe's data
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -89,7 +84,7 @@ const AdminQuickSelect = () => {
         <div className="row">
           {SHOES.map((shoe) => {
             return (
-              <div key={shoe.sid} className="col-4">
+              <div key={shoe.sid} className="col-md-4">
                 <img
                   className="ui image shoePrev"
                   src={shoe.img}

@@ -89,6 +89,8 @@ export const QUERY_SUBSCRIPTION = gql`
     }
   }
 `;
+
+// this not working because of redirect issue with stripe
 export const QUERY_PORTAL = gql`
   query getPortal {
     subPortal {

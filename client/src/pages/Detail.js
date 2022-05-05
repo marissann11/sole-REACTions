@@ -55,6 +55,9 @@ function Detail() {
     }
   };
 
+  // at bottom of return, current shoe is checked against the coming soon picture
+  // if coming soon picture is true, add to cart button is switched for subscription page button
+
   return (
     <>
       {currentShoe ? (

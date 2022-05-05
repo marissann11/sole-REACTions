@@ -8,6 +8,8 @@ const stripePromise = loadStripe(
   'pk_test_51KYkduDT393wRvxWYLAwE9GsAaZhXIRpdJportUTqDUA0azNhYPia8KPae5AA1wTUZLNeHiA34nbWGuK5SoGGXLn00yLgCSSx2'
 );
 
+// redirect to stripe checkout for subscriptions- return success url not working in deployment
+
 const Subscription = () => {
   const [getSubscription, { data }] = useLazyQuery(QUERY_SUBSCRIPTION);
 

@@ -6,6 +6,7 @@ import './style.css';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = ({ brandData }) => {
+  // when we add more brands we can refactor how this is done
   let nike = [];
   let adidas = [];
   let jordan = [];
