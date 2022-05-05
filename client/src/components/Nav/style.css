@@ -1,0 +1,20 @@
+.ui.menu {
+  border-bottom: 0 none !important;
+  box-shadow: none;
+}
+
+.navTitle {
+  color: black;
+  font-family: "Contrail One", cursive;
+  font-size: 4.5vh;
+}
+
+.navTitleMobile {
+  color: black;
+  font-family: "Contrail One", cursive;
+  font-size: 4vh;
+}
+
+.drop {
+  font-family: "Contrail One", cursive;
+}
